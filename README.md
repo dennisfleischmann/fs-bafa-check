@@ -47,6 +47,57 @@ python3 -m bafa_agent --base-dir . memo --evaluation data/cases/<case_id>/evalua
 python3 -m bafa_agent --base-dir . email --evaluation data/cases/<case_id>/evaluation.json --index 0
 ```
 
+## Web App Backend (Render-ready)
+
+This repository now includes a queue-based backend for your employee web app:
+
+- `webapp/api.py` (FastAPI web service)
+- `webapp/worker.py` (RQ worker)
+- `webapp/worker_tasks.py` (compile/extract/evaluate jobs)
+- `render.yaml` (Render Blueprint: web + worker + cron + postgres + redis)
+
+### Local run
+
+```bash
+pip install -r requirements.txt
+uvicorn webapp.api:app --reload --port 8000
+python -m webapp.worker
+```
+
+### API flow
+
+1) Create BAFA application:
+```bash
+curl -X POST http://localhost:8000/applications -H "Content-Type: application/json" -d '{"title":"Antrag #1"}'
+```
+
+2) Upload offer (`.pdf` or `.txt`) and enqueue extraction:
+```bash
+curl -X POST http://localhost:8000/applications/<application_id>/offers -F "file=@angebot.pdf"
+```
+
+3) Start evaluation + plausibility check:
+```bash
+curl -X POST http://localhost:8000/applications/<application_id>/offers/<offer_id>/evaluate
+```
+
+4) Poll job status:
+```bash
+curl http://localhost:8000/jobs/<job_id>
+```
+
+5) Trigger compile latest BAFA docs:
+```bash
+curl -X POST http://localhost:8000/actions/compile-latest
+```
+
+### Render deploy
+
+- Commit and push repo.
+- Create Blueprint from `render.yaml`.
+- Set `OPENAI_API_KEY` in web/worker/cron services.
+- Ensure worker is running (jobs are asynchronous).
+
 To override locally without editing tracked defaults:
 
 ```bash

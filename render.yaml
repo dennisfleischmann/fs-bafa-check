@@ -1,0 +1,93 @@
+services:
+  - type: web
+    name: bafa-web
+    runtime: python
+    plan: starter
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn webapp.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bafa-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: bafa-redis
+          property: connectionString
+      - key: BAFA_BASE_DIR
+        value: /opt/render/project/src
+      - key: BAFA_SOURCE_MODE
+        value: bafa
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o
+      - key: OPENAI_PLAUSIBILITY_MODEL
+        value: gpt-5.2
+
+  - type: worker
+    name: bafa-worker
+    runtime: python
+    plan: starter
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m webapp.worker
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bafa-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: bafa-redis
+          property: connectionString
+      - key: BAFA_BASE_DIR
+        value: /opt/render/project/src
+      - key: BAFA_SOURCE_MODE
+        value: bafa
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o
+      - key: OPENAI_PLAUSIBILITY_MODEL
+        value: gpt-5.2
+
+  - type: cron
+    name: bafa-nightly-compile
+    runtime: python
+    schedule: "0 4 * * *"
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m webapp.cron_compile
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bafa-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: bafa-redis
+          property: connectionString
+      - key: BAFA_BASE_DIR
+        value: /opt/render/project/src
+      - key: BAFA_SOURCE_MODE
+        value: bafa
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o
+      - key: OPENAI_PLAUSIBILITY_MODEL
+        value: gpt-5.2
+
+  - type: keyvalue
+    name: bafa-redis
+    plan: starter
+    maxmemoryPolicy: noeviction
+
+databases:
+  - name: bafa-postgres
+    plan: starter

@@ -1,13 +1,13 @@
 {
   "measure_id": "envelope_aussenwand",
   "module": "envelope",
-  "title": "envelope aussenwand",
-  "version": "bootstrap",
+  "title": "Envelope Aussenwand",
+  "version": "2026-02-15T19:40:49+00:00",
   "legal_basis": [
     {
-      "doc_id": "bootstrap",
-      "section": "seed",
-      "priority": 1
+      "doc_id": "compiled",
+      "section": "auto",
+      "priority": 100
     }
   ],
   "scope": {
@@ -25,7 +25,7 @@
       "severity_if_missing": "ABORT"
     },
     {
-      "path": "building.is_existing",
+      "path": "offer.input_mode",
       "severity_if_missing": "CLARIFY"
     }
   ],
@@ -73,14 +73,19 @@
           "op": "==",
           "value": "geruest"
         },
-        "result": "ELIGIBLE_IF_NECESSARY"
+        "result": "ELIGIBLE_IF_NECESSARY",
+        "note_key": "scaffolding_if_necessary"
       }
     ]
   },
   "documentation": {
     "must_have": [
       {
-        "doc": "Uwert_Nachweis_or_Layers",
+        "doc": "supporting_document",
+        "severity_if_missing": "CLARIFY"
+      },
+      {
+        "doc": "supporting_document",
         "severity_if_missing": "CLARIFY"
       }
     ],
@@ -88,9 +93,9 @@
   },
   "outputs": {
     "messages": {
-      "pass_summary_key": "pass_generic",
+      "pass_summary_key": "pass_default",
       "clarify_questions_keys": [
-        "ask_u_value_or_layers"
+        "ask_missing_documents"
       ]
     }
   },

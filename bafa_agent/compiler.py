@@ -81,14 +81,38 @@ def compile_measure_specs(requirements: List[Dict[str, Any]], version: str) -> D
             elif req_type == "COST_ELIGIBILITY":
                 rule = req.get("rule", {})
                 if isinstance(rule, dict) and rule.get("kind") == "COST_ITEM":
+                    item_code = str(rule.get("item_code", "custom_cost_item"))
+                    decision = rule.get("decision", "ELIGIBLE_IF_NECESSARY")
+
+                    code_dedupe_key = (
+                        "line_item.item_code",
+                        "==",
+                        item_code,
+                        decision,
+                        item_code,
+                    )
+                    if code_dedupe_key not in split_rule_keys:
+                        split_rule_keys.add(code_dedupe_key)
+                        split_rules.append(
+                            {
+                                "when": {
+                                    "field": "line_item.item_code",
+                                    "op": "==",
+                                    "value": item_code,
+                                },
+                                "result": decision,
+                                "note_key": item_code,
+                            }
+                        )
+
                     keywords = rule.get("match_keywords", [])
                     if isinstance(keywords, list) and keywords:
                         dedupe_key = (
                             "line_item.description",
                             "contains_any",
                             tuple(sorted(str(k).lower() for k in keywords)),
-                            rule.get("decision", "ELIGIBLE_IF_NECESSARY"),
-                            rule.get("item_code", "custom_cost_item"),
+                            decision,
+                            item_code,
                         )
                         if dedupe_key not in split_rule_keys:
                             split_rule_keys.add(dedupe_key)
@@ -99,8 +123,8 @@ def compile_measure_specs(requirements: List[Dict[str, Any]], version: str) -> D
                                         "op": "contains_any",
                                         "value": keywords,
                                     },
-                                    "result": rule.get("decision", "ELIGIBLE_IF_NECESSARY"),
-                                    "note_key": rule.get("item_code", "custom_cost_item"),
+                                    "result": decision,
+                                    "note_key": item_code,
                                 }
                             )
 

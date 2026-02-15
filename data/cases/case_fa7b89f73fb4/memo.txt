@@ -1,0 +1,6 @@
+Interne BAFA-Vorpruefung - Fall case_fa7b89f73fb4
+
+- envelope_fenster: PASS (all_checks_passed)
+- envelope_aussenwand: CLARIFY (missing_wall_layers)
+  Nachforderung:
+  - Bitte U-Wert nach Sanierung ODER Daemmstaerke + Material (lambda) + Wandaufbau nachreichen.

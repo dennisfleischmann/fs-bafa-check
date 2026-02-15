@@ -59,6 +59,34 @@ def coverage_guard(measures: Dict[str, Dict[str, Any]], required_components: Ite
     return GuardResult(ok=True)
 
 
+def threshold_guard(measures: Dict[str, Dict[str, Any]], required_measure_ids: Iterable[str]) -> GuardResult:
+    errors: List[str] = []
+    for measure_id in required_measure_ids:
+        spec = measures.get(measure_id)
+        if not isinstance(spec, dict):
+            errors.append(f"missing_measure_spec:{measure_id}")
+            continue
+        technical = spec.get("technical_requirements", {})
+        thresholds = technical.get("thresholds", []) if isinstance(technical, dict) else []
+        if not isinstance(thresholds, list) or not thresholds:
+            errors.append(f"missing_thresholds:{measure_id}")
+            continue
+        valid_threshold = False
+        for item in thresholds:
+            if not isinstance(item, dict):
+                continue
+            condition = item.get("condition", {})
+            if not isinstance(condition, dict):
+                continue
+            value = condition.get("value")
+            if parse_float(value) is not None:
+                valid_threshold = True
+                break
+        if not valid_threshold:
+            errors.append(f"invalid_threshold_values:{measure_id}")
+    return GuardResult(ok=not errors, errors=errors)
+
+
 def conflict_guard(requirements: List[Dict[str, Any]]) -> GuardResult:
     conflicts = detect_conflicts(requirements)
     if not conflicts:

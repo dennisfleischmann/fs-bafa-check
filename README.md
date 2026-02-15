@@ -13,6 +13,10 @@ Important keys:
 
 - `OPENAI_API_KEY`
 - `OPENAI_MODEL`
+- `BAFA_SEMANTIC_USE_EMBEDDINGS` (default: `false`)
+- `BAFA_SEMANTIC_MIN_CONFIDENCE` (default: `0.58`)
+- `BAFA_EMBEDDING_MODEL` (default: `text-embedding-3-small`)
+- `OPENAI_PLAUSIBILITY_MODEL` (default: `gpt-5.2`)
 - `BAFA_BASE_DIR`
 - `BAFA_SOURCE_MODE`
 - `BAFA_SOURCE_URL`
@@ -25,6 +29,7 @@ Important keys:
 - Derived calculations (direct U, layer-based U, roof bandwidth helper, wall worst-case helper).
 - Deterministic measure evaluation with statuses: `PASS`, `FAIL`, `CLARIFY`, `ABORT`.
 - Cost evaluation separated from technical checks.
+- Hybrid semantic line-item mapping (lexical by default, optional embedding rerank) before deterministic rules.
 - Evidence-binding, conflict, coverage, activation guards.
 - Secretary memo + customer email generation.
 - Audit persistence, escalation scoring, model routing, bundle diffing, regression runner.
@@ -36,6 +41,8 @@ python3 -m bafa_agent --base-dir . init
 python3 -m bafa_agent --base-dir . compile
 python3 -m bafa_agent --base-dir . compile --source bafa
 python3 -m bafa_agent --base-dir . evaluate --offer samples/offer_example.txt
+./execute_plausibility_check.py --base-dir . --offer ./offer.txt
+./execute-plausibility-check --base-dir . --offer ./offer.txt
 python3 -m bafa_agent --base-dir . memo --evaluation data/cases/<case_id>/evaluation.json
 python3 -m bafa_agent --base-dir . email --evaluation data/cases/<case_id>/evaluation.json --index 0
 ```
@@ -47,6 +54,8 @@ cat > .env <<'EOF'
 OPENAI_API_KEY=your_key_here
 OPENAI_MODEL=gpt-4o
 BAFA_SOURCE_MODE=bafa
+BAFA_SEMANTIC_USE_EMBEDDINGS=false
+OPENAI_PLAUSIBILITY_MODEL=gpt-5.2
 EOF
 ```
 

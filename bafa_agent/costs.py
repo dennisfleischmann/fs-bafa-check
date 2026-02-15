@@ -20,6 +20,10 @@ def _evaluate_split_rule(item: Dict[str, Any], rule: Dict[str, Any]) -> str | No
         if item.get("category", "") == expected:
             return decision
 
+    if field == "line_item.item_code" and op == "==" and isinstance(expected, str):
+        if item.get("item_code", "") == expected:
+            return decision
+
     if field == "line_item.description" and op == "contains_any" and isinstance(expected, list):
         description = _normalize_text(str(item.get("description", "")))
         for token in expected:

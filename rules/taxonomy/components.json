@@ -2,6 +2,7 @@
   "aussenwand": [
     "aussenwand",
     "fassade",
+    "fassadendaemmung",
     "wdvs",
     "wanddaemmung"
   ],
@@ -18,7 +19,13 @@
   "fenster": [
     "fenster",
     "uw",
-    "fenstertausch"
+    "fenstertausch",
+    "einbaufuge",
+    "anschlussfuge",
+    "fensteranschlussfuge",
+    "kompriband",
+    "versiegelung",
+    "schlagregendicht"
   ],
   "kellerdecke": [
     "kellerdecke",

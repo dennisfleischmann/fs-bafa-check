@@ -57,6 +57,13 @@ class InfoblattRuleTests(unittest.TestCase):
         fenster = compiled["envelope_fenster"]
         split_rules = fenster["cost_rules"]["split_rules"]
         self.assertTrue(any(rule.get("note_key") == "einbaufuge_daemmung" for rule in split_rules))
+        self.assertTrue(
+            any(
+                rule.get("when", {}).get("field") == "line_item.item_code"
+                and rule.get("when", {}).get("value") == "einbaufuge_daemmung"
+                for rule in split_rules
+            )
+        )
 
     def test_cost_evaluation_matches_split_rule(self):
         measure = {
@@ -86,6 +93,35 @@ class InfoblattRuleTests(unittest.TestCase):
         summary = evaluate_costs(measure, cost_rules)
         self.assertEqual(summary["eligible_total"], 120.0)
         self.assertEqual(summary["ineligible_total"], 0.0)
+
+    def test_cost_evaluation_matches_item_code_split_rule(self):
+        measure = {
+            "line_items": [
+                {
+                    "description": "Schlagregendichter Anschluss aussen",
+                    "item_code": "fugen_abdichtung",
+                    "amount": 3250.0,
+                    "category": "material",
+                }
+            ]
+        }
+        cost_rules = {
+            "eligible_cost_categories": ["material"],
+            "ineligible_cost_categories": ["finanzierung"],
+            "split_rules": [
+                {
+                    "when": {
+                        "field": "line_item.item_code",
+                        "op": "==",
+                        "value": "fugen_abdichtung",
+                    },
+                    "result": "ELIGIBLE_IF_NECESSARY",
+                    "note_key": "fugen_abdichtung",
+                }
+            ],
+        }
+        summary = evaluate_costs(measure, cost_rules)
+        self.assertEqual(summary["conditional_total"], 3250.0)
 
 
 if __name__ == "__main__":

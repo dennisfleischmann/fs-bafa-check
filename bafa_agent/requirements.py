@@ -22,7 +22,15 @@ FENSTER_TOKENS = (
 AUSSENWAND_TOKENS = ("aussenwand", "außenwand", "fassade", "wdvs", "wanddaemmung", "wanddämmung")
 DACH_TOKENS = ("dach", "steildach", "flachdach", "oberste geschossdecke", "ogd")
 KELLERDECKE_TOKENS = ("kellerdecke", "bodenplatte")
-COST_RULE_TOKENS = ("einbaufuge", "anschlussfuge", "fugendichtheit", "abdichtung der fugen", "fugen")
+COST_RULE_TOKENS = (
+    "einbaufuge",
+    "anschlussfuge",
+    "fugendichtheit",
+    "abdichtung der fugen",
+    "fugen",
+    "schlagregendicht",
+    "schlagregendichter anschluss",
+)
 
 
 def _infer_req_type(quote: str) -> str:
@@ -90,12 +98,23 @@ def _extract_cost_rule(quote: str) -> Dict[str, Any]:
             "match_keywords": ["einbaufuge", "anschlussfuge", "fensteranschlussfuge", "fensteranschlussfugen"],
             "text": quote,
         }
-    if "abdichtung der fugen" in q or "fugendichtheit" in q:
+    if (
+        "abdichtung der fugen" in q
+        or "fugendichtheit" in q
+        or "schlagregendicht" in q
+        or "schlagregendichter anschluss" in q
+    ):
         return {
             "kind": "COST_ITEM",
             "item_code": "fugen_abdichtung",
             "decision": "ELIGIBLE_IF_NECESSARY",
-            "match_keywords": ["abdichtung der fugen", "fugendichtheit", "fugenabdichtung"],
+            "match_keywords": [
+                "abdichtung der fugen",
+                "fugendichtheit",
+                "fugenabdichtung",
+                "schlagregendicht",
+                "schlagregendichter anschluss",
+            ],
             "text": quote,
         }
     return {"text": quote}

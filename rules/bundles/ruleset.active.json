@@ -1,6 +1,6 @@
 {
   "bundle_meta": {
-    "manifest_generated_at": "2026-02-15T16:40:58+00:00",
+    "manifest_generated_at": "2026-02-15T19:40:47+00:00",
     "doc_count": 6
   },
   "measures": {
@@ -8,7 +8,7 @@
       "measure_id": "envelope_aussenwand",
       "module": "envelope",
       "title": "Envelope Aussenwand",
-      "version": "2026-02-15T16:41:00+00:00",
+      "version": "2026-02-15T19:40:49+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",
@@ -47,7 +47,19 @@
         "exclusions": []
       },
       "technical_requirements": {
-        "thresholds": [],
+        "thresholds": [
+          {
+            "name": "u_or_uw_max",
+            "condition": {
+              "field": "derived.u_value_target",
+              "op": "<=",
+              "value": 0.2,
+              "unit": "W/(m2K)",
+              "severity_if_missing": "CLARIFY",
+              "evidence_required": true
+            }
+          }
+        ],
         "calculation_methods": []
       },
       "cost_rules": {
@@ -103,7 +115,7 @@
       "measure_id": "envelope_dach",
       "module": "envelope",
       "title": "Envelope Dach",
-      "version": "2026-02-15T16:41:00+00:00",
+      "version": "2026-02-15T19:40:49+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",
@@ -142,7 +154,19 @@
         "exclusions": []
       },
       "technical_requirements": {
-        "thresholds": [],
+        "thresholds": [
+          {
+            "name": "u_or_uw_max",
+            "condition": {
+              "field": "derived.u_value_target",
+              "op": "<=",
+              "value": 0.14,
+              "unit": "W/(m2K)",
+              "severity_if_missing": "CLARIFY",
+              "evidence_required": true
+            }
+          }
+        ],
         "calculation_methods": []
       },
       "cost_rules": {
@@ -189,7 +213,7 @@
       "measure_id": "envelope_fenster",
       "module": "envelope",
       "title": "Envelope Fenster",
-      "version": "2026-02-15T16:41:00+00:00",
+      "version": "2026-02-15T19:40:49+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",
@@ -228,7 +252,19 @@
         "exclusions": []
       },
       "technical_requirements": {
-        "thresholds": [],
+        "thresholds": [
+          {
+            "name": "u_or_uw_max",
+            "condition": {
+              "field": "derived.u_value_target",
+              "op": "<=",
+              "value": 0.95,
+              "unit": "W/(m2K)",
+              "severity_if_missing": "CLARIFY",
+              "evidence_required": true
+            }
+          }
+        ],
         "calculation_methods": []
       },
       "cost_rules": {
@@ -253,16 +289,36 @@
           },
           {
             "when": {
+              "field": "line_item.item_code",
+              "op": "==",
+              "value": "fugen_abdichtung"
+            },
+            "result": "ELIGIBLE_IF_NECESSARY",
+            "note_key": "fugen_abdichtung"
+          },
+          {
+            "when": {
               "field": "line_item.description",
               "op": "contains_any",
               "value": [
                 "abdichtung der fugen",
                 "fugendichtheit",
-                "fugenabdichtung"
+                "fugenabdichtung",
+                "schlagregendicht",
+                "schlagregendichter anschluss"
               ]
             },
             "result": "ELIGIBLE_IF_NECESSARY",
             "note_key": "fugen_abdichtung"
+          },
+          {
+            "when": {
+              "field": "line_item.item_code",
+              "op": "==",
+              "value": "einbaufuge_daemmung"
+            },
+            "result": "ELIGIBLE",
+            "note_key": "einbaufuge_daemmung"
           },
           {
             "when": {
@@ -416,6 +472,7 @@
       "aussenwand": [
         "aussenwand",
         "fassade",
+        "fassadendaemmung",
         "wdvs",
         "wanddaemmung"
       ],
@@ -432,7 +489,13 @@
       "fenster": [
         "fenster",
         "uw",
-        "fenstertausch"
+        "fenstertausch",
+        "einbaufuge",
+        "anschlussfuge",
+        "fensteranschlussfuge",
+        "kompriband",
+        "versiegelung",
+        "schlagregendicht"
       ],
       "kellerdecke": [
         "kellerdecke",

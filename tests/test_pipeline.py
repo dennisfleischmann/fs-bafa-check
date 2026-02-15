@@ -25,6 +25,22 @@ class PipelineTests(unittest.TestCase):
             self.assertIn("results", evaluation)
             self.assertTrue(len(evaluation["results"]) >= 1)
 
+    def test_init_workspace_keeps_existing_measure_specs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            init_workspace(base)
+
+            measure_file = base / "rules" / "measures" / "envelope_fenster.json"
+            payload = measure_file.read_text(encoding="utf-8")
+            self.assertIn('"measure_id": "envelope_fenster"', payload)
+
+            custom = payload.replace('"version": "bootstrap"', '"version": "custom_lock"')
+            measure_file.write_text(custom, encoding="utf-8")
+
+            init_workspace(base)
+            after = measure_file.read_text(encoding="utf-8")
+            self.assertIn('"version": "custom_lock"', after)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -16,6 +16,7 @@ from .guards import (
     coverage_manifest_guard,
     coverage_manifest_report,
     evidence_binding_guard,
+    threshold_guard,
 )
 from .intake import preflight
 from .model_routing import select_model
@@ -35,6 +36,13 @@ from .taxonomy import default_component_taxonomy, default_cost_taxonomy
 from .utils import ensure_dir, read_json, utc_now_iso, write_json
 from .validation import ensure_valid, validate_offer_facts
 from .models import MeasureSpec
+
+DEFAULT_MEASURE_THRESHOLDS: Dict[str, float] = {
+    "envelope_aussenwand": 0.20,
+    "envelope_dach": 0.14,
+    "envelope_fenster": 0.95,
+    "envelope_kellerdecke": 0.25,
+}
 
 
 def init_workspace(base_dir: str | Path) -> None:
@@ -72,6 +80,9 @@ def _write_default_measure_specs(base: Path) -> None:
         "envelope_kellerdecke": 0.25,
     }
     for measure_id, threshold in templates.items():
+        target = base / "rules" / "measures" / f"{measure_id}.json"
+        if target.exists():
+            continue
         spec = {
             "measure_id": measure_id,
             "module": "envelope",
@@ -131,7 +142,7 @@ def _write_default_measure_specs(base: Path) -> None:
             },
             "examples": {"eligible": [], "not_eligible": [], "clarify": []},
         }
-        write_json(base / "rules" / "measures" / f"{measure_id}.json", spec)
+        write_json(target, spec)
 
 
 def _write_default_coverage_manifest(base: Path) -> None:
@@ -259,7 +270,84 @@ def compile_rules(
         payload = read_json(path, default={})
         if isinstance(payload, dict) and payload.get("measure_id"):
             existing_measures[payload["measure_id"]] = payload
-    existing_measures.update(measures)
+
+    # Merge compiled specs into existing specs while preserving bootstrap thresholds
+    # when extraction produced no TECH_THRESHOLD records for a measure.
+    for measure_id, compiled_spec in measures.items():
+        existing = existing_measures.get(measure_id, {})
+        compiled_technical = compiled_spec.get("technical_requirements", {})
+        compiled_thresholds = (
+            compiled_technical.get("thresholds", [])
+            if isinstance(compiled_technical, dict)
+            else []
+        )
+        if not compiled_thresholds and isinstance(existing, dict):
+            existing_technical = existing.get("technical_requirements", {})
+            existing_thresholds = (
+                existing_technical.get("thresholds", [])
+                if isinstance(existing_technical, dict)
+                else []
+            )
+            if existing_thresholds:
+                compiled_spec.setdefault("technical_requirements", {})
+                if isinstance(compiled_spec["technical_requirements"], dict):
+                    compiled_spec["technical_requirements"]["thresholds"] = existing_thresholds
+                    if not compiled_spec["technical_requirements"].get("calculation_methods"):
+                        compiled_spec["technical_requirements"]["calculation_methods"] = (
+                            existing_technical.get("calculation_methods", [])
+                            if isinstance(existing_technical, dict)
+                            else []
+                        )
+            else:
+                default_threshold = DEFAULT_MEASURE_THRESHOLDS.get(measure_id)
+                if default_threshold is not None:
+                    compiled_spec.setdefault("technical_requirements", {})
+                    if isinstance(compiled_spec["technical_requirements"], dict):
+                        compiled_spec["technical_requirements"]["thresholds"] = [
+                            {
+                                "name": "u_or_uw_max",
+                                "condition": {
+                                    "field": "derived.u_value_target",
+                                    "op": "<=",
+                                    "value": default_threshold,
+                                    "unit": "W/(m2K)",
+                                    "severity_if_missing": "CLARIFY",
+                                    "evidence_required": True,
+                                },
+                            }
+                        ]
+                        if not compiled_spec["technical_requirements"].get("calculation_methods"):
+                            compiled_spec["technical_requirements"]["calculation_methods"] = []
+
+        existing_measures[measure_id] = compiled_spec
+
+    # Ensure all core envelope measures have at least one numeric threshold.
+    for measure_id, default_threshold in DEFAULT_MEASURE_THRESHOLDS.items():
+        spec = existing_measures.get(measure_id)
+        if not isinstance(spec, dict):
+            continue
+        technical = spec.get("technical_requirements", {})
+        if not isinstance(technical, dict):
+            technical = {}
+            spec["technical_requirements"] = technical
+        thresholds = technical.get("thresholds", [])
+        if not isinstance(thresholds, list) or not thresholds:
+            technical["thresholds"] = [
+                {
+                    "name": "u_or_uw_max",
+                    "condition": {
+                        "field": "derived.u_value_target",
+                        "op": "<=",
+                        "value": default_threshold,
+                        "unit": "W/(m2K)",
+                        "severity_if_missing": "CLARIFY",
+                        "evidence_required": True,
+                    },
+                }
+            ]
+            if not isinstance(technical.get("calculation_methods"), list):
+                technical["calculation_methods"] = []
+
     measures = existing_measures
     tables = compile_tables(loaded_requirements)
     taxonomy = {
@@ -288,6 +376,15 @@ def compile_rules(
         coverage_guard(
             measures,
             required_components={"aussenwand", "dach", "fenster", "kellerdecke"},
+        ),
+        threshold_guard(
+            measures,
+            required_measure_ids={
+                "envelope_aussenwand",
+                "envelope_dach",
+                "envelope_fenster",
+                "envelope_kellerdecke",
+            },
         ),
     ]
     activation = activation_guard(guard_results)

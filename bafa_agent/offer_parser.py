@@ -8,8 +8,14 @@ from .normalization import normalize_measure_values
 from .taxonomy import map_component, map_cost_category
 from .utils import parse_float, read_text
 
-U_PATTERN = re.compile(r"\bU\w*\s*[=:]?\s*([0-9]+[.,]?[0-9]*)\s*W", flags=re.IGNORECASE)
-UW_PATTERN = re.compile(r"\bUw\s*[=:]?\s*([0-9]+[.,]?[0-9]*)\s*W", flags=re.IGNORECASE)
+U_PATTERN = re.compile(
+    r"\bU(?:\s*-\s*Wert|\s*Wert)?\s*[=:]?\s*([0-9]+[.,]?[0-9]*)\s*W",
+    flags=re.IGNORECASE,
+)
+UW_PATTERN = re.compile(
+    r"\bUw(?:\s*-\s*Wert|\s*Wert)?\s*[=:]?\s*([0-9]+[.,]?[0-9]*)\s*W",
+    flags=re.IGNORECASE,
+)
 LAMBDA_PATTERN = re.compile(r"(?:lambda|wls)\s*([0-9]+[.,]?[0-9]*)", flags=re.IGNORECASE)
 THICKNESS_PATTERN = re.compile(r"([0-9]+[.,]?[0-9]*)\s*(mm|cm|m)\b", flags=re.IGNORECASE)
 AMOUNT_PATTERN = re.compile(r"([0-9]+[.,]?[0-9]*)\s*EUR", flags=re.IGNORECASE)

@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import argparse
+import os
 from pathlib import Path
 
 from .communications import render_customer_email, render_secretary_memo
+from .config import load_project_config
 from .diffing import diff_bundles, requires_human_review
 from .pipeline import compile_rules, evaluate_offer, init_workspace
 from .source import BAFA_OVERVIEW_URL
@@ -72,7 +74,11 @@ def cmd_diff(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="BAFA/BEG deterministic pipeline")
-    parser.add_argument("--base-dir", default=".", help="workspace base directory")
+    parser.add_argument(
+        "--base-dir",
+        default=os.getenv("BAFA_BASE_DIR", "."),
+        help="workspace base directory",
+    )
 
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -83,13 +89,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_compile.add_argument("--fetch", action="store_true", help="download source urls")
     p_compile.add_argument(
         "--source",
-        default="local",
+        default=os.getenv("BAFA_SOURCE_MODE", "local"),
         choices=["local", "local-default", "bafa"],
         help="source registry mode",
     )
     p_compile.add_argument(
         "--source-url",
-        default=BAFA_OVERVIEW_URL,
+        default=os.getenv("BAFA_SOURCE_URL", BAFA_OVERVIEW_URL),
         help="source page url for dynamic source modes",
     )
     p_compile.set_defaults(func=cmd_compile)
@@ -119,6 +125,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
+    load_project_config()
     parser = build_parser()
     args = parser.parse_args()
     return args.func(args)

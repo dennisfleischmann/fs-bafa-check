@@ -92,7 +92,9 @@ def wall_decision(u_threshold: float, direct_u: Optional[float], new_layers: Lis
         return {
             "status": "CLARIFY",
             "reason": "missing_wall_layers",
-            "questions": ["Bitte U-Wert-Nachweis oder Wandaufbau (Material + Dicke) nachreichen."],
+            "questions": [
+                "Bitte U-Wert nach Sanierung ODER Daemmstaerke + Material (lambda) + Wandaufbau nachreichen."
+            ],
         }
 
     if worst_case <= u_threshold:

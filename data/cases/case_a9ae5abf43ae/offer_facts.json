@@ -1,0 +1,123 @@
+{
+  "building": {
+    "is_existing": true,
+    "type": "WG",
+    "monument": false
+  },
+  "applicant": {
+    "income_bonus_requested": false
+  },
+  "offer": {
+    "input_mode": "mixed",
+    "measures": [
+      {
+        "measure_id": "envelope_fenster",
+        "component_type": "fenster",
+        "input_mode": "direct_u",
+        "values": {
+          "uw": {
+            "value": 0.8,
+            "unit": "W/(m2K)",
+            "plausible": true
+          }
+        },
+        "layers": [],
+        "geometry": {},
+        "costs": {
+          "total": 0.0,
+          "currency": "EUR"
+        },
+        "line_items": [],
+        "evidence": [
+          {
+            "quote": "Kontakt@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "Mail : stefan.jansen@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "INOUTIC/Thyssen Kunststoff-Fenster Profil System EFORTE Mitteldichtung fl\u00e4chenversetzt,"
+          },
+          {
+            "quote": "Demontage Altfenster und Entsorgung."
+          },
+          {
+            "quote": "www.Neunkirchen-Fensterbau.de"
+          },
+          {
+            "quote": "Kontakt@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "Uw-Wert 0.80 W/m\u00b2K"
+          },
+          {
+            "quote": "Uw-Wert 0.79 W/m\u00b2K"
+          },
+          {
+            "quote": "www.Neunkirchen-Fensterbau.de"
+          },
+          {
+            "quote": "Kontakt@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "Uw-Wert 0.80 W/m\u00b2K"
+          },
+          {
+            "quote": "www.Neunkirchen-Fensterbau.de"
+          },
+          {
+            "quote": "Kontakt@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "10\t30,00 lfm.\tca. Fensteranschlu\u00dffugen werden"
+          },
+          {
+            "quote": "www.Neunkirchen-Fensterbau.de"
+          },
+          {
+            "quote": "Kontakt@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "17\t1 St\u00fcck\tFensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.\t425,68\t425,68"
+          },
+          {
+            "quote": "www.Neunkirchen-Fensterbau.de"
+          },
+          {
+            "quote": "Kontakt@neunkirchen-fensterbau.de"
+          },
+          {
+            "quote": "www.Neunkirchen-Fensterbau.de"
+          }
+        ]
+      },
+      {
+        "measure_id": "envelope_aussenwand",
+        "component_type": "aussenwand",
+        "input_mode": "direct_u",
+        "values": {},
+        "layers": [],
+        "geometry": {},
+        "costs": {
+          "total": 0.0,
+          "currency": "EUR"
+        },
+        "line_items": [],
+        "evidence": [
+          {
+            "quote": "15\t8 St\u00fcck\tAbsturzsicherung in bestehende Fensterfassade inkl liefern und Montieren.\t155,00\t1240,00"
+          },
+          {
+            "quote": "_\t16\t1 St\u00fcck\tFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00"
+          }
+        ]
+      }
+    ]
+  },
+  "docs": {
+    "fachunternehmererklaerung_present": false,
+    "tauwassernachweis_present": null
+  },
+  "case_id": "case_a9ae5abf43ae",
+  "quality_flags": []
+}

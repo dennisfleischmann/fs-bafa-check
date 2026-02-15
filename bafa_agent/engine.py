@@ -50,6 +50,16 @@ def _extract_evidence(measure: Dict[str, Any]) -> List[Evidence]:
     return evidence
 
 
+def _get_threshold_value(spec: MeasureSpec, field: str) -> Optional[float]:
+    for threshold in spec.technical_requirements.thresholds:
+        condition = threshold.get("condition", {})
+        if condition.get("field") == field:
+            value = condition.get("value")
+            if isinstance(value, (int, float)):
+                return float(value)
+    return None
+
+
 def evaluate_measure(
     case_context: Dict[str, Any],
     measure: Dict[str, Any],
@@ -94,8 +104,16 @@ def evaluate_measure(
                 questions=[],
             )
 
+    component = str(measure.get("component_type", ""))
+    wall_threshold = None
+    if component == "aussenwand":
+        wall_threshold = _get_threshold_value(spec, "derived.u_value_target")
+
     thresholds = spec.technical_requirements.thresholds
-    derived = derive_measure(measure, threshold=(threshold_defaults or {}).get("wall", 0.2))
+    derived = derive_measure(
+        measure,
+        threshold=wall_threshold if wall_threshold is not None else (threshold_defaults or {}).get("wall", 0.2),
+    )
     merged_context["derived"] = derived
 
     for threshold in thresholds:
@@ -105,14 +123,43 @@ def evaluate_measure(
         expected = condition.get("value")
         current = dotted_get(merged_context, field)
 
+        if expected is None:
+            return EvaluationResult(
+                measure_id=measure_id,
+                status=DecisionStatus.ABORT,
+                reason=f"configuration_missing_threshold:{field}",
+                used_evidence=evidence,
+                questions=["Konfigurationsfehler: Grenzwert im Ruleset fehlt."],
+            )
+
         if current is None:
+            if component == "aussenwand":
+                wall_decision = derived.get("wall_decision", {})
+                if isinstance(wall_decision, dict) and wall_decision.get("status") == "CLARIFY":
+                    questions = wall_decision.get("questions") or [
+                        "Bitte U-Wert nach Sanierung ODER Daemmstaerke + Material (lambda) + Wandaufbau nachreichen."
+                    ]
+                    return EvaluationResult(
+                        measure_id=measure_id,
+                        status=DecisionStatus.CLARIFY,
+                        reason=wall_decision.get("reason", "missing_wall_input_data"),
+                        used_evidence=evidence,
+                        questions=questions,
+                    )
+
             severity = Severity(condition.get("severity_if_missing", "CLARIFY"))
+            if component == "aussenwand":
+                missing_questions = [
+                    "Bitte U-Wert nach Sanierung ODER Daemmstaerke + Material (lambda) + Wandaufbau nachreichen."
+                ]
+            else:
+                missing_questions = [f"Bitte Nachweis fuer {field} nachreichen."]
             return EvaluationResult(
                 measure_id=measure_id,
                 status=_severity_to_status(severity),
                 reason=f"missing_threshold_value:{field}",
                 used_evidence=evidence,
-                questions=[f"Bitte Nachweis fuer {field} nachreichen."],
+                questions=missing_questions,
             )
 
         if not _compare(current, op, expected):

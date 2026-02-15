@@ -35,6 +35,22 @@ def compile_measure_specs(requirements: List[Dict[str, Any]], version: str) -> D
         conditions: List[Dict[str, Any]] = []
         exclusions: List[Dict[str, Any]] = []
         documentation: List[Dict[str, Any]] = []
+        split_rules: List[Dict[str, Any]] = [
+            {
+                "when": {"field": "line_item.category", "op": "==", "value": "geruest"},
+                "result": "ELIGIBLE_IF_NECESSARY",
+                "note_key": "scaffolding_if_necessary",
+            }
+        ]
+        split_rule_keys = {
+            (
+                "line_item.category",
+                "==",
+                "geruest",
+                "ELIGIBLE_IF_NECESSARY",
+                "scaffolding_if_necessary",
+            )
+        }
         component = reqs[0].get("scope", {}).get("component", "unknown")
         required_fields = [
             {"path": "offer.component_type", "severity_if_missing": "ABORT"},
@@ -62,6 +78,31 @@ def compile_measure_specs(requirements: List[Dict[str, Any]], version: str) -> D
                         "severity_if_missing": req.get("severity_if_missing", "CLARIFY"),
                     }
                 )
+            elif req_type == "COST_ELIGIBILITY":
+                rule = req.get("rule", {})
+                if isinstance(rule, dict) and rule.get("kind") == "COST_ITEM":
+                    keywords = rule.get("match_keywords", [])
+                    if isinstance(keywords, list) and keywords:
+                        dedupe_key = (
+                            "line_item.description",
+                            "contains_any",
+                            tuple(sorted(str(k).lower() for k in keywords)),
+                            rule.get("decision", "ELIGIBLE_IF_NECESSARY"),
+                            rule.get("item_code", "custom_cost_item"),
+                        )
+                        if dedupe_key not in split_rule_keys:
+                            split_rule_keys.add(dedupe_key)
+                            split_rules.append(
+                                {
+                                    "when": {
+                                        "field": "line_item.description",
+                                        "op": "contains_any",
+                                        "value": keywords,
+                                    },
+                                    "result": rule.get("decision", "ELIGIBLE_IF_NECESSARY"),
+                                    "note_key": rule.get("item_code", "custom_cost_item"),
+                                }
+                            )
 
         compiled[measure_id] = {
             "measure_id": measure_id,
@@ -88,12 +129,7 @@ def compile_measure_specs(requirements: List[Dict[str, Any]], version: str) -> D
             "cost_rules": {
                 "eligible_cost_categories": ["material", "montage"],
                 "ineligible_cost_categories": ["finanzierung", "wartung", "eigenleistung"],
-                "split_rules": [
-                    {
-                        "when": {"field": "line_item.category", "op": "==", "value": "geruest"},
-                        "result": "ELIGIBLE_IF_NECESSARY",
-                    }
-                ],
+                "split_rules": split_rules,
             },
             "documentation": {"must_have": documentation, "nice_to_have": []},
             "outputs": {

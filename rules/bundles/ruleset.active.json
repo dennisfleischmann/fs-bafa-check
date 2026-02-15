@@ -1,6 +1,6 @@
 {
   "bundle_meta": {
-    "manifest_generated_at": "2026-02-15T11:59:35+00:00",
+    "manifest_generated_at": "2026-02-15T13:33:41+00:00",
     "doc_count": 6
   },
   "measures": {
@@ -8,7 +8,7 @@
       "measure_id": "envelope_aussenwand",
       "module": "envelope",
       "title": "Envelope Aussenwand",
-      "version": "2026-02-15T11:59:37+00:00",
+      "version": "2026-02-15T13:33:44+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",
@@ -67,16 +67,13 @@
               "op": "==",
               "value": "geruest"
             },
-            "result": "ELIGIBLE_IF_NECESSARY"
+            "result": "ELIGIBLE_IF_NECESSARY",
+            "note_key": "scaffolding_if_necessary"
           }
         ]
       },
       "documentation": {
         "must_have": [
-          {
-            "doc": "supporting_document",
-            "severity_if_missing": "CLARIFY"
-          },
           {
             "doc": "supporting_document",
             "severity_if_missing": "CLARIFY"
@@ -105,13 +102,13 @@
     "envelope_dach": {
       "measure_id": "envelope_dach",
       "module": "envelope",
-      "title": "envelope dach",
-      "version": "bootstrap",
+      "title": "Envelope Dach",
+      "version": "2026-02-15T13:33:44+00:00",
       "legal_basis": [
         {
-          "doc_id": "bootstrap",
-          "section": "seed",
-          "priority": 1
+          "doc_id": "compiled",
+          "section": "auto",
+          "priority": 100
         }
       ],
       "scope": {
@@ -129,7 +126,7 @@
           "severity_if_missing": "ABORT"
         },
         {
-          "path": "building.is_existing",
+          "path": "offer.input_mode",
           "severity_if_missing": "CLARIFY"
         }
       ],
@@ -145,19 +142,7 @@
         "exclusions": []
       },
       "technical_requirements": {
-        "thresholds": [
-          {
-            "name": "u_or_uw_max",
-            "condition": {
-              "field": "derived.u_value_target",
-              "op": "<=",
-              "value": 0.14,
-              "unit": "W/(m2K)",
-              "severity_if_missing": "CLARIFY",
-              "evidence_required": true
-            }
-          }
-        ],
+        "thresholds": [],
         "calculation_methods": []
       },
       "cost_rules": {
@@ -177,24 +162,20 @@
               "op": "==",
               "value": "geruest"
             },
-            "result": "ELIGIBLE_IF_NECESSARY"
+            "result": "ELIGIBLE_IF_NECESSARY",
+            "note_key": "scaffolding_if_necessary"
           }
         ]
       },
       "documentation": {
-        "must_have": [
-          {
-            "doc": "Uwert_Nachweis_or_Layers",
-            "severity_if_missing": "CLARIFY"
-          }
-        ],
+        "must_have": [],
         "nice_to_have": []
       },
       "outputs": {
         "messages": {
-          "pass_summary_key": "pass_generic",
+          "pass_summary_key": "pass_default",
           "clarify_questions_keys": [
-            "ask_u_value_or_layers"
+            "ask_missing_documents"
           ]
         }
       },
@@ -207,13 +188,13 @@
     "envelope_fenster": {
       "measure_id": "envelope_fenster",
       "module": "envelope",
-      "title": "envelope fenster",
-      "version": "bootstrap",
+      "title": "Envelope Fenster",
+      "version": "2026-02-15T13:33:44+00:00",
       "legal_basis": [
         {
-          "doc_id": "bootstrap",
-          "section": "seed",
-          "priority": 1
+          "doc_id": "compiled",
+          "section": "auto",
+          "priority": 100
         }
       ],
       "scope": {
@@ -231,7 +212,7 @@
           "severity_if_missing": "ABORT"
         },
         {
-          "path": "building.is_existing",
+          "path": "offer.input_mode",
           "severity_if_missing": "CLARIFY"
         }
       ],
@@ -247,19 +228,7 @@
         "exclusions": []
       },
       "technical_requirements": {
-        "thresholds": [
-          {
-            "name": "u_or_uw_max",
-            "condition": {
-              "field": "derived.u_value_target",
-              "op": "<=",
-              "value": 0.95,
-              "unit": "W/(m2K)",
-              "severity_if_missing": "CLARIFY",
-              "evidence_required": true
-            }
-          }
-        ],
+        "thresholds": [],
         "calculation_methods": []
       },
       "cost_rules": {
@@ -279,14 +248,42 @@
               "op": "==",
               "value": "geruest"
             },
-            "result": "ELIGIBLE_IF_NECESSARY"
+            "result": "ELIGIBLE_IF_NECESSARY",
+            "note_key": "scaffolding_if_necessary"
+          },
+          {
+            "when": {
+              "field": "line_item.description",
+              "op": "contains_any",
+              "value": [
+                "abdichtung der fugen",
+                "fugendichtheit",
+                "fugenabdichtung"
+              ]
+            },
+            "result": "ELIGIBLE_IF_NECESSARY",
+            "note_key": "fugen_abdichtung"
+          },
+          {
+            "when": {
+              "field": "line_item.description",
+              "op": "contains_any",
+              "value": [
+                "einbaufuge",
+                "anschlussfuge",
+                "fensteranschlussfuge",
+                "fensteranschlussfugen"
+              ]
+            },
+            "result": "ELIGIBLE",
+            "note_key": "einbaufuge_daemmung"
           }
         ]
       },
       "documentation": {
         "must_have": [
           {
-            "doc": "Uwert_Nachweis_or_Layers",
+            "doc": "supporting_document",
             "severity_if_missing": "CLARIFY"
           }
         ],
@@ -294,9 +291,9 @@
       },
       "outputs": {
         "messages": {
-          "pass_summary_key": "pass_generic",
+          "pass_summary_key": "pass_default",
           "clarify_questions_keys": [
-            "ask_u_value_or_layers"
+            "ask_missing_documents"
           ]
         }
       },

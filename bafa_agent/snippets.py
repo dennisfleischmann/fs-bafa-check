@@ -8,7 +8,7 @@ from .extraction import ExtractionOutput
 
 
 REQ_PATTERN = re.compile(
-    r"(muss|darf\s+nicht|voraussetzung|foerderfaehig|nicht\s+foerderfaehig|<=|>=|uw|u-wert)",
+    r"(muss|darf\s+nicht|voraussetzung|foerderfaehig|nicht\s+foerderfaehig|<=|>=|uw|u-wert|einbaufuge|anschlussfuge|fuge|abdichtung)",
     flags=re.IGNORECASE,
 )
 

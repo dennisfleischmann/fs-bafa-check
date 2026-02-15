@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from .snippets import RequirementSnippet
 from .utils import append_jsonl, normalize_decimal, parse_float, read_jsonl
@@ -9,12 +9,28 @@ from .utils import append_jsonl, normalize_decimal, parse_float, read_jsonl
 
 THRESHOLD_PATTERN = re.compile(r"([a-zA-Z_]+)?\s*([<>]=?)\s*([0-9]+[.,]?[0-9]*)")
 U_VALUE_PATTERN = re.compile(r"([0-9]+[.,]?[0-9]*)\s*(w\/?\(?m2k\)?)", flags=re.IGNORECASE)
+FENSTER_TOKENS = (
+    "fenster",
+    "uw",
+    "einbaufuge",
+    "anschlussfuge",
+    "fensteranschlussfuge",
+    "fensteranschlussfugen",
+    "fugendichtheit",
+    "abdichtung der fugen",
+)
+AUSSENWAND_TOKENS = ("aussenwand", "außenwand", "fassade", "wdvs", "wanddaemmung", "wanddämmung")
+DACH_TOKENS = ("dach", "steildach", "flachdach", "oberste geschossdecke", "ogd")
+KELLERDECKE_TOKENS = ("kellerdecke", "bodenplatte")
+COST_RULE_TOKENS = ("einbaufuge", "anschlussfuge", "fugendichtheit", "abdichtung der fugen", "fugen")
 
 
 def _infer_req_type(quote: str) -> str:
     q = quote.lower()
     normalized = normalize_decimal(q)
     has_numeric_threshold = bool(THRESHOLD_PATTERN.search(normalized) or U_VALUE_PATTERN.search(normalized))
+    if any(token in q for token in COST_RULE_TOKENS):
+        return "COST_ELIGIBILITY"
     if "nicht foerderfaehig" in q:
         return "EXCLUSION"
     if "foerderfaehig" in q and not has_numeric_threshold:
@@ -51,6 +67,40 @@ def _extract_threshold(quote: str) -> Dict[str, Any]:
     return {}
 
 
+def _infer_scope(quote: str, default_measure: str, default_component: str) -> Tuple[str, str]:
+    q = quote.lower()
+    if any(token in q for token in FENSTER_TOKENS):
+        return "envelope_fenster", "fenster"
+    if any(token in q for token in DACH_TOKENS):
+        return "envelope_dach", "dach"
+    if any(token in q for token in KELLERDECKE_TOKENS):
+        return "envelope_kellerdecke", "kellerdecke"
+    if any(token in q for token in AUSSENWAND_TOKENS):
+        return "envelope_aussenwand", "aussenwand"
+    return default_measure, default_component
+
+
+def _extract_cost_rule(quote: str) -> Dict[str, Any]:
+    q = quote.lower()
+    if "einbaufuge" in q or "anschlussfuge" in q or "fensteranschlussfuge" in q:
+        return {
+            "kind": "COST_ITEM",
+            "item_code": "einbaufuge_daemmung",
+            "decision": "ELIGIBLE",
+            "match_keywords": ["einbaufuge", "anschlussfuge", "fensteranschlussfuge", "fensteranschlussfugen"],
+            "text": quote,
+        }
+    if "abdichtung der fugen" in q or "fugendichtheit" in q:
+        return {
+            "kind": "COST_ITEM",
+            "item_code": "fugen_abdichtung",
+            "decision": "ELIGIBLE_IF_NECESSARY",
+            "match_keywords": ["abdichtung der fugen", "fugendichtheit", "fugenabdichtung"],
+            "text": quote,
+        }
+    return {"text": quote}
+
+
 def snippets_to_requirements(
     snippets: List[RequirementSnippet],
     measure_id: str,
@@ -59,19 +109,29 @@ def snippets_to_requirements(
 ) -> List[Dict[str, Any]]:
     records: List[Dict[str, Any]] = []
     for idx, snippet in enumerate(snippets, start=1):
+        scoped_measure, scoped_component = _infer_scope(
+            snippet.quote,
+            default_measure=measure_id,
+            default_component=component,
+        )
         req_type = _infer_req_type(snippet.quote)
-        rule = _extract_threshold(snippet.quote) if req_type == "TECH_THRESHOLD" else {"text": snippet.quote}
+        if req_type == "TECH_THRESHOLD":
+            rule = _extract_threshold(snippet.quote)
+        elif req_type == "COST_ELIGIBILITY":
+            rule = _extract_cost_rule(snippet.quote)
+        else:
+            rule = {"text": snippet.quote}
         if req_type == "TECH_THRESHOLD" and not rule:
             req_type = "PROCESS_RULE"
             rule = {"text": snippet.quote}
         records.append(
             {
-                "req_id": f"{measure_id}.{idx}",
+                "req_id": f"{scoped_measure}.{idx}",
                 "req_type": req_type,
                 "scope": {
                     "module": "envelope",
-                    "measure": measure_id,
-                    "component": component,
+                    "measure": scoped_measure,
+                    "component": scoped_component,
                     "case": "default",
                 },
                 "rule": rule,

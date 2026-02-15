@@ -2,7 +2,7 @@
   "measure_id": "envelope_aussenwand",
   "module": "envelope",
   "title": "Envelope Aussenwand",
-  "version": "2026-02-15T11:59:37+00:00",
+  "version": "2026-02-15T13:33:44+00:00",
   "legal_basis": [
     {
       "doc_id": "compiled",
@@ -61,16 +61,13 @@
           "op": "==",
           "value": "geruest"
         },
-        "result": "ELIGIBLE_IF_NECESSARY"
+        "result": "ELIGIBLE_IF_NECESSARY",
+        "note_key": "scaffolding_if_necessary"
       }
     ]
   },
   "documentation": {
     "must_have": [
-      {
-        "doc": "supporting_document",
-        "severity_if_missing": "CLARIFY"
-      },
       {
         "doc": "supporting_document",
         "severity_if_missing": "CLARIFY"

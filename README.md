@@ -2,6 +2,21 @@
 
 Deterministic BAFA/BEG evaluation scaffold implemented from `developer_spec.md`.
 
+## Shared config
+
+The project loads configuration from:
+
+1. `config.env` (tracked defaults)
+2. `.env` (optional local override, ignored by git)
+
+Important keys:
+
+- `OPENAI_API_KEY`
+- `OPENAI_MODEL`
+- `BAFA_BASE_DIR`
+- `BAFA_SOURCE_MODE`
+- `BAFA_SOURCE_URL`
+
 ## What is implemented
 
 - Layered architecture: source -> normalized rules -> deterministic decision engine.
@@ -23,6 +38,16 @@ python3 -m bafa_agent --base-dir . compile --source bafa
 python3 -m bafa_agent --base-dir . evaluate --offer samples/offer_example.txt
 python3 -m bafa_agent --base-dir . memo --evaluation data/cases/<case_id>/evaluation.json
 python3 -m bafa_agent --base-dir . email --evaluation data/cases/<case_id>/evaluation.json --index 0
+```
+
+To override locally without editing tracked defaults:
+
+```bash
+cat > .env <<'EOF'
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4o
+BAFA_SOURCE_MODE=bafa
+EOF
 ```
 
 ## Tests

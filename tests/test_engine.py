@@ -46,6 +46,54 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(len(report.results), 1)
         self.assertIn(report.results[0].status.value, {"ABORT", "CLARIFY"})
 
+    def test_missing_threshold_is_configuration_error(self):
+        spec_payload = {
+            "measure_id": "envelope_fenster",
+            "module": "envelope",
+            "title": "Fenster",
+            "version": "1",
+            "required_fields": [
+                {"path": "offer.component_type", "severity_if_missing": "ABORT"},
+                {"path": "building.is_existing", "severity_if_missing": "CLARIFY"},
+            ],
+            "eligibility": {"all_of": [{"field": "building.is_existing", "op": "==", "value": True}]},
+            "technical_requirements": {
+                "thresholds": [
+                    {
+                        "condition": {
+                            "field": "derived.u_value_target",
+                            "op": "<=",
+                            "value": None,
+                            "severity_if_missing": "CLARIFY",
+                        }
+                    }
+                ],
+                "calculation_methods": [],
+            },
+            "cost_rules": {"eligible_cost_categories": [], "ineligible_cost_categories": []},
+            "documentation": {"must_have": [], "nice_to_have": []},
+        }
+        spec = MeasureSpec.from_dict(spec_payload)
+        offer_facts = {
+            "case_id": "c2",
+            "building": {"is_existing": True},
+            "applicant": {},
+            "docs": {},
+            "offer": {
+                "measures": [
+                    {
+                        "measure_id": "envelope_fenster",
+                        "component_type": "fenster",
+                        "input_mode": "direct_u",
+                        "values": {"uw": {"value": 0.8, "unit": "W/(m2K)"}},
+                    }
+                ]
+            },
+        }
+        report = evaluate_case(offer_facts, {"envelope_fenster": spec}, "v1")
+        self.assertEqual(report.results[0].status.value, "ABORT")
+        self.assertIn("configuration_missing_threshold", report.results[0].reason)
+
 
 if __name__ == "__main__":
     unittest.main()

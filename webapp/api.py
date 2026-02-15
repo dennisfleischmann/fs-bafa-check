@@ -42,6 +42,16 @@ def _startup() -> None:
     Base.metadata.create_all(bind=ENGINE)
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "name": "BAFA Web API",
+        "status": "ok",
+        "health_url": "/health",
+        "docs_url": "/docs",
+    }
+
+
 def _job_response(job: JobRecord) -> JobResponse:
     return JobResponse(
         id=job.id,

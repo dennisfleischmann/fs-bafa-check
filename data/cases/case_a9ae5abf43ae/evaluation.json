@@ -1,6 +1,6 @@
 {
   "case_id": "case_a9ae5abf43ae",
-  "generated_at": "2026-02-15T16:41:55+00:00",
+  "generated_at": "2026-02-15T17:07:02+00:00",
   "ruleset_version": "active",
   "results": [
     {
@@ -172,7 +172,7 @@
         {
           "doc_id": "offer",
           "page": 1,
-          "quote": "_\t16\t1 St\u00fcck\tFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
+          "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
           "bbox": null,
           "source_path": null
         }

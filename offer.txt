@@ -253,7 +253,7 @@ Position	Menge	Bezeichnung	E-Preis	G-Preis
 		- € -	- € -  
 		Übertrag :	11355,10  
 15	8 Stück	Absturzsicherung in bestehende Fensterfassade inkl liefern und Montieren.	155,00	1240,00  
-_	16	1 Stück	Fassadendämmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber	3250,00	3250,00  
+_	16	1 Stück	Herstellung eines schlagregendichten Anschlusses außen Fassadendämmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber	3250,00	3250,00  
 17	1 Stück	Fensterbänke für neue Fenster liefern und montieren.	425,68	425,68  
 
 	Summe Netto	16270,78  

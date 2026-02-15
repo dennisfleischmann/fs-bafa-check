@@ -1,0 +1,27 @@
+{
+  "aussenwand": [
+    "aussenwand",
+    "fassade",
+    "wdvs",
+    "wanddaemmung"
+  ],
+  "dach": [
+    "dach",
+    "steildach",
+    "flachdach",
+    "aufsparrendaemmung"
+  ],
+  "ogd": [
+    "oberste geschossdecke",
+    "ogd"
+  ],
+  "fenster": [
+    "fenster",
+    "uw",
+    "fenstertausch"
+  ],
+  "kellerdecke": [
+    "kellerdecke",
+    "bodenplatte"
+  ]
+}

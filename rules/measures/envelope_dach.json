@@ -1,0 +1,102 @@
+{
+  "measure_id": "envelope_dach",
+  "module": "envelope",
+  "title": "envelope dach",
+  "version": "bootstrap",
+  "legal_basis": [
+    {
+      "doc_id": "bootstrap",
+      "section": "seed",
+      "priority": 1
+    }
+  ],
+  "scope": {
+    "component": "dach",
+    "requires_existing_building": true,
+    "building_types": [
+      "WG",
+      "NWG"
+    ],
+    "excludes_new_build": true
+  },
+  "required_fields": [
+    {
+      "path": "offer.component_type",
+      "severity_if_missing": "ABORT"
+    },
+    {
+      "path": "building.is_existing",
+      "severity_if_missing": "CLARIFY"
+    }
+  ],
+  "eligibility": {
+    "all_of": [
+      {
+        "field": "building.is_existing",
+        "op": "==",
+        "value": true
+      }
+    ],
+    "any_of": [],
+    "exclusions": []
+  },
+  "technical_requirements": {
+    "thresholds": [
+      {
+        "name": "u_or_uw_max",
+        "condition": {
+          "field": "derived.u_value_target",
+          "op": "<=",
+          "value": 0.14,
+          "unit": "W/(m2K)",
+          "severity_if_missing": "CLARIFY",
+          "evidence_required": true
+        }
+      }
+    ],
+    "calculation_methods": []
+  },
+  "cost_rules": {
+    "eligible_cost_categories": [
+      "material",
+      "montage"
+    ],
+    "ineligible_cost_categories": [
+      "finanzierung",
+      "wartung",
+      "eigenleistung"
+    ],
+    "split_rules": [
+      {
+        "when": {
+          "field": "line_item.category",
+          "op": "==",
+          "value": "geruest"
+        },
+        "result": "ELIGIBLE_IF_NECESSARY"
+      }
+    ]
+  },
+  "documentation": {
+    "must_have": [
+      {
+        "doc": "Uwert_Nachweis_or_Layers",
+        "severity_if_missing": "CLARIFY"
+      }
+    ],
+    "nice_to_have": []
+  },
+  "outputs": {
+    "messages": {
+      "pass_summary_key": "pass_generic",
+      "clarify_questions_keys": [
+        "ask_u_value_or_layers"
+      ]
+    }
+  },
+  "examples": {
+    "eligible": [],
+    "not_eligible": [],
+    "clarify": []
+  }
+}

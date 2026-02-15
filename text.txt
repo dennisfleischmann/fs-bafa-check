@@ -1,0 +1,36 @@
+ja perfekt.
+
+erstelle mir ein ausführliches skript in Python was alles berücksichtigt.
+
+download aller dateien 
+
+https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Foerderprogramm_im_Ueberblick/foerderprogramm_im_ueberblick_node.html
+
+im Bereich:
+
+<div class="togglewrapper tabmodul gsb-toggle">
+  
+<ul class="tabs-list" role="tablist"><li><a href="#" class="switch-panel0 inactive-control" aria-selected="false" tabindex="-1" role="tab" id="_gj1gqltgd" aria-controls="_jvutn1lbp">Publikationen</a></li><li><a href="#" class="switch-panel1 active-control" aria-selected="true" tabindex="0" role="tab" id="_hqgqld2su" aria-controls="_5sctyl45z">Rechtsgrundlagen</a></li><li><a href="#" class="switch-panel2 inactive-control" aria-selected="false" tabindex="-1" role="tab" id="_qydivq2tp" aria-controls="_ddvh4ngb7">Zum Thema</a></li>
+  </ul>
+<div class="tabs-container"><h3 class="heading inactive-control"><button aria-expanded="false" id="_xs97ecic6" aria-controls="_jvutn1lbp">Publikationen</button></h3>
+<div class="switch-panel0 panel-closed" role="region" id="_jvutn1lbp" aria-labelledby="_gj1gqltgd" style="display: none;" hidden="hidden">
+    
+<ul class="links"><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_merkblatt_allgemein_antragstellung.pdf?__blob=publicationFile&amp;v=10" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Allgemeines Merkblatt zur Antragstellung (Februar 2025)&nbsp;(PDF, 539KB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_merkblatt_allgemein_zusatzantrag.pdf?__blob=publicationFile&amp;v=3" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Allgemeines Merkblatt zum Zusatzantrag für den Einkommensbonus&nbsp;(PDF, 474KB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_infoblatt_foerderfaehige_kosten.pdf?__blob=publicationFile&amp;v=12" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Infoblatt zu den förderfähigen Maßnahmen und Leistungen – Sanieren&nbsp;(PDF, 817KB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_merkblatt_antragstellung_wnet_gnet.pdf?__blob=publicationFile&amp;v=20" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Merkblatt zur Antragstellung für die Errichtung, Umbau und Erweiterung eines Gebäudenetzes und für den Anschluss an ein neu zu errichtendes Gebäudenetz&nbsp;(PDF, 1MB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_checkliste_gleichwertigkeit.pdf?__blob=publicationFile&amp;v=2" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Anforderungen zur Anerkennung gleichwertiger Verfahren des hydraulischen Abgleichs zum Verfahren B in der <abbr title="Bundesförderung für effiziente Gebäude">BEG</abbr>&nbsp;(PDF, 121KB, Datei ist nicht barrierefrei)</a></li>
+    </ul>
+</div><h3 class="heading active-control"><button aria-expanded="true" id="_t81gvej62" aria-controls="_5sctyl45z">Rechtsgrundlagen</button></h3>
+<div class="switch-panel1 panel-opened" role="region" id="_5sctyl45z" aria-labelledby="_hqgqld2su" style="display: block;">
+    
+<ul class="links"><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_richtline_beg_em_20231221_PDF.pdf?__blob=publicationFile&amp;v=2" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Richtlinie für die Bundesförderung für effiziente Gebäude – Einzelmaßnahmen (<abbr title="Bundesförderung für effiziente Gebäude - Einzelmaßnahmen">BEG EM</abbr>) vom 21. Dezember 2023 (Fundstelle: <abbr title="Bundesanzeiger">BAnz</abbr> <abbr title="Amtlicher Teil">AT</abbr> 29.12.2023 B1)&nbsp;(PDF, 2MB, Datei ist nicht barrierefrei)</a></li>
+    </ul>
+</div><h3 class="heading inactive-control"><button aria-expanded="false" id="_a4zywbvhb" aria-controls="_ddvh4ngb7">Zum Thema</button></h3>
+<div class="switch-panel2 panel-closed" role="region" id="_ddvh4ngb7" aria-labelledby="_qydivq2tp" style="display: none;" hidden="hidden">
+    
+<ul class="links"><li><a href="https://www.energiewechsel.de/KAENEF/Redaktion/DE/FAQ/FAQ-Uebersicht/BEG/faq-bundesfoerderung-fuer-effiziente-gebaeude.html" class="external" title="Externer Link:&nbsp;Antworten auf häufig gestellte Fragen zur BEG (FAQ) (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Antworten auf häufig gestellte Fragen zur <abbr title="Bundesförderung für effiziente Gebäude">BEG</abbr> (<abbr title="frequently asked questions"><abbr title="frequently asked questions">FAQ</abbr></abbr>)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_em_foerderuebersicht.pdf?__blob=publicationFile&amp;v=13" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Förderübersicht: Bundesförderung für effiziente Gebäude – Einzelmaßnahmen&nbsp;(PDF, 70KB, Datei ist nicht barrierefrei)</a></li><li><a href="https://www.energie-effizienz-experten.de/fileadmin/user_upload/Qualifizierte_Expertenliste_Landingpage/Medienbereich/Grafik-Foerderung-BEG-1.png" class="external" title="Externer Link:&nbsp;Welche Förderungen gibt es und wohin wende ich mich? (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Welche Förderungen gibt es und wohin wende ich mich?</a></li><li><a href="https://www.energie-effizienz-experten.de/fileadmin/user_upload/Qualifizierte_Expertenliste_Landingpage/Medienbereich/Grafik-Foerderung-BEG-2.png" class="external" title="Externer Link:&nbsp;Wo bekomme ich welche Förderung?  (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Wo bekomme ich welche Förderung?</a></li><li><a href="https://www.energie-effizienz-experten.de/fileadmin/user_upload/Qualifizierte_Expertenliste_Landingpage/Medienbereich/Grafik-Foerderung-BEG-3.png" class="external" title="Externer Link:&nbsp;Wärme- und Gebäudenetze – Was sind die Unterschiede? (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Wärme- und Gebäudenetze – Was sind die Unterschiede?</a></li>
+    </ul>
+</div></div>
+</div>
+
+
+Download aller Dokumente in diesem Snippet generisch alle Links(<div class="togglewrapper tabmodul gsb-toggle">)
+
+Generiere 

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evaluation",
+  "type": "object",
+  "required": [
+    "case_id",
+    "generated_at",
+    "ruleset_version",
+    "results"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "ruleset_version": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array"
+    }
+  }
+}

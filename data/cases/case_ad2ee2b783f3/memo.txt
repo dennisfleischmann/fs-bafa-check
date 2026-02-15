@@ -1,0 +1,6 @@
+Interne BAFA-Vorpruefung - Fall case_ad2ee2b783f3
+
+- envelope_aussenwand: FAIL (threshold_failed:derived.u_value_target)
+- envelope_dach: FAIL (threshold_failed:derived.u_value_target)
+- envelope_fenster: PASS (all_checks_passed)
+- envelope_kellerdecke: FAIL (threshold_failed:derived.u_value_target)

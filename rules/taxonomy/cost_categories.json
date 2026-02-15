@@ -1,0 +1,39 @@
+{
+  "material": [
+    "material",
+    "daemmung",
+    "platten",
+    "profil"
+  ],
+  "montage": [
+    "montage",
+    "einbau",
+    "installation",
+    "arbeit"
+  ],
+  "geruest": [
+    "geruest",
+    "geruestbau"
+  ],
+  "entsorgung": [
+    "entsorgung",
+    "abtransport"
+  ],
+  "planung": [
+    "planung",
+    "beratung"
+  ],
+  "wartung": [
+    "wartung",
+    "service"
+  ],
+  "finanzierung": [
+    "kredit",
+    "zinsen",
+    "finanzierung"
+  ],
+  "eigenleistung": [
+    "eigenleistung",
+    "selbstleistung"
+  ]
+}

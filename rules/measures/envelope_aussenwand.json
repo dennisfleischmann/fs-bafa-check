@@ -1,0 +1,98 @@
+{
+  "measure_id": "envelope_aussenwand",
+  "module": "envelope",
+  "title": "Envelope Aussenwand",
+  "version": "2026-02-15T11:59:37+00:00",
+  "legal_basis": [
+    {
+      "doc_id": "compiled",
+      "section": "auto",
+      "priority": 100
+    }
+  ],
+  "scope": {
+    "component": "aussenwand",
+    "requires_existing_building": true,
+    "building_types": [
+      "WG",
+      "NWG"
+    ],
+    "excludes_new_build": true
+  },
+  "required_fields": [
+    {
+      "path": "offer.component_type",
+      "severity_if_missing": "ABORT"
+    },
+    {
+      "path": "offer.input_mode",
+      "severity_if_missing": "CLARIFY"
+    }
+  ],
+  "eligibility": {
+    "all_of": [
+      {
+        "field": "building.is_existing",
+        "op": "==",
+        "value": true
+      }
+    ],
+    "any_of": [],
+    "exclusions": []
+  },
+  "technical_requirements": {
+    "thresholds": [],
+    "calculation_methods": []
+  },
+  "cost_rules": {
+    "eligible_cost_categories": [
+      "material",
+      "montage"
+    ],
+    "ineligible_cost_categories": [
+      "finanzierung",
+      "wartung",
+      "eigenleistung"
+    ],
+    "split_rules": [
+      {
+        "when": {
+          "field": "line_item.category",
+          "op": "==",
+          "value": "geruest"
+        },
+        "result": "ELIGIBLE_IF_NECESSARY"
+      }
+    ]
+  },
+  "documentation": {
+    "must_have": [
+      {
+        "doc": "supporting_document",
+        "severity_if_missing": "CLARIFY"
+      },
+      {
+        "doc": "supporting_document",
+        "severity_if_missing": "CLARIFY"
+      },
+      {
+        "doc": "supporting_document",
+        "severity_if_missing": "CLARIFY"
+      }
+    ],
+    "nice_to_have": []
+  },
+  "outputs": {
+    "messages": {
+      "pass_summary_key": "pass_default",
+      "clarify_questions_keys": [
+        "ask_missing_documents"
+      ]
+    }
+  },
+  "examples": {
+    "eligible": [],
+    "not_eligible": [],
+    "clarify": []
+  }
+}

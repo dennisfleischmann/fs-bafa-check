@@ -1,0 +1,9 @@
+{
+  "validation_passed": true,
+  "errors": [],
+  "warnings": [],
+  "bundle_path": "rules/bundles/ruleset.bundle.json",
+  "source_mode": "bafa",
+  "source_url": "https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Foerderprogramm_im_Ueberblick/foerderprogramm_im_ueberblick_node.html",
+  "fetched": true
+}

@@ -1,0 +1,41 @@
+# Task List (aus conversion.txt)
+
+- [ ] Entscheidungsprinzip festlegen: Nur `PASS`, wenn alle Muss-Kriterien explizit erfüllt sind.
+- [ ] `No-Guess-Policy` festlegen: Bei fehlenden Kerndaten immer `CLARIFY`/`ABORT`, niemals schätzen.
+- [ ] 3-Schichten-Architektur festlegen: `Source Layer`, `Normierte Wissensbasis`, `Decision Engine`.
+- [ ] Dokumentquellen für Gebäudehülle fixieren (Richtlinie/TMA, Infoblatt, relevante Merkblätter).
+- [ ] Prioritätsmodell definieren: Richtlinie/TMA > Infoblatt > Merkblatt.
+- [ ] Täglichen Update-Job bauen: BAFA-Dokumente herunterladen und versionieren.
+- [ ] Pro Dokument Metadaten speichern: URL, Datum, Version, Gültigkeit, Hash.
+- [ ] Hash-basierte Änderungserkennung einbauen (nur bei Änderungen neu extrahieren).
+- [ ] Verzeichnisstruktur aufbauen: `manifest.json`, `tables/`, `measures/`, `taxonomy/`, `evidence_store/`, `bundles/`.
+- [ ] Layout-Extraktion implementieren (Text + Seiten + Koordinaten).
+- [ ] Tabellen-Extraktion für TMA-Grenzwerte implementieren (table-first).
+- [ ] OCR-Fallback für schlechte/gescannte Seiten implementieren.
+- [ ] Normalisierung bauen (Dezimalkomma, Einheiten, Synonyme).
+- [ ] Kontrolliertes Vokabular aufbauen (z. B. `WDVS/Fassade -> Außenwand`).
+- [ ] Requirement-Snippets markieren (Thresholds, Ausschlüsse, Nachweise, Kostenregeln).
+- [ ] Zwischenformat `requirements.jsonl` definieren und befüllen.
+- [ ] Jede Regel evidence-gebunden speichern (Dokument, Seite, Quote, optional BBox).
+- [ ] Rule-Compiler bauen: `requirements -> MeasureSpec (ruleset)`.
+- [ ] Guard einbauen: Jede Schwelle muss im Evidence-Text vorkommen.
+- [ ] Coverage-Checks definieren (Außenwand, Dach/OGD, Decken/Boden, Fenster/Türen, Sonderfälle).
+- [ ] Konflikt-Guard einbauen (widersprüchliche Quellen nach Priorität auflösen).
+- [ ] Aktivierungs-Guard bauen: Ruleset nur live schalten, wenn alle Guards bestehen.
+- [ ] Angebots-Eingangspipeline bauen (Case-ID, Dokumenttyp, Qualitätsflag).
+- [ ] Angebots-Parsing in Maßnahmenobjekte implementieren.
+- [ ] Striktes `offer_facts.json` mit JSON-Schema und Pflichtfeldern bauen.
+- [ ] Dual-Input-Logik umsetzen: direkter U-Wert oder Berechnung aus Schichten.
+- [ ] Dachlogik umsetzen (inkl. Sparrenanteil-Bandbreite und Klärungsfall).
+- [ ] Wandlogik umsetzen (inkl. Worst-Case-Prüfung bei unbekanntem Bestand).
+- [ ] Regelprüfung implementieren: `PASS`/`FAIL`/`CLARIFY` pro Maßnahme.
+- [ ] Kostenlogik separat implementieren (förderfähig, nicht förderfähig, bedingt förderfähig).
+- [ ] `evaluation.json` für interne Entscheidung und Begründung erzeugen.
+- [ ] Sekretariats-Output definieren (Ampel + Nachforderungscheckliste).
+- [ ] Kundenmail-Templates erstellen (sichere Aussagen + konkrete Nachfragen).
+- [ ] Logging/Audit-Kette speichern (`offer_facts`, `derived`, `evaluation`, Evidence-Refs).
+- [ ] Eskalationsregeln definieren (unklare/widersprüchliche Fälle, schlechte OCR-Qualität).
+- [ ] Modell-Routing definieren (Standardmodell + Eskalationsmodell).
+- [ ] Regressionstests mit Beispielsfällen (`eligible`, `not_eligible`, `clarify`) aufbauen.
+- [ ] Täglichen Diff-Alarm für Regeländerungen und Human-Review vor Freigabe einbauen.
+- [ ] Datenschutz- und Zugriffskonzept für Kundendokumente umsetzen.

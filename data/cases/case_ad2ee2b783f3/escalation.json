@@ -1,0 +1,91 @@
+{
+  "case_id": "case_ad2ee2b783f3",
+  "reasons": [],
+  "severity": "medium",
+  "payload": {
+    "risk_score": 0.3,
+    "evaluation": {
+      "case_id": "case_ad2ee2b783f3",
+      "generated_at": "2026-02-15T11:49:46+00:00",
+      "ruleset_version": "active",
+      "results": [
+        {
+          "measure_id": "envelope_aussenwand",
+          "status": "FAIL",
+          "reason": "threshold_failed:derived.u_value_target",
+          "used_evidence": [
+            {
+              "doc_id": "offer",
+              "page": 1,
+              "quote": "Au\u00dfenwand WDVS 14 cm WLS 035 Material 12000 EUR",
+              "bbox": null,
+              "source_path": null
+            }
+          ],
+          "questions": [],
+          "cost_summary": {}
+        },
+        {
+          "measure_id": "envelope_dach",
+          "status": "FAIL",
+          "reason": "threshold_failed:derived.u_value_target",
+          "used_evidence": [
+            {
+              "doc_id": "offer",
+              "page": 1,
+              "quote": "Dach Aufsparrend\u00e4mmung 18 cm lambda 0,035 Material 8000 EUR",
+              "bbox": null,
+              "source_path": null
+            }
+          ],
+          "questions": [],
+          "cost_summary": {}
+        },
+        {
+          "measure_id": "envelope_fenster",
+          "status": "PASS",
+          "reason": "all_checks_passed",
+          "used_evidence": [
+            {
+              "doc_id": "offer",
+              "page": 1,
+              "quote": "Fenster Uw = 0,90 W/m2K Montage 5000 EUR",
+              "bbox": null,
+              "source_path": null
+            }
+          ],
+          "questions": [],
+          "cost_summary": {
+            "eligible_total": 5000.0,
+            "ineligible_total": 0.0,
+            "conditional_total": 0.0,
+            "items": [
+              {
+                "description": "Fenster Uw = 0,90 W/m2K Montage 5000 EUR",
+                "category": "montage",
+                "amount": 5000.0,
+                "decision": "ELIGIBLE"
+              }
+            ]
+          }
+        },
+        {
+          "measure_id": "envelope_kellerdecke",
+          "status": "FAIL",
+          "reason": "threshold_failed:derived.u_value_target",
+          "used_evidence": [
+            {
+              "doc_id": "offer",
+              "page": 1,
+              "quote": "Kellerdecke Daemmung 10 cm lambda 0,040 Material 3000 EUR",
+              "bbox": null,
+              "source_path": null
+            }
+          ],
+          "questions": [],
+          "cost_summary": {}
+        }
+      ]
+    }
+  }
+}

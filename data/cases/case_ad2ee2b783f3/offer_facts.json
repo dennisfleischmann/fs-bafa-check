@@ -1,0 +1,151 @@
+{
+  "building": {
+    "is_existing": true,
+    "type": "WG",
+    "monument": false
+  },
+  "applicant": {
+    "income_bonus_requested": false
+  },
+  "offer": {
+    "input_mode": "mixed",
+    "measures": [
+      {
+        "measure_id": "envelope_aussenwand",
+        "component_type": "aussenwand",
+        "input_mode": "layers",
+        "values": {},
+        "layers": [
+          {
+            "name": "layer",
+            "d_m": 0.14,
+            "lambda": 35.0,
+            "evidence": "Au\u00dfenwand WDVS 14 cm WLS 035 Material 12000 EUR",
+            "plausible": true
+          }
+        ],
+        "geometry": {},
+        "costs": {
+          "total": 12000.0,
+          "currency": "EUR"
+        },
+        "line_items": [
+          {
+            "description": "Au\u00dfenwand WDVS 14 cm WLS 035 Material 12000 EUR",
+            "amount": 12000.0,
+            "currency": "EUR",
+            "category": "material"
+          }
+        ],
+        "evidence": [
+          {
+            "quote": "Au\u00dfenwand WDVS 14 cm WLS 035 Material 12000 EUR"
+          }
+        ]
+      },
+      {
+        "measure_id": "envelope_dach",
+        "component_type": "dach",
+        "input_mode": "layers",
+        "values": {},
+        "layers": [
+          {
+            "name": "layer",
+            "d_m": 0.18,
+            "lambda": 0.035,
+            "evidence": "Dach Aufsparrend\u00e4mmung 18 cm lambda 0,035 Material 8000 EUR",
+            "plausible": true
+          }
+        ],
+        "geometry": {},
+        "costs": {
+          "total": 8000.0,
+          "currency": "EUR"
+        },
+        "line_items": [
+          {
+            "description": "Dach Aufsparrend\u00e4mmung 18 cm lambda 0,035 Material 8000 EUR",
+            "amount": 8000.0,
+            "currency": "EUR",
+            "category": "material"
+          }
+        ],
+        "evidence": [
+          {
+            "quote": "Dach Aufsparrend\u00e4mmung 18 cm lambda 0,035 Material 8000 EUR"
+          }
+        ]
+      },
+      {
+        "measure_id": "envelope_fenster",
+        "component_type": "fenster",
+        "input_mode": "direct_u",
+        "values": {
+          "uw": {
+            "value": 0.9,
+            "unit": "W/(m2K)",
+            "plausible": true
+          }
+        },
+        "layers": [],
+        "geometry": {},
+        "costs": {
+          "total": 5000.0,
+          "currency": "EUR"
+        },
+        "line_items": [
+          {
+            "description": "Fenster Uw = 0,90 W/m2K Montage 5000 EUR",
+            "amount": 5000.0,
+            "currency": "EUR",
+            "category": "montage"
+          }
+        ],
+        "evidence": [
+          {
+            "quote": "Fenster Uw = 0,90 W/m2K Montage 5000 EUR"
+          }
+        ]
+      },
+      {
+        "measure_id": "envelope_kellerdecke",
+        "component_type": "kellerdecke",
+        "input_mode": "layers",
+        "values": {},
+        "layers": [
+          {
+            "name": "layer",
+            "d_m": 0.1,
+            "lambda": 0.04,
+            "evidence": "Kellerdecke Daemmung 10 cm lambda 0,040 Material 3000 EUR",
+            "plausible": true
+          }
+        ],
+        "geometry": {},
+        "costs": {
+          "total": 3000.0,
+          "currency": "EUR"
+        },
+        "line_items": [
+          {
+            "description": "Kellerdecke Daemmung 10 cm lambda 0,040 Material 3000 EUR",
+            "amount": 3000.0,
+            "currency": "EUR",
+            "category": "material"
+          }
+        ],
+        "evidence": [
+          {
+            "quote": "Kellerdecke Daemmung 10 cm lambda 0,040 Material 3000 EUR"
+          }
+        ]
+      }
+    ]
+  },
+  "docs": {
+    "fachunternehmererklaerung_present": false,
+    "tauwassernachweis_present": null
+  },
+  "case_id": "case_ad2ee2b783f3",
+  "quality_flags": []
+}

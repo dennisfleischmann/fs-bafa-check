@@ -1,0 +1,2381 @@
+
+
+
+
+You said:
+“Hi, ich brauche jetzt einen AI-Agenten, der mir die BAFA-Anträge Einzelmaßnahmen Gebäudehülle prüft von meinen Kunden. Das heißt, Input ist eigentlich nur das Angebot und ich will rausfiltern, was förderfähig ist und was nicht, dem Kunden dann eine Nachricht schicken.”
+00:30
+
+ChatGPT said:
+Das klingt machbar, aber ein bisschen Detailarbeit steckt drin. Dein AI-Agent müsste die relevanten BAFA-Kriterien für Einzelmaßnahmen (Gebäudehülle) kennen – z.B. Mindest-U-Werte, förderfähige Materialien, etc. Dann scannt er dein Angebot: Welche Maßnahmen, welche Bauteile, welche Materialien sind drin? Der Agent vergleicht das mit den Vorgaben. Am Ende spuckt er eine klare Liste aus: "Diese Teile sind förderfähig, diese nicht" – und daraus kannst du dann dem Kunden eine Nachricht generieren. Mit ein bisschen Kontextwissen rund um die BAFA-Richtlinien und ein solides Parsing deines Angebots kriegen wir das gut hin. Ich würde auf jeden Fall mit klaren Kriterien starten und deine Angebote strukturiert halten, damit der Agent nicht raten muss.
+
+
+You said:
+“Genau, und dann ein Fallback, ein Sicherheitsmechanismus muss eingebaut werden. Wenn kein Kriterium zutrifft, muss der ein Abbruchkriterium haben.”
+00:13
+
+ChatGPT said:
+Absolut, ein Fallback ist super wichtig. Wenn das Angebot so schwammig wäre, dass gar kein Kriterium greift, muss der Agent klar abbrechen. Er könnte dann zum Beispiel eine Meldung generieren wie: „Keine eindeutige Förder
+
+
+You said:
+“Ja, es gibt ja eine BEG-Anforderungsliste und die sagt ja ganz genau, unter welcher Bedingung etwas gefördert wird. Und dazu gibt es noch eine technische Maßnahmenbeschreibung. Diese Kombination sagt recht präzise, was förderfähig ist und was nicht.”
+00:24
+
+ChatGPT said:
+Genau das ist der Punkt. Mit der BEG-Anforderungsliste und der technischen Maßnahmenbeschreibung im Rücken hast du ja einen festen Rahmen. Der Agent gleicht dann die Bauteile, Materialien und Werte aus dem Angebot exakt damit ab. Und falls da irgendwas gar nicht ins Raster passt – also weder förderfähig noch überhaupt sinnvoll bewertbar – bricht er ab und liefert dir quasi eine „Klärung nötig“-Rückmeldung. Damit stellst du sicher, dass du nie halbgare Infos an den Kunden gibst, sondern genau weißt, wann du nachfassen musst.
+
+
+You said:
+“Was würdest du empfehlen? Würde ich diese Anforderungsliste und technische Maßnahmenbeschreibung vorher strukturieren oder sollte ich das immer abgleichen bei jedem Mal?”
+00:14
+
+ChatGPT said:
+Ich würde dir empfehlen, die Anforderungen vorab strukturiert zu hinterlegen. Wenn du die BEG-Kriterien und Maßnahmenbeschreibungen in eine Art „Nachschlagewerk“ für deinen Agent packst, läuft der Abgleich viel effizienter. Der Agent checkt dann jedes Mal gegen diese klare Datenbank, anstatt bei jeder Prüfung von Null zu starten. Das spart Zeit und sorgt für Konsistenz. Die Liste aktualisierst du dann einfach, wenn die Förderbedingungen sich ändern. So bist du immer auf der sicheren Seite.
+
+
+You said:
+“Ich bin ich doch viel besser bedient, wenn er das immer abgleicht, oder? Wenn das Downloadbare, wenn das Referenzdokument, das aus dem Internet ist, dann holt er sich ja immer das Aktuelle und prüft das dagegen.”
+00:19
+
+ChatGPT said:
+Ja, wenn du sicherstellen willst, dass wirklich immer der neueste Stand geprüft wird, dann macht ein Live-Abgleich mit dem aktuellen Referenzdokument Sinn. Der Agent zieht sich dann direkt die frischeste Version und gleicht dein Angebot damit ab. Das hat den Vorteil, dass du nicht manuell nachpflegen musst und immer auf dem neuesten Stand bist. Klar, das macht jede Prüfung etwas dynamischer, aber für Förderungen, wo sich die Vorgaben ja auch ändern können, ist das ein ziemlich schlauer Weg. Du hast dann einfach die Sicherheit, dass du nie mit veralteten Kriterien arbeitest.
+
+
+You said:
+“Nur der Large Language Model muss halt gut genug sein, um die Sachen dann zu analysieren, aber das macht ihr ja sowieso beim ersten Mal, dann kann das auch jedes Mal machen.”
+00:13
+
+ChatGPT said:
+Genau, das ist der springende Punkt. Solange dein Modell die Strukturen und Logik einmal gut verstanden hat, wird es das bei jeder Prüfung zuverlässig tun. Dann ist es egal, ob du einmal oder hundertmal abgleichst. Am Ende ist es ja das Ziel, dass dein Agent diese Anforderungslogik so verinnerlicht, dass du dich darauf verlassen kannst. Und dann läuft das – egal, wie oft sich die Richtlinien mal ändern.
+
+
+You said:
+“Das heißt, der Input ist ein Angebot und der Output ist für meine Sekretärin eine Beschreibung, wie”
+00:12
+
+ChatGPT said:
+Ganz genau. Du gibst das Angebot rein, der Agent filtert, was förderfähig ist, und am Ende bekommt deine Sekretärin eine klare, strukturierte Beschreibung: Welche Maßnahmen sind förderfähig, welche nicht, und ob eventuell noch Infos fehlen. Das ist dann quasi ein kurzes, verständliches Memo, mit dem sie den Kunden direkt informieren oder nachfassen kann. So spart ihr euch langes manuelles Prüfen und habt sofort eine klare Antwort.
+
+
+You said:
+“Ja, vor allen Dingen auch, ich brauche keinen externen Partner, die das für teuer Geld machen. Das ist halt auch wichtig.”
+00:07
+
+ChatGPT said:
+Absolut, so hältst du die Kontrolle in-house und sparst dir diese externen Kosten. Einmal gut aufgesetzt, arbeitet der Agent rund um die Uhr, immer nach den aktuellen Regeln, und du kannst dich auf präzise, schnelle Ergebnisse verlassen – ganz ohne extra Rechnungen.
+
+
+You said:
+“Genau, und dann macht sie zehn am Tag.”
+00:02
+
+ChatGPT said:
+Ganz genau, und wenn das dann jeden Tag läuft, hast du am Ende eine Routine, die sich richtig bezahlt macht. Kein lästiges Warten, keine Unsicherheit – einfach saubere, verlässliche Ergebnisse, Tag für Tag.
+
+
+You said:
+Also ich hätte folgendes gesasgt
+
+1.) Unterlagen gibt es immer 
+
+
+
+https://www.bafa.de/DE/Energie/Effiziente_Gebaeude/Foerderprogramm_im_Ueberblick/foerderprogramm_im_ueberblick_node.html
+
+
+
+<div class="togglewrapper tabmodul gsb-toggle">
+  
+<ul class="tabs-list" role="tablist"><li><a href="#" class="switch-panel0 active-control" aria-selected="true" tabindex="0" role="tab" id="_gj1gqltgd" aria-controls="_jvutn1lbp">Publikationen</a></li><li><a href="#" class="switch-panel1 inactive-control" aria-selected="false" tabindex="-1" role="tab" id="_hqgqld2su" aria-controls="_5sctyl45z">Rechtsgrundlagen</a></li><li><a href="#" class="switch-panel2 inactive-control" aria-selected="false" tabindex="-1" role="tab" id="_qydivq2tp" aria-controls="_ddvh4ngb7">Zum Thema</a></li>
+  </ul>
+<div class="tabs-container"><h3 class="heading active-control"><button aria-expanded="true" id="_xs97ecic6" aria-controls="_jvutn1lbp">Publikationen</button></h3>
+<div class="switch-panel0 panel-opened" role="region" id="_jvutn1lbp" aria-labelledby="_gj1gqltgd" style="display: block;">
+    
+<ul class="links"><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_merkblatt_allgemein_antragstellung.pdf?__blob=publicationFile&amp;v=10" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Allgemeines Merkblatt zur Antragstellung (Februar 2025)&nbsp;(PDF, 539KB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_merkblatt_allgemein_zusatzantrag.pdf?__blob=publicationFile&amp;v=3" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Allgemeines Merkblatt zum Zusatzantrag für den Einkommensbonus&nbsp;(PDF, 474KB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_infoblatt_foerderfaehige_kosten.pdf?__blob=publicationFile&amp;v=12" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Infoblatt zu den förderfähigen Maßnahmen und Leistungen – Sanieren&nbsp;(PDF, 817KB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_merkblatt_antragstellung_wnet_gnet.pdf?__blob=publicationFile&amp;v=20" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Merkblatt zur Antragstellung für die Errichtung, Umbau und Erweiterung eines Gebäudenetzes und für den Anschluss an ein neu zu errichtendes Gebäudenetz&nbsp;(PDF, 1MB, Datei ist nicht barrierefrei)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_checkliste_gleichwertigkeit.pdf?__blob=publicationFile&amp;v=2" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Anforderungen zur Anerkennung gleichwertiger Verfahren des hydraulischen Abgleichs zum Verfahren B in der <abbr title="Bundesförderung für effiziente Gebäude">BEG</abbr>&nbsp;(PDF, 121KB, Datei ist nicht barrierefrei)</a></li>
+    </ul>
+</div><h3 class="heading inactive-control"><button aria-expanded="false" id="_t81gvej62" aria-controls="_5sctyl45z">Rechtsgrundlagen</button></h3>
+<div class="switch-panel1 panel-closed" role="region" id="_5sctyl45z" aria-labelledby="_hqgqld2su" style="display: none;" hidden="hidden">
+    
+<ul class="links"><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_richtline_beg_em_20231221_PDF.pdf?__blob=publicationFile&amp;v=2" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Richtlinie für die Bundesförderung für effiziente Gebäude – Einzelmaßnahmen (<abbr title="Bundesförderung für effiziente Gebäude - Einzelmaßnahmen">BEG EM</abbr>) vom 21. Dezember 2023 (Fundstelle: <abbr title="Bundesanzeiger">BAnz</abbr> <abbr title="Amtlicher Teil">AT</abbr> 29.12.2023 B1)&nbsp;(PDF, 2MB, Datei ist nicht barrierefrei)</a></li>
+    </ul>
+</div><h3 class="heading inactive-control"><button aria-expanded="false" id="_a4zywbvhb" aria-controls="_ddvh4ngb7">Zum Thema</button></h3>
+<div class="switch-panel2 panel-closed" role="region" id="_ddvh4ngb7" aria-labelledby="_qydivq2tp" style="display: none;" hidden="hidden">
+    
+<ul class="links"><li><a href="https://www.energiewechsel.de/KAENEF/Redaktion/DE/FAQ/FAQ-Uebersicht/BEG/faq-bundesfoerderung-fuer-effiziente-gebaeude.html" class="external" title="Externer Link:&nbsp;Antworten auf häufig gestellte Fragen zur BEG (FAQ) (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Antworten auf häufig gestellte Fragen zur <abbr title="Bundesförderung für effiziente Gebäude">BEG</abbr> (<abbr title="frequently asked questions"><abbr title="frequently asked questions">FAQ</abbr></abbr>)</a></li><li class="download"><a href="/SharedDocs/Downloads/DE/Energie/beg_em_foerderuebersicht.pdf?__blob=publicationFile&amp;v=13" title="Öffnet im neuen Fenster" target="_blank" class="downloadLink">Förderübersicht: Bundesförderung für effiziente Gebäude – Einzelmaßnahmen&nbsp;(PDF, 70KB, Datei ist nicht barrierefrei)</a></li><li><a href="https://www.energie-effizienz-experten.de/fileadmin/user_upload/Qualifizierte_Expertenliste_Landingpage/Medienbereich/Grafik-Foerderung-BEG-1.png" class="external" title="Externer Link:&nbsp;Welche Förderungen gibt es und wohin wende ich mich? (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Welche Förderungen gibt es und wohin wende ich mich?</a></li><li><a href="https://www.energie-effizienz-experten.de/fileadmin/user_upload/Qualifizierte_Expertenliste_Landingpage/Medienbereich/Grafik-Foerderung-BEG-2.png" class="external" title="Externer Link:&nbsp;Wo bekomme ich welche Förderung?  (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Wo bekomme ich welche Förderung?</a></li><li><a href="https://www.energie-effizienz-experten.de/fileadmin/user_upload/Qualifizierte_Expertenliste_Landingpage/Medienbereich/Grafik-Foerderung-BEG-3.png" class="external" title="Externer Link:&nbsp;Wärme- und Gebäudenetze – Was sind die Unterschiede? (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank" rel="noopener noreferrer">Wärme- und Gebäudenetze – Was sind die Unterschiede?</a></li>
+    </ul>
+</div></div>
+</div>
+
+
+
+jeden Morgen geht der Agent durch und downlaodet alle Informationen neu 
+
+1.Frage an dich. In welcher Form sollte alles abgelegt werden
+
+Neue Struktur/Context für den AI Agent?
+
+ChatGPT said:
+Sehr gute Richtung. 👍
+Kurzfassung vorweg: Ja, neue Struktur + klarer Kontext für den AI-Agent ist zwingend notwendig – aber nicht als „reiner Textmüll“, sondern als versionierte, maschinenlesbare Wissensbasis mit harten Regeln + Abbruchlogik.
+
+Ich empfehle dir eine 3-Schichten-Architektur, die genau zu deinem Use-Case (BAFA BEG EM Gebäudehülle, 10 Prüfungen/Tag, Sekretärin-Output) passt.
+
+1️⃣ Grundsatz-Entscheidung (wichtig)
+❌ Nicht empfehlenswert
+
+Jedes Mal PDFs „roh“ analysieren
+
+LLM frei interpretieren lassen („versteht schon“)
+
+Förderlogik nur implizit im Prompt
+
+✅ Empfehlenswert
+
+Einmal strukturieren → täglich aktualisieren
+
+Trennung von Recht, Technik und Entscheidungslogik
+
+Explizite Abbruchkriterien (Fail-Safe)
+
+2️⃣ Zielbild: Wie denkt dein AI-Agent?
+Der Agent soll nicht kreativ denken, sondern prüfend entscheiden:
+
+„Ich darf nur dann förderfähig = JA sagen,
+wenn alle Muss-Kriterien explizit erfüllt sind.
+Wenn nicht → Abbruch / Klärung.“
+
+Das erreichst du nur mit strukturierter Referenzlogik.
+
+3️⃣ Empfohlene Struktur (Best Practice)
+🔹 Ebene A – „Source Layer“ (täglich aktualisiert)
+Zweck: Rechtssicherheit & Aktualität
+
+Was hier liegt:
+
+Offizielle PDFs von Bundesamt für Wirtschaft und Ausfuhrkontrolle (BAFA)
+
+BEG EM Richtlinie
+
+Infoblatt förderfähige Maßnahmen
+
+Technische Mindestanforderungen
+
+Merkblätter Antragstellung
+
+Metadaten:
+
+Quelle
+
+Datum
+
+Version
+
+URL
+
+Gültig_ab
+
+👉 Format:
+
+Original: PDF (unverändert, revisionssicher)
+
+Zusätzlich: Text-Extrakt (Markdown oder TXT)
+
+⚠️ Wichtig:
+Diese Ebene wird nicht direkt vom LLM interpretiert, sondern dient als juristische Referenz.
+
+🔹 Ebene B – „Normierte Wissensbasis“ (entscheidend!)
+Zweck: Maschinell prüfbare Regeln
+
+Hier passiert die Magie.
+
+✅ Format: JSON oder YAML (kein Freitext)
+Beispiel (vereinfacht):
+
+{
+  "bauteil": "Außenwand",
+  "maßnahme": "Wärmedämmung",
+  "förderfähig": true,
+  "muss_kriterien": {
+    "u_wert_max": 0.20,
+    "dämmstoff_erlaubt": ["EPS", "XPS", "MW", "Holzfaser"],
+    "mind_dämmstärke_cm": 10,
+    "bestandsgebäude": true
+  },
+  "ausschluss": [
+    "Innendämmung ohne Tauwassernachweis",
+    "Dämmung < Mindeststärke"
+  ],
+  "quelle": "BEG EM TMA Gebäudehülle 2025-02"
+}
+👉 Vorteil:
+
+deterministisch
+
+auditierbar
+
+versionierbar
+
+LLM wird Prüfer, nicht Entscheider
+
+🔹 Ebene C – „Decision Engine / Prompt Context“
+Zweck: klare Logik + Fallback
+
+Hier definierst du unverrückbare Regeln, z. B.:
+
+🔒 Entscheidungslogik (Pflicht!)
+Wenn Muss-Kriterium fehlt → NICHT förderfähig
+
+Wenn Wert nicht explizit genannt → KLÄRUNGSFALL
+
+Wenn Maßnahme nicht eindeutig zuordenbar → ABBRUCH
+
+Keine Annahmen, keine Schätzungen
+
+Beispiel Abbruchregel:
+
+Wenn aus dem Angebot weder
+- Bauteil
+- Maßnahme
+- Dämmstoff
+- Kennwert (z. B. U-Wert oder Dicke)
+eindeutig hervorgehen,
+darf keine Förderfähigkeit bestätigt werden.
+4️⃣ Input → Output (für deine Sekretärin)
+📥 Input
+Angebot (PDF, DOCX, Text)
+
+optional: Herstellerdatenblatt
+
+⚙️ Verarbeitung
+Angebot strukturieren (Bauteil → Maßnahme → Werte)
+
+Abgleich gegen Ebene B
+
+Entscheidung nach Ebene C
+
+📤 Output (standardisiert!)
+Beispiel:
+
+Ergebnis BAFA-Prüfung – Gebäudehülle
+
+✅ Förderfähig:
+- Außenwanddämmung EPS 14 cm
+  → U-Wert rechnerisch ≤ 0,20 W/m²K
+
+❌ Nicht förderfähig:
+- Kellerdecke: Dämmstärke nicht angegeben
+
+⚠️ Klärungsbedarf:
+- Dach: Dämmstoff nicht spezifiziert
+➡️ Direkt per Mail an Kunden nutzbar
+
+5️⃣ Deine konkrete Frage – klare Antwort
+„In welcher Form sollte alles abgelegt werden?“
+
+✅ Meine Empfehlung (final):
+Ebene	Format	Zweck
+Source	PDF + TXT	Recht & Nachweis
+Wissensbasis	JSON / YAML	Förderlogik
+Agent Context	Prompt + Regeln	Sicherheit
+Logs	JSON	Nachvollziehbarkeit
+Nicht: Word, Notion, reiner Prompt, Copy-Paste-PDFs
+
+6️⃣ Nächster sinnvoller Schritt (empfohlen)
+Wenn du willst, machen wir als Nächstes:
+
+konkretes JSON-Schema für BEG EM Gebäudehülle
+
+Abbruch- & Eskalationsmatrix
+
+fixes Prompt-Template für deinen Agenten
+
+Mail-Vorlagen für deine Sekretärin
+
+Sag mir einfach, womit wir starten sollen.
+
+
+You said:
+{
+  "bauteil": "Außenwand",
+  "maßnahme": "Wärmedämmung",
+  "förderfähig": true,
+  "muss_kriterien": {
+    "u_wert_max": 0.20,
+    "dämmstoff_erlaubt": ["EPS", "XPS", "MW", "Holzfaser"],
+    "mind_dämmstärke_cm": 10,
+    "bestandsgebäude": true
+  },
+  "ausschluss": [
+    "Innendämmung ohne Tauwassernachweis",
+    "Dämmung < Mindeststärke"
+  ],
+  "quelle": "BEG EM TMA Gebäudehülle 2025-02"
+}
+
+bekommt man dieses Format immer hin?
+
+Was ist wenn LLM ein fehler macht?
+
+ChatGPT said:
+Ja – man bekommt dieses Format sehr zuverlässig hin, aber nicht, indem man „nur“ ein LLM bittet, JSON zu schreiben. Du baust es so, dass ein Fehler entweder gar nicht möglich ist oder automatisch abgefangen wird.
+
+Hier ist das robuste Setup, das ich dir empfehlen würde (praxisnah, 10+/Tag tauglich):
+
+1) “Immer hinbekommen”: JSON erzwingen statt hoffen
+✅ A) Striktes JSON-Schema + Validator
+Du definierst ein JSON Schema (Pflichtfelder, Datentypen, erlaubte Werte, Zahlenbereiche).
+
+Wenn das LLM „Quatsch“ ausgibt → Validator schlägt fehl
+
+Dann greift dein Fallback (Abbruch / Klärungsfall)
+
+Ergebnis: Nie geht falsches Format an deine Sekretärin raus
+
+Beispiel-Validierungen
+
+u_wert_max muss Zahl sein
+
+dämmstoff_erlaubt nur aus Whitelist
+
+förderfähig nur true/false
+
+bauteil nur aus kontrollierter Liste (Außenwand, Dach, Kellerdecke, Fenster …)
+
+✅ B) “Function calling / structured outputs”
+Wenn du ein Modell/Framework nutzt, das Structured Output kann, lässt du das Modell gar nicht „frei texten“, sondern es muss in das Schema passen. Sonst kommt keine Antwort bzw. ein Fehler → Fallback.
+
+✅ C) Zwei-Phasen Output (sehr stark)
+Phase 1: Extraktion aus Angebot → neutrales, faktisches JSON (ohne Bewertung)
+
+Phase 2: Regel-Engine prüft gegen deine Wissensbasis → Förderstatus
+
+Damit trennst du:
+
+„Was steht im Angebot?“ (Extraction)
+
+„Ist es förderfähig?“ (Decision)
+
+Das reduziert Halluzinationen massiv.
+
+2) “Was, wenn das LLM einen Fehler macht?”
+Das ist die wichtigste Frage. Lösung: LLM darf nie final entscheiden, sondern nur liefern, was danach geprüft wird.
+
+Sicherheitsnetz 1: “No-Guess Policy”
+Hard rule:
+
+Wenn ein Muss-Wert fehlt (U-Wert / Dicke / Material / Bauteil) → nicht bewerten, sondern KLÄRUNG.
+
+Das ist dein Abbruchkriterium.
+
+Sicherheitsnetz 2: Evidence-Links (Zitatpflicht)
+Der Agent muss für jedes extrahierte Feld die Textstelle aus dem Angebot mitgeben:
+
+"u_wert": {
+  "value": 0.19,
+  "evidence": "Außenwand: U = 0,19 W/m²K"
+}
+Wenn evidence fehlt → Feld gilt als „nicht vorhanden“ → Klärungsfall.
+
+Sicherheitsnetz 3: Regel-Engine statt LLM-Logik
+Die Entscheidung „förderfähig ja/nein“ wird deterministisch berechnet:
+
+LLM extrahiert nur Fakten
+
+Code prüft Regeln (u_wert <= max, dämmstoff in whitelist, etc.)
+
+Sicherheitsnetz 4: Cross-Check / Second pass (optional, aber effektiv)
+Ein zweites, günstiges Modell oder derselbe Agent:
+
+prüft: „Sind alle Muss-Kriterien wirklich belegt?“
+
+wenn Widerspruch → Klärungsfall
+
+Sicherheitsnetz 5: Risiko-Scoring
+Du gibst jedem Fall einen Score:
+
+0.0 = sicher
+
+1.0 = unsicher / missing fields
+
+Ab einem Schwellenwert (z. B. 0.3) wird automatisch abgebrochen.
+
+3) Realistische Erwartung: Wo passieren Fehler?
+Angebote sind unpräzise
+
+„Dämmung gemäß GEG“ → nicht prüfbar
+➡️ Klärung statt Entscheidung
+
+Bauteil-Zuordnung
+
+„Fassade“ kann Außenwand oder WDVS sein
+➡️ Nur freigeben, wenn eindeutig
+
+Technische Nachweise
+
+Innendämmung braucht Tauwassernachweis
+➡️ Wenn nicht erwähnt → Ausschluss/ Klärung
+
+4) Der beste Kompromiss für dich (Kosten/Nutzen)
+Wenn du 10 Prüfungen/Tag willst, würde ich so bauen:
+
+Pipeline
+
+Angebots-Text → Extraktions-JSON (mit Evidence)
+
+JSON Schema Validation (hart)
+
+Decision Engine (harte Regeln)
+
+Output: Sekretärinnen-Memo + Kundenmail-Entwurf
+
+Wenn irgendwas fehlt/unklar: “Klärungs-Checkliste” statt Ergebnis
+
+Das ist schnell, skalierbar und „LLM-fehlerresistent“.
+
+Wenn du willst, schreibe ich dir als nächstes:
+
+ein konkretes JSON-Schema (für Gebäudehülle)
+
+die Abbruchlogik als Regeln
+
+und ein Output-Template für deine Sekretärin (inkl. Textbausteinen für Kunden).
+
+
+You said:
+Überprüfe deinen Ansatz und schaue konkret an schwachstellen
+
+ChatGPT said:
+
+Thought for 18s
+Alles klar – ich zerlege meinen Ansatz jetzt hart und nenne dir die konkreten Schwachstellen (inkl. wie du sie entschärfst). Wichtig: JSON-Schema + Validator schützt nur das Format, nicht die Richtigkeit.
+
+1) Schwachstelle: “Immer aktuell” durch tägliches Downloaden ist nicht automatisch “immer korrekt”
+Problem:
+
+BAFA-Seiten ändern PDFs/Versionen manchmal ohne klare Semantik (z. B. neue v=13), Links können brechen, Inhalte können sich innerhalb eines Tages ändern.
+
+Wenn dein Agent um 8:00 Uhr lädt und um 14:00 Uhr prüft, kann es Versionsdrift geben (unterschiedliche Mitarbeiter/Prüfungen basieren auf verschiedenen Ständen).
+
+Härtung:
+
+Pinning je Prüflauf: Jede Prüfung läuft gegen eine konkrete Version (Hash + Datum + URL).
+
+Update-Fenster + Freigabe: Updates täglich laden, aber erst nach kurzem “Smoke-Test” aktiv schalten.
+
+Ergebnis-Memo enthält: “Geprüft gegen: Dokument X, Version/Hash, Abrufdatum.”
+
+2) Schwachstelle: PDF-Text ist oft kaputt (und das killt “Evidence”)
+Problem:
+
+Viele BAFA-PDFs sind ok, aber Kundenangebote sind häufig:
+
+gescannt (Bild-PDF) → OCR nötig
+
+Tabellen/Positionslisten → Textreihenfolge zerhackt
+
+Trennstriche, Zeilenumbrüche, Einheiten springen
+
+Das führt dazu, dass dein Agent falsche Werte “findet” oder Belege falsch zuordnet.
+
+Härtung:
+
+Vorverarbeitung: “Textqualität-Check” (ist es Bild-PDF? sind Zahlen/Währungen sauber extrahierbar?).
+
+Tabellenmodus: Wenn Angebot tabellarisch ist: erst Tabellenstruktur extrahieren (oder zumindest Position/Spalte).
+
+Evidence muss Position/Zeile/Seite haben (Seitenzahl + Textsnippet). Wenn nicht → “nicht belegbar”.
+
+3) Schwachstelle: Das LLM kann Werte “glattziehen” (Halluzination / Ergänzung)
+Problem:
+Selbst mit Evidence kann es passieren:
+
+“14 cm” wird aus “140 mm”
+
+“MW 035” wird zu “WLS 035”
+
+“U ≤ 0,20” wird als “U = 0,20” gelesen
+
+Oder es ergänzt fehlende Infos (“wird schon Bestandsgebäude sein”).
+
+Härtung:
+
+No-Guess-Regel absolut: Keine Annahmen, keine Implikationen.
+
+Einheiten-Normalisierung mit Plausibilitätsregeln:
+z. B. Dämmstärke 2–40 cm plausibel; U-Werte 0,10–2,0 plausibel; alles außerhalb → Klärung.
+
+Zahlen nur übernehmen, wenn sie “numerisch” + Einheit + Evidence haben.
+
+4) Schwachstelle: “Whitelist Dämmstoffe” ist zu grob/gefährlich
+Problem:
+Dein Beispiel ["EPS","XPS","MW","Holzfaser"] ist in der Realität zu kurz:
+
+Angebote enthalten Handelsnamen, Abkürzungen, Mischangaben (“Resol”, “PU/PIR”, “PUR”, “Phenolharz”, “Calciumsilikat”, “Aerogel” …)
+
+Außerdem ist “Material erlaubt” selten das einzige Kriterium – oft geht’s um Anwendungsfall / Nachweis / Ausführung.
+
+Härtung:
+
+Statt Whitelist: Mapping-Layer (Synonyme/Handelsnamen → Materialklasse).
+
+Und: Material darf nicht allein über Förderfähigkeit entscheiden. Es ist nur ein Parameter.
+
+5) Schwachstelle: BAFA-Logik ist nicht rein “U-Wert ≤ X”
+Problem:
+Gebäudehülle hat häufig Zusatzbedingungen:
+
+Innendämmung → Tauwassernachweis / Feuchteschutz
+
+Denkmalschutz/bauliche Einschränkungen → Sonderfälle
+
+Bauteildefinitionen sind tricky (Außenwand vs. Fassade/WDVS, Dach vs. oberste Geschossdecke etc.)
+
+“Fenster/Türen” haben eigene Logik (Uw vs Ug, Einbau, Randverbund etc.)
+
+Härtung:
+
+Bauteil-Taxonomie + Maßnahmen-Typen als kontrolliertes Vokabular.
+
+Regeln pro Maßnahme-Typ, nicht nur pro Bauteil.
+
+Jede Regel hat: required fields → wenn eins fehlt, kein Urteil.
+
+6) Schwachstelle: Angebotspositionen sind oft “Leistungspakete”
+Problem:
+Ein Angebot kann “Fassade komplett” enthalten, inkl. Gerüst, Putz, Anstrich, Fensterbänke etc.
+Der Agent muss trennen:
+
+förderfähige Kostenbestandteile vs. nicht förderfähige
+
+Härtung:
+
+Output nicht nur “förderfähig ja/nein”, sondern Kostenbestandteile clustern:
+
+✅ förderfähig
+
+⚠️ nur anteilig / abhängig
+
+❌ nicht förderfähig / Nebenleistung
+
+Wenn keine saubere Trennung möglich → “Klärung: Positionen detaillieren”.
+
+7) Schwachstelle: Format-Validierung ≠ Inhalts-Validierung
+Problem:
+Das LLM kann perfektes JSON liefern und trotzdem falsche Schlussfolgerungen ziehen.
+
+Härtung (entscheidend):
+
+LLM nur für Extraktion, Entscheidung macht deterministische Rule Engine.
+
+LLM-Ausgabe enthält keinen finalen Förderstatus, nur “Facts + Evidence”.
+
+Rule Engine berechnet Status + Begründung.
+
+8) Schwachstelle: “Second pass” mit LLM ist kein echtes Sicherheitsnetz
+Problem:
+Zwei Modelle können denselben Fehler wiederholen (gleiche Schwäche, gleiche Daten).
+
+Härtung:
+
+Second pass muss anderer Typ Prüfung sein:
+
+“Stimmt Evidence wirklich?” (string match / page reference check)
+
+“Sind required fields vollständig?” (programmatic)
+
+“Widersprechen sich Werte?” (programmatic)
+
+9) Schwachstelle: Abbruchkriterium kann zu oft triggern (Operativ nervig)
+Problem:
+Wenn du zu streng bist, hast du ständig “Klärung nötig” → Sekretärin verliert Zeit.
+
+Härtung:
+
+Definiere 2 Modi:
+
+Kundenmodus (streng): nur sichere Aussagen raus
+
+Internmodus (hilfreich): “wahrscheinlich förderfähig, ABER fehlt X” – nur intern, nicht an Kunde
+
+Zusätzlich: “Minimalanforderungen pro Maßnahme” so wählen, dass 80% der Angebote durchgehen.
+
+10) Schwachstelle: Haftungs-/Kommunikationsrisiko
+Problem:
+Wenn der Agent dem Kunden “förderfähig” schreibt und es stimmt nicht → Ärger, Reklamation, ggf. Schadenersatz-Argumentation.
+
+Härtung:
+
+Kundenmail immer mit Scope-Satz:
+
+“Vorprüfung auf Basis der im Angebot genannten Angaben. Finale Prüfung erfolgt im Rahmen der Antragstellung / technische Nachweise vorbehalten.”
+
+Und: Bei “grünem Ergebnis” trotzdem: “erforderliche Nachweise/Unterlagen” listen.
+
+11) Schwachstelle: Monitoring/Regression fehlt (typischer Killer im Betrieb)
+Problem:
+Wenn BAFA-Doku sich ändert oder Angebote anders aussehen, driftet dein System und du merkst es zu spät.
+
+Härtung:
+
+Baue einen Testkorpus (z. B. 50 typische Angebote) + erwartete Ergebnisse
+
+Täglicher “Regression Run” nach Update der Referenzdokumente
+
+Logging: Welche Regeln feuern wie oft? Welche Abbrüche warum?
+
+12) Schwachstelle: Datenschutz / Zugriff auf Kundendokumente
+Problem:
+Kundenangebote enthalten personenbezogene Daten. Je nach Setup (Cloud/LLM/API) hast du DSGVO-Themen.
+
+Härtung:
+
+PII-Redaction vor LLM (Namen/Adresse/Telefon/IBAN etc.)
+
+Oder “on-prem / EU-Host” je nach Infrastruktur
+
+Speichere nur: Extraktionsdaten + Hash + Evidence-Ausschnitte (minimieren)
+
+Fazit: Die 3 größten echten Schwachstellen
+Wenn ich priorisieren müsste:
+
+PDF/Text-Extraktion (Tabellen/OCR/Evidence)
+
+LLM macht plausible, aber falsche Ergänzungen (No-Guess + required fields)
+
+Regellogik/Taxonomie ist komplexer als “U-Wert ≤ X” (Rule Engine + Maßnahmentypen)
+
+Wenn du willst, mache ich dir als nächsten Schritt ein konkretes, praxistaugliches “Facts-JSON” Schema (Extraction-only) für Gebäudehülle – inkl. required fields je Maßnahme + Abbruchmatrix. Damit wird das System deutlich robuster als dein Beispiel-JSON, weil es Fehlerquellen systematisch ausschaltet.
+
+
+You said:
+Erstelle mir eine Logik um aus folgenden Dateien:
+
+
+Allgemeines Merkblatt zur Antragstellung (Februar 2025) (PDF, 539KB, Datei ist nicht barrierefrei)
+Allgemeines Merkblatt zum Zusatzantrag für den Einkommensbonus (PDF, 474KB, Datei ist nicht barrierefrei)
+Infoblatt zu den förderfähigen Maßnahmen und Leistungen – Sanieren (PDF, 817KB, Datei ist nicht barrierefrei)
+Merkblatt zur Antragstellung für die Errichtung, Umbau und Erweiterung eines Gebäudenetzes und für den Anschluss an ein neu zu errichtendes Gebäudenetz (PDF, 1MB, Datei ist nicht barrierefrei)
+Anforderungen zur Anerkennung gleichwertiger Verfahren des hydraulischen Abgleichs zum Verfahren B in der BEG (PDF, 121KB, Datei ist nicht barrierefrei)
+Richtlinie für die Bundesförderung für effiziente Gebäude – Einzelmaßnahmen (BEG EM) vom 21. Dezember 2023 (Fundstelle: BAnz AT 29.12.2023 B1) (PDF, 2MB, Datei ist nicht barrierefrei)
+
+
+PDF/Text-Extraktion (Tabellen/OCR/Evidence)
+
+ein Format zu extrahieren für die Entscheidungsgrundlage von Förderfähigkeiten
+
+ChatGPT said:
+
+Thought for 2m 54s
+Unten ist eine praxistaugliche „Extraktions- & Regel-Logik“, mit der du aus genau diesen PDFs eine maschinenlesbare Entscheidungsgrundlage (Ruleset) erzeugst – inkl. Tabellen/OCR/Evidence und einem Sicherheitsmechanismus gegen LLM-Fehler.
+
+1) Grundprinzip: Quelle → Evidence → Regel → Validierung
+Quellenrollen (wichtig für Priorität)
+Normativ/maßgeblich: BEG-EM-Richtlinie inkl. Anlage „Technische Mindestanforderungen (TMA)”. Dort stehen u. a. die U-Wert-Grenzen tabellarisch für Gebäudehülle. 
+
+Operativ/auslegungsnah: Merkblätter & Infoblatt (z. B. „Infoblatt förderfähige Maßnahmen/Kosten“) – hilfreich für Kostenabgrenzung & Prozess, aber i. d. R. nachrangig gegenüber der Richtlinie (steht auch so im Merkblatt). 
+
+Konsequenz: Regeln immer mit Evidence aus der Richtlinie/TMA verankern; Infoblatt ergänzt „förderfähige Kosten / nicht förderfähige Kosten“. Das Infoblatt ist explizit zur Ermittlung der förderfähigen Kosten (TPB/TPN/BzA/BnD) gedacht und wird regelmäßig aktualisiert. 
+
+2) Ziel-Format (Ruleset) – robust gegen Halluzinationen
+Dein JSON-Beispiel ist vom Stil her gut, aber: „dämmstoff_erlaubt“ ist oft nicht normativ (in TMA stehen eher Umax / λ-Grenzen / Bauteilgruppen / Sonderfälle, nicht „Material-Whitelist“). Besser ist ein Schema, das nur das extrahiert, was im Evidence wirklich steht.
+
+Empfohlenes Datenmodell (minimal & „LLM-sicher“)
+{
+  "ruleset_meta": {
+    "program": "BEG EM",
+    "generated_at": "2026-02-15T09:30:00Z",
+    "documents": [
+      {"doc_id":"beg_em_richtlinie_2023-12-21","version_hint":"BAnz AT 29.12.2023 B1","sha256":"..."},
+      {"doc_id":"infoblatt_foerderfaehige_kosten","version_hint":"10.0 (07/2025)","sha256":"..."}
+    ]
+  },
+  "rules": [
+    {
+      "rule_id": "tma_1.1_aussenwand_uaussenwand_wg_t>=19",
+      "scope": {
+        "module": "Gebäudehülle",
+        "measure": "Außenwände",
+        "component": "Außenwand"
+      },
+      "decision": "ELIGIBLE_IF",
+      "conditions": [
+        {"field":"building.is_existing", "op":"==", "value": true},
+        {"field":"offer.component_type", "op":"==", "value":"Außenwand"},
+        {"field":"target_zone", "op":"==", "value":"WG_or_NWG_zone_T>=19"},
+        {"field":"offer.u_value", "op":"<=", "value": 0.20, "unit":"W/(m²K)"}
+      ],
+      "requirements_text": [
+        "Wärmebrückenreduzierte und luftdichte Ausführung beachten",
+        "Feuchteschutz/Tauwasserschutz prüfen"
+      ],
+      "evidence": [
+        {
+          "doc_id":"beg_em_richtlinie_2023-12-21",
+          "page": 18,
+          "type":"table_row",
+          "quote":"Außenwand 0,20",
+          "bbox": [0.0, 0.0, 0.0, 0.0]
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}
+Warum das besser ist:
+
+Jede Zahl/Schwelle ist evidence-gebunden (Seite + Tabellenzeile).
+
+Du kannst automatisiert prüfen: Kommt „0,20“ im Evidence-Text/Screenshot wirklich vor? → wenn nein: Abbruch.
+
+Beispiel-Evidence: In der TMA-Tabelle stehen die Umax-Grenzen für Außenwände (z. B. Außenwand 0,20 / 0,25 je Zone) direkt tabellarisch. 
+
+Außerdem ist klar geregelt, dass Gebäudehüllen-Einzelmaßnahmen Bestandsgebäude betreffen. 
+
+3) Extraktions-Logik (PDF → Text/Tabelle/OCR → „Rule Candidates“)
+Schritt A – Dokument-Manifest & Versionierung (täglich)
+Download PDFs
+
+Speichere pro PDF:
+
+source_url, download_date
+
+sha256 (Datei-Hash)
+
+doc_title, version_hint (z. B. Infoblatt „Version 10.0 (07/2025)“) 
+
+Wenn sha256 unverändert → kein Re-Extract nötig (spart Zeit)
+
+Hinweis: Die BAFA-Dokumente betonen explizit „nur aktuelle Fassung gültig“ und listen Versionsstände. 
+
+Schritt B – „Born-digital“ Text & Layout ziehen
+Versuche zuerst Layout-Text-Extraktion (koordinatenbasiert):
+
+Output: lines[] mit page, x0,y0,x1,y1, text
+
+Qualitätscheck:
+
+text_coverage_ratio (z. B. Zeichen pro Seite)
+
+Wenn sehr niedrig → OCR-Fallback
+
+Schritt C – Tabellenextraktion (kritisch bei TMA)
+Für Seiten mit Tabellen (z. B. TMA U-Wert-Tabelle):
+
+Tabellenregionen detektieren (bbox), notfalls per Bildanalyse
+
+Extrahiere Tabellenzellen (Grid) → cells[r][c]
+
+Normalisiere:
+
+Dezimal-Komma → Dezimalpunkt (aber speichere Original „0,20“ im Evidence!)
+
+Units separat (W/(m²K), W/(m·K))
+
+Genau diese Seite ist „Table-first“ und muss stabil extrahiert werden, weil hier die Grenzwerte stehen. 
+
+Schritt D – OCR nur, wenn nötig
+OCR pro Seite nur bei:
+
+gescannten Seiten
+
+kaputter Tabellenextraktion
+
+Output muss ebenfalls Bounding-Boxes liefern, sonst ist Evidence später zu schwach.
+
+4) Regel-Extraktion (LLM) – aber nicht „free style“
+LLM nur für:
+Zuordnung: welche Tabellenzeile gehört zu welchem Bauteil / welcher Zone / welcher Maßnahme
+
+Extraktion von Textanforderungen („Feuchteschutz prüfen…“) aus Fließtext
+
+LLM nicht für:
+„Zahlen raten“ (Umax etc.)
+
+„Materiallisten erfinden“
+
+„Förderlogik frei interpretieren“
+
+Denn: In der TMA steht z. B. explizit auch der Hinweis, dass bei Maßnahmen an der Gebäudehülle Feuchteschutz/Tauwasserschutz zu prüfen ist – das ist Textlogik, dafür ist LLM gut. 
+
+5) Sicherheitsmechanismus (dein „Abbruchkriterium“ gegen LLM-Fehler)
+Hard Guards (automatisiert, deterministisch)
+JSON-Schema Validation
+
+Pflichtfelder vorhanden? Datentypen korrekt?
+
+Evidence-Binding Check
+
+Jede Zahl/Schwelle muss im Evidence-quote vorkommen
+
+quote muss aus extrahiertem Text oder OCR stammen
+
+Coverage Check
+
+Für jedes Modul (z. B. Gebäudehülle) müssen Mindest-Regeln existieren:
+
+Außenwände, Dachflächen, Decken/Bodenflächen, Fenster/Türen, sommerlicher Wärmeschutz (steht so als Kapitelstruktur im Infoblatt). 
+
+Fehlt ein Bereich → „Ruleset incomplete“ → Abbruch
+
+Diff-Alarm bei Updates
+
+Wenn sich Grenzwerte ändern (z. B. Umax), dann:
+
+nicht automatisch live schalten
+
+„needs human review“
+
+Soft Guards (im Ergebnis)
+Output für Sekretärin/Kunde nur, wenn:
+
+confidence != low
+
+keine „unknown“-Felder in Schlüsselparametern (z. B. U-Wert fehlt)
+
+Sonst: „Bitte manuell prüfen – Angebot unvollständig oder Regel nicht eindeutig belegbar“
+
+6) Was du am Ende wirklich „ablägst“
+Empfehlung: Speichere 2 Artefakte:
+
+ruleset.json (entscheidungsrelevante Regeln + Evidence-Refs)
+
+evidence_store (Textchunks + Tabellen + OCR + Screenshots mit bbox)
+
+So kann dein Prüf-Agent später zu jeder Entscheidung sagen:
+
+„Welche Regel hat gegriffen?“
+
+„Wo steht das?“ (Dokument, Seite, Ausschnitt)
+
+Wenn du willst, kann ich dir als nächsten Schritt:
+
+ein konkretes JSON-Schema (Draft 2020-12) für diese Rules bauen,
+
+plus ein Mapping-Modell „Angebot → Maßnahmenobjekte“, damit deine Angebotsanalyse sauber an die TMA-Regeln andockt (z. B. Außenwand / Dach / Fenster mit U-Wert, Zone, Denkmal-Flag etc.).
+
+
+You said:
+Reichen die conditions aus oder muss noch eine Beschreibung "Beispiel" förderfähig, Beispiel nicht förderfähig?
+
+ChatGPT said:
+
+Thought for 4 seconds
+Die Conditions sind für die Maschinen-Entscheidung grundsätzlich ausreichend – wenn sie alle Muss-Infos abdecken und du eine harte No-Guess-Policy hast.
+
+Aber: Für Betriebssicherheit, Schulung deiner Sekretärin und Debugging empfehle ich zusätzlich eine separate “Guidance/Examples”-Ebene. Nicht als Pflicht für die Entscheidung, sondern als Hilfstext + Testfälle.
+
+Warum Conditions allein oft nicht reichen (praktisch)
+Angebote sind unvollständig/uneindeutig → du brauchst “Klärungs-Trigger”
+
+Sonderfälle (Innendämmung, Denkmalschutz, Anschlussdetails) → schneller erkennbar mit Beispielen
+
+Qualitätssicherung: Beispiele werden zu Regression-Tests, damit Updates nicht heimlich Fehler einführen
+
+Best Practice: 3 Ebenen pro Regel
+1) Decision (hart, deterministisch)
+conditions[] + required_fields[] + abort_if_missing[]
+
+Nur das entscheidet.
+
+2) Guidance (weich, für Menschen & LLM-Interpretation)
+kurze Begründung, typische Stolperfallen, Hinweise auf Nachweise
+
+3) Examples (Testkorpus, nicht “Rechtstext”)
+Beispiel förderfähig / nicht förderfähig / Klärungsfall
+
+idealerweise als kleine, synthetische “Offer-Facts”-Objekte (nicht ganze Angebote)
+
+Konkrete Empfehlung für dein Schema
+Erweitere die Regel so:
+
+{
+  "rule_id": "tma_aussenwand",
+  "required_fields": ["offer.component_type","offer.u_value","building.is_existing","target_zone"],
+  "abort_if_missing": ["offer.u_value","target_zone"],
+  "conditions": [
+    {"field":"building.is_existing","op":"==","value":true},
+    {"field":"offer.component_type","op":"==","value":"Außenwand"},
+    {"field":"offer.u_value","op":"<=","value":0.20,"unit":"W/(m²K)"}
+  ],
+  "guidance": {
+    "notes": [
+      "Keine Annahmen: U-Wert muss im Angebot/Anlage explizit angegeben sein.",
+      "Bei Innendämmung ggf. Tauwassernachweis erforderlich (falls Maßnahme Innendämmung)."
+    ],
+    "clarification_questions": [
+      "Bitte U-Wert-Nachweis oder Dämmaufbau/λ+Stärke nachreichen.",
+      "Handelt es sich um Außen- oder Innendämmung?"
+    ]
+  },
+  "examples": {
+    "eligible": [
+      {
+        "facts": {"building.is_existing":true,"offer.component_type":"Außenwand","target_zone":"WG_T>=19","offer.u_value":0.19},
+        "expected":"ELIGIBLE"
+      }
+    ],
+    "not_eligible": [
+      {
+        "facts": {"building.is_existing":true,"offer.component_type":"Außenwand","target_zone":"WG_T>=19","offer.u_value":0.27},
+        "expected":"NOT_ELIGIBLE"
+      }
+    ],
+    "needs_clarification": [
+      {
+        "facts": {"building.is_existing":true,"offer.component_type":"Außenwand","target_zone":"WG_T>=19"},
+        "expected":"ABORT_MISSING_FIELD:offer.u_value"
+      }
+    ]
+  }
+}
+Wichtig: Beispiele sind nicht „rechtlich bindend“
+Beispiele dürfen nie die Quelle ersetzen.
+
+Sie dienen als Kommunikationshilfe + automatisierter Test (Regression), damit dein System stabil bleibt.
+
+Meine klare Empfehlung
+✅ Conditions + required/abort sind Pflicht.
+✅ Examples sind sehr sinnvoll – aber als separater Block (Guidance/Test), nicht als Entscheidungsbasis.
+
+Wenn du willst, baue ich dir als Nächstes eine Standard-Rule-Template (für Außenwand, Dach, oberste Geschossdecke/Kellerdecke, Fenster/Türen) inkl. Required Fields + Klärungsfragen – dann kannst du das 1:1 auf alle Gebäudehülle-Maßnahmen skalieren.
+
+
+You said:
+ {"field":"offer.u_value","op":"<=","value":0.20,"unit":"W/(m²K)"}
+
+was ist damit?
+
+ChatGPT said:
+
+Thought for 14s
+Das ist eine einzelne Prüfregel (Condition) in deiner Entscheidungs-Engine – konkret:
+
+{"field":"offer.u_value","op":"<=","value":0.20,"unit":"W/(m²K)"}
+Was bedeutet das?
+offer.u_value = der U-Wert, der im Angebot/Anlage genannt ist (ideal: U-Wert nach Maßnahme, also Ziel-/Endwert).
+
+op:"<=" = Vergleichsoperator „kleiner oder gleich“.
+
+value:0.20 = der Grenzwert aus der TMA (Beispielwert).
+
+unit:"W/(m²K)" = Einheit (Watt pro Quadratmeter-Kelvin).
+
+➡️ Entscheidung: Nur wenn der extrahierte U-Wert aus dem Angebot ≤ 0,20 W/(m²K) ist, erfüllt die Maßnahme dieses Kriterium.
+
+Das Problem an der Stelle (und wie du’s richtig machst)
+1) Welcher U-Wert ist gemeint?
+In Angeboten tauchen gerne mehrere Werte auf:
+
+Bestand (vorher)
+
+nach Sanierung / Zielwert (nachher)
+
+rechnerische Werte aus einem Aufbau
+
+✅ Lösung: speichere getrennt:
+
+offer.u_value_existing (optional)
+
+offer.u_value_target (Pflicht für Entscheidung)
+
+Und die Regel sollte auf offer.u_value_target gehen.
+
+2) Woher kommt offer.u_value überhaupt?
+Der Wert muss aus dem Angebot extrahiert werden – mit Evidence:
+
+Textstelle „U = 0,19 W/m²K“
+
+oder Anlage/Produktblatt
+
+oder „Dämmung 160 mm WLS 035, U nach Sanierung …“
+
+✅ Wenn kein U-Wert explizit drinsteht:
+
+nicht schätzen
+
+→ Klärungsfall („Bitte U-Wert-Nachweis oder Aufbau/λ+d nachreichen“)
+
+3) Einheit / Schreibweisen
+Im echten Leben steht das z. B. so:
+
+W/m²K, W/(m²K), W/(m²·K)
+
+Dezimalkomma: 0,20
+
+✅ Lösung: Normalisierung im Parser:
+
+0,20 → 0.20
+
+Einheitenvarianten → canonical W/(m²K)
+
+4) Grenzwert hängt oft vom Kontext ab (Zone/Bauteil)
+Der Grenzwert 0.20 ist nicht universell, sondern abhängig von:
+
+Bauteil (Außenwand/Dach/Kellerdecke…)
+
+ggf. Temperatur-/Nutzungszone (beheizt/unbeheizt)
+
+ggf. Sonderfall (Innendämmung etc.)
+
+✅ Lösung: Grenzwert nicht „hart“ in die Condition schreiben, sondern als Referenz:
+
+value_from: "tma.u_max" plus scope (Bauteil + Zone)
+
+Dann zieht die Engine den richtigen Grenzwert aus deinem Ruleset.
+
+Empfehlung: so sieht die “saubere” Condition aus
+{
+  "field":"offer.u_value_target",
+  "op":"<=",
+  "value_from":"rules.tma.u_max",
+  "unit":"W/(m²K)"
+}
+Und die Engine setzt rules.tma.u_max automatisch passend zu Bauteil/Zone.
+
+Wenn du mir sagst, ob du U-Werte immer im Angebot stehen hast oder oft nur Aufbauten (λ + d), dann gebe ich dir die beste Extraktionslogik (inkl. „wann berechnen erlaubt ist“ vs. „immer Klärung“).
+
+
+You said:
+es kann beides vorkommen.
+
+Fenster => immer Uw 
+Dach => meistens dachaufbau + lambda
+Wand => (Entweder der KUnde wünscht sich die Dämmstärke, oder es ist bereits vorgegeben, aber da muss nochmal geprüft werden was der Kunde für ein Wandaufbau hat
+
+ChatGPT said:
+
+Thought for 1m 5s
+Perfekt – dann brauchst du eine „Dual-Input“-Logik:
+(A) U-Wert direkt übernehmen oder (B) U-Wert deterministisch aus Aufbau (d + λ) berechnen – und bei Wänden zusätzlich eine Worst-Case-Garantie, falls der Bestand unbekannt ist.
+
+Unten ist eine praxistaugliche Logik, die mit deinen 3 Fällen (Fenster/Dach/Wand) sauber funktioniert.
+
+1) Einheitliches „Offer-Facts“-Format (Extraktionsergebnis)
+Jede Maßnahme wird als Objekt abgelegt:
+
+component_type: Fenster | Dach | Außenwand | Kellerdecke | …
+
+input_mode: direct_u | layers
+
+values: extrahierte Werte (inkl. Evidence)
+
+calc: Ergebnis der Berechnung (falls layers)
+
+decision: PASS | FAIL | CLARIFY (inkl. Begründung + Fragen)
+
+Minimal-Beispiel (vereinfacht):
+
+{
+  "component_type": "Dach",
+  "input_mode": "layers",
+  "layers": [
+    {"name":"Zwischensparrendämmung", "d_m":0.16, "lambda":0.035, "evidence":"..."},
+    {"name":"Aufsparrendämmung", "d_m":0.10, "lambda":0.044, "evidence":"..."}
+  ],
+  "geometry": {"wood_fraction": null, "evidence": null},
+  "calc": {"u_value_target": null, "method": null},
+  "decision": {"status":"CLARIFY", "reason":"Holzanteil/Sparren unbekannt"}
+}
+2) Entscheidungs-Logik pro Bauteil
+A) Fenster (bei dir „immer Uw“)
+Regel:
+
+Wenn Uw im Angebot/Produktblatt explizit vorhanden → verwenden (mit Evidence).
+
+Wenn nur Ug oder „3-fach“ ohne Uw → CLARIFY (nicht schätzen).
+
+Wenn mehrere Uw (z. B. unterschiedliche Fenster) → pro Position separat.
+
+Abbruchfelder (Pflicht):
+
+Uw + Einheit
+
+Zuordnung: welches Fenster zu welcher Position
+
+Klärungsfrage:
+
+„Bitte Uw je Fenstertyp/Position nachreichen (nicht nur Ug).“
+
+B) Dach (meist Aufbau + λ)
+Hier gibt’s zwei Unterfälle:
+
+B1) Reine Aufsparrendämmung / homogene Schichten
+Dann kannst du direkt rechnen:
+
+R
+=
+R
+s
+i
++
+∑
+(
+d
+/
+λ
+)
++
+R
+s
+e
+R=R 
+si
+​
+ +∑(d/λ)+R 
+se
+​
+ 
+
+U
+=
+1
+/
+R
+U=1/R
+
+Hard Rule: Nur rechnen, wenn d und λ pro Schicht vorliegen (Evidence).
+
+B2) Zwischensparren (Parallelpfad: Holz + Dämmung)
+Dann brauchst du den Holzanteil f (Sparrenanteil).
+
+Berechnung (sicher & standardnah):
+
+Pfad Dämmung: 
+U
+i
+n
+s
+=
+1
+/
+(
+R
+s
+i
++
+R
+l
+a
+y
+e
+r
+s
+(
+i
+n
+s
+)
++
+R
+s
+e
+)
+U 
+ins
+​
+ =1/(R 
+si
+​
+ +R 
+layers(ins)
+​
+ +R 
+se
+​
+ )
+
+Pfad Holz: 
+U
+w
+o
+o
+d
+=
+1
+/
+(
+R
+s
+i
++
+R
+l
+a
+y
+e
+r
+s
+(
+w
+o
+o
+d
+)
++
+R
+s
+e
+)
+U 
+wood
+​
+ =1/(R 
+si
+​
+ +R 
+layers(wood)
+​
+ +R 
+se
+​
+ )
+
+Gesamt: 
+U
+=
+f
+⋅
+U
+w
+o
+o
+d
++
+(
+1
+−
+f
+)
+⋅
+U
+i
+n
+s
+U=f⋅U 
+wood
+​
+ +(1−f)⋅U 
+ins
+​
+ 
+
+Wenn f fehlt (häufig):
+
+Nicht raten.
+
+Aber du kannst eine Bandbreite bilden, die dir eine sichere Entscheidung erlaubt:
+
+Bandbreiten-Logik
+
+Rechne mit f=0.07, 0.10, 0.15 (wie du es kennst).
+
+Wenn selbst bei 0.15 der Grenzwert eingehalten wird → PASS (konservativ).
+
+Wenn schon bei 0.07 gerissen wird → FAIL.
+
+Dazwischen → CLARIFY (Sparrenbreite/Abstand/Holzanteil anfragen).
+
+Klärungsfragen (bei CLARIFY):
+
+Sparrenbreite (cm), Sparrenabstand (Achsmaß), Sparrenhöhe / Dämmstärke
+
+Ist zusätzlich Aufsparrendämmung vorhanden (reduziert Holzbrückeneffekt)?
+
+C) Außenwand (Bestand oft unklar)
+Das ist der kritischste Teil – aber du kannst es trotzdem stabil bauen.
+
+C1) U-Wert ist angegeben
+→ direkt verwenden (wie Fenster), Evidence Pflicht.
+
+C2) Nur neue Dämmung (Dicke + λ), Bestand unbekannt
+Hier empfehle ich eine Worst-Case-Garantie ohne Bestandswissen:
+
+Worst-Case-U ohne Bestand
+
+Setze den Bestandswiderstand konservativ = 0 (du ignorierst ihn komplett).
+
+Dann gilt:
+U
+u
+p
+p
+e
+r
+=
+1
+/
+(
+R
+s
+i
++
+∑
+(
+d
+n
+e
+u
+/
+λ
+n
+e
+u
+)
++
+R
+s
+e
+)
+U 
+upper
+​
+ =1/(R 
+si
+​
+ +∑(d 
+neu
+​
+ /λ 
+neu
+​
+ )+R 
+se
+​
+ )
+
+Warum das gut ist:
+Der echte Bestand hat immer einen Widerstand > 0 → der echte U-Wert ist besser (kleiner) als dein Worst-Case.
+➡️ Wenn Worst-Case bereits ≤ Grenzwert ist, bist du sicher PASS, ohne Wandaufbau zu kennen.
+
+Entscheidungslogik
+
+Wenn U_upper ≤ Grenzwert → PASS (garantiert)
+
+Wenn U_upper > Grenzwert → CLARIFY (dann brauchst du Bestandsinfos oder mehr Dämmung)
+
+Was du bei Wand zusätzlich abfragen musst (für CLARIFY / Sonderfälle):
+
+Innendämmung? → Feuchte-/Tauwassernachweis erforderlich → ohne Nachweis CLARIFY (nicht automatisch FAIL)
+
+Materialkennwert fehlt (nur “14 cm WDVS” ohne WLS/λ) → CLARIFY
+
+Kunde “wünscht Dämmstärke” → Agent liefert:
+
+erforderliche Mindest-Dämmstärke (aus Grenzwert rückwärts gerechnet) als Vorschlag, aber markiert als „Planungswert / Bestätigung nötig“
+
+3) Harte Abbruchkriterien (dein Sicherheitsmechanismus)
+Ein Ergebnis darf nur PASS/FAIL werden, wenn:
+
+Alle required_fields vorhanden sind oder Worst-Case-Garantie greift (Wand).
+
+Jede Zahl hat Evidence (Textstelle/Seite/Positionszeile).
+
+Keine Einheitenkonflikte (mm vs cm etc.).
+
+Keine Mehrdeutigkeit bei Zuordnung (welcher Wert gehört zu welchem Bauteil).
+
+Sonst immer: CLARIFY mit konkreten Fragen.
+
+4) Kurz-Checkliste pro Bauteil (was der Agent „braucht“)
+Fenster
+
+Uw (Pflicht), Position/Typ
+
+Dach
+
+Schichten: d + λ (Pflicht)
+
+Bei Zwischensparren: Holzanteil (oder Sparrenbreite + Abstand)
+
+Wand
+
+Entweder U-Wert (Pflicht) oder neue Dämmung d + λ
+
+Wenn Worst-Case nicht reicht: Bestandsaufbau (grob reicht meist: Material + Dicke)
+
+Wenn du willst, formatiere ich dir das jetzt als konkretes JSON-Schema (required_fields/abort_if_missing) für genau diese 3 Bauteile + eine Berechnungs-Policy (“wann rechnen erlaubt ist”) – damit du es 1:1 an einen Agenten/Workflow hängen kannst.
+
+
+You said:
+Wie fürdest du die Anforderungen clustern/strukturiert auslesen?
+
+ChatGPT said:
+
+Thought for 40s
+So würde ich es clustern und strukturiert auslesen, damit am Ende ein deterministisches Ruleset für „förderfähig / nicht förderfähig / Klärung nötig“ rausfällt – inkl. Tabellen/OCR/Evidence.
+
+1) Erst clustern: Welche Dokumente liefern welche Art Anforderungen?
+A. Maßgeblich (Normativ)
+BEG-EM-Richtlinie (21.12.2023, BAnz AT 29.12.2023 B1)
+→ enthält die rechtlich maßgeblichen Anforderungen, u. a. Definitionen, Fördertatbestände und (entscheidend) die Technischen Mindestanforderungen (TMA) mit Grenzwerten (z. B. U-Werte) 
+
+B. Operativ/Anwendungslogik (unterstützend, nicht maßgeblich)
+Allgemeines Merkblatt Antragstellung (Feb 2025)
+→ Prozess/Unterlagen/Antragsschritte; es weist auch darauf hin, dass maßgeblich die Richtlinie ist 
+
+Infoblatt förderfähige Maßnahmen & Leistungen – Sanieren (Stand 01.07.2025)
+→ sehr wichtig für deinen Agenten, weil es Maßnahmen-Katalog + (nicht) förderfähige Kostenbestandteile systematisch auflistet 
+
+C. Modul-fremd (für Gebäudehülle i. d. R. ausfiltern)
+Merkblatt Gebäudenetze 
+
+Hydraulischer Abgleich (relevant für Heizung/Anlagentechnik, nicht Gebäudehülle) 
+
+→ Die würde ich im System als separates Modul führen oder für den „Gebäudehülle-Agent“ komplett deaktivieren.
+
+D. Bonus-Regeln (optional)
+Zusatzantrag Einkommensbonus (eigener Block) 
+
+2) Ziel-Cluster im Ruleset (so würde ich die Anforderungen sortieren)
+Dein Agent braucht am Ende nicht „Dokumentwissen“, sondern Regeltypen:
+
+Scope & Eligibility (Geltungsbereich)
+
+Gebäudetyp/Bestand, Antragsteller, Kombinierbarkeit, Ausschlüsse
+
+Quelle: Richtlinie + Merkblatt-Antragstellung
+
+Maßnahmen-Katalog (Was ist grundsätzlich förderfähig?)
+
+Maßnahme → Bauteilgruppe → Fördertatbestand
+
+Quelle: Richtlinie + Infoblatt (als „Katalog“)
+
+Technische Mindestanforderungen (TMA / Grenzwerte)
+
+z. B. Umax je Bauteil/Zonenfall, Uw bei Fenstern, Sonderfälle (Innendämmung/Feuchte)
+
+Quelle: Richtlinie/TMA
+
+Kostenlogik (Was darf in die förderfähigen Kosten?)
+
+förderfähig / nicht förderfähig / nur anteilig / Nebenleistungen
+
+Quelle: Infoblatt 
+
+Nachweise & Dokumentationspflichten
+
+was muss im Angebot/Anlage/Nachweis stehen, Mindestangaben
+
+Quelle: Merkblatt + Richtlinie
+
+Abbruch-/Klärungslogik (Fail-Safe)
+
+required fields pro Maßnahme
+
+wenn fehlt → “KLÄRUNG”, niemals raten
+
+3) “Strukturiert auslesen”: Pipeline, die auch Tabellen/OCR sauber kann
+Schritt 0: Dokument-Manifest + Prioritäten
+Für jedes PDF:
+
+doc_id, download_url, download_date, sha256, version_hint, priority
+
+Priorität: Richtlinie > Infoblatt > Merkblätter
+(weil Merkblatt selbst sagt: maßgeblich ist die Richtlinie) 
+
+Schritt 1: Segmentierung nach Struktur (TOC/Überschriften)
+Aus jedem Dokument extrahierst du:
+
+Überschriftenhierarchie (Kapitel → Unterkapitel)
+
+Listen/Bullets
+
+Tabellenblöcke
+
+Definitionsblöcke (“Begriffsbestimmungen”)
+
+Ergebnis: Chunks mit chunk_id, doc_id, page_range, heading_path.
+
+Schritt 2: Kandidaten-Erkennung “Requirement Snippets”
+Du markierst Textstellen als Anforderungen anhand Muster:
+
+MUSS/IST/VORAUSSETZUNG/DARF NICHT, Grenzwerte (≤, >=), “nicht förderfähig”
+
+Tabellenzeilen, die “Bauteil – Grenzwert” enthalten
+
+Kostenlisten “förderfähig / nicht förderfähig”
+
+Jeder Kandidat bekommt Evidence:
+
+doc_id, page, quote (kurzer Text), ideal: bbox (Koordinaten)
+
+Schritt 3: Tabellen-First bei TMA (wichtigster Teil)
+Für Seiten mit U-Wert/Uw-Tabellen:
+
+Tabellenextraktion (Zellen → Zeilenobjekte)
+
+Normalisierung:
+
+Dezimalkomma → Zahl
+
+Einheitenvarianten → Canonical Einheit
+
+Jede Tabellenzeile wird ein Requirement-Record
+
+Wenn Tabellenextraktion scheitert:
+
+OCR nur für die betroffenen Seiten
+
+Evidence bleibt: page + quote (+ bbox wenn möglich)
+
+Schritt 4: Normalisierung in ein kontrolliertes Vokabular
+Du mappst Begriffe auf feste Keys:
+
+“Fassade/WDVS/Außenwand” → component_type="Außenwand"
+
+“Dach/Steildach/Flachdach/oberste Geschossdecke” → klare Typen
+
+Kostenarten: Gerüst, Putz, Entsorgung, Planung usw.
+
+Schritt 5: “Requirement-Record” bauen (dein Zwischenformat)
+Das ist der wichtigste Schritt: aus Text/Tabellen wird ein normiertes Objekt:
+
+{
+  "req_id": "tma_u_außenwand_zoneA",
+  "req_type": "TECH_THRESHOLD",
+  "scope": {"module":"Gebäudehülle","component":"Außenwand","case":"beheizt"},
+  "fields": [{"name":"u_value_target","op":"<=","value":0.20,"unit":"W/(m²K)"}],
+  "source_priority": 100,
+  "evidence": [{"doc_id":"beg_em_richtlinie_2023-12-21","page":18,"quote":"Außenwand … 0,20"}]
+}
+Schritt 6: Aus Requirement-Records wird das Ruleset (Entscheidungsgrundlage)
+Jetzt “kompilierst” du:
+
+pro Maßnahme ein Rule Template:
+
+required_fields
+
+pass_conditions (aus TECH_THRESHOLD + ELIGIBILITY)
+
+fail_conditions (explizite Ausschlüsse)
+
+clarify_conditions (wenn required fehlt)
+
+4) Minimale “Fail-Safe”-Regeln beim Auslesen (gegen LLM/Extraktionsfehler)
+Jede Zahl im Ruleset muss evidence-gebunden sein (quote muss vorkommen).
+
+Konfliktregel: Wenn zwei Dokumente widersprechen → nimm höchste Priorität (Richtlinie), lagere den Rest als Kommentar aus. 
+
+Coverage-Check: Für Gebäudehülle müssen Regeln existieren für:
+
+Außenwand, Dach/OGD, Kellerdecke/Boden, Fenster/Türen, Sonderfälle (z. B. Innendämmung)
+
+Wenn Coverage nicht erfüllt → Ruleset nicht freigeben (Abbruch).
+
+5) Ergebnis: Was du danach “in den Agent Context” gibst
+Nicht die PDFs, sondern:
+
+ruleset.json (kompiliert, deterministisch)
+
+evidence_store (Zitat + Seite + bbox/Screenshot)
+
+optional guidance aus Infoblatt/Merkblatt (Kosten-/Prozesshinweise) 
+
+Wenn du magst, kann ich dir als nächstes ein konkretes Cluster-Schema für Gebäudehülle liefern (Außenwand/Dach/Fenster) inklusive:
+
+required_fields je Bauteil
+
+“U-Wert direkt” vs “Schichtenrechnung” vs “Worst-Case-Garantie”
+
+und die Standard-Klärungsfragen, die deine Sekretärin dann 1:1 an Kunden schicken kann.
+
+
+You said:
+Erstelle eine spec structur was für alle förderungsmaßnahmen passt
+
+ChatGPT said:
+
+Thought for 13s
+Unten ist eine universelle Spec-Struktur, die für alle BEG/BAFA-Fördermaßnahmen taugt (Gebäudehülle, Fenster, Dach, Heizungstausch, Optimierung, Lüftung, ggf. Boni, Kostenlogik, Nachweise). Sie ist so gebaut, dass dein Agent nicht raten muss, sondern deterministisch entscheiden kann – und du trotzdem Evidence + Auditing hast.
+
+0) Prinzip: 3 Artefakte statt „ein JSON für alles“
+offer_facts.json (aus Angebot/Anhängen extrahierte Fakten + Evidence)
+
+ruleset.json (aus Richtlinie/Infoblättern kompiliert: Maßnahmen + Anforderungen + Kostenlogik)
+
+evaluation.json (Ergebnis je Maßnahme: PASS/FAIL/CLARIFY + Begründung + Kundenfragen)
+
+Damit trennst du: Was steht drin? vs. Was gilt? vs. Was ist das Ergebnis?
+
+1) Universelle DSL für Bedingungen (Condition)
+Diese Condition-Form funktioniert überall (U-Wert, Uw, Jahresarbeitszahl, hydraulischer Abgleich, Fachunternehmererklärung, Kombinationsregeln etc.):
+
+{
+  "field": "offer.u_value_target",
+  "op": "<=",
+  "value": 0.20,
+  "unit": "W/(m²K)",
+  "evidence_required": true,
+  "severity_if_missing": "CLARIFY"
+}
+Erweiterungen:
+
+value_from: Grenzwert aus Tabelle ziehen (statt hart codiert)
+
+any_of / all_of / not
+
+depends_on: nur prüfen wenn Maßnahmetyp/Unterfall zutrifft
+
+2) Universelle Maßnahme-Spec (gilt für alle Fördermaßnahmen)
+MeasureSpec (Template)
+{
+  "measure_id": "beg_em.envelope.wall.insulation",
+  "module": "Gebaeudehuelle",
+  "title": "Daemmung Aussenwand",
+  "version": "2026-02-15",
+  "legal_basis": [
+    {"doc_id": "beg_em_richtlinie", "section": "TMA", "priority": 100}
+  ],
+
+  "scope": {
+    "building_types": ["WG", "NWG"],
+    "requires_existing_building": true,
+    "excludes_new_build": true
+  },
+
+  "required_fields": [
+    {"path": "offer.component_type", "severity_if_missing": "ABORT"},
+    {"path": "offer.costs.total", "severity_if_missing": "CLARIFY"}
+  ],
+
+  "eligibility": {
+    "all_of": [
+      {"field": "building.is_existing", "op": "==", "value": true},
+      {"field": "offer.component_type", "op": "==", "value": "Außenwand"}
+    ],
+    "any_of": [],
+    "exclusions": [
+      {
+        "when_all_of": [
+          {"field": "offer.is_internal_insulation", "op": "==", "value": true},
+          {"field": "docs.tauwassernachweis_present", "op": "==", "value": false}
+        ],
+        "result": "CLARIFY",
+        "message_key": "need_condensation_proof"
+      }
+    ]
+  },
+
+  "technical_requirements": {
+    "thresholds": [
+      {
+        "name": "u_max",
+        "condition": {
+          "field": "derived.u_value_target",
+          "op": "<=",
+          "value_from": "tables.tma.u_max.by_component_and_zone",
+          "unit": "W/(m²K)",
+          "evidence_required": true,
+          "severity_if_missing": "CLARIFY"
+        }
+      }
+    ],
+    "calculation_methods": [
+      {
+        "method_id": "uvalue_from_layers",
+        "when_all_of": [{"field": "offer.input_mode", "op": "==", "value": "layers"}],
+        "inputs": ["offer.layers[].d_m", "offer.layers[].lambda"],
+        "outputs": ["derived.u_value_target"],
+        "abort_if_missing": ["offer.layers"]
+      }
+    ]
+  },
+
+  "cost_rules": {
+    "eligible_cost_categories": ["Material", "Montage", "Nebenarbeiten_notwendig"],
+    "ineligible_cost_categories": ["Finanzierung", "Wartung", "Eigenleistung"],
+    "split_rules": [
+      {
+        "when": {"field": "offer.line_items[].type", "op": "==", "value": "Geruest"},
+        "result": "ELIGIBLE_IF_NECESSARY",
+        "note_key": "scaffolding_if_necessary"
+      }
+    ]
+  },
+
+  "documentation": {
+    "must_have": [
+      {"doc": "Fachunternehmererklaerung", "severity_if_missing": "CLARIFY"},
+      {"doc": "Uwert_Nachweis_or_Layers", "severity_if_missing": "CLARIFY"}
+    ],
+    "nice_to_have": []
+  },
+
+  "outputs": {
+    "messages": {
+      "pass_summary_key": "pass_wall_insulation",
+      "clarify_questions_keys": ["ask_wall_build_up", "ask_lambda_thickness"]
+    }
+  },
+
+  "examples": {
+    "eligible": [{"facts_ref": "tests/wall_ok_01.json", "expected": "PASS"}],
+    "not_eligible": [{"facts_ref": "tests/wall_fail_01.json", "expected": "FAIL"}],
+    "clarify": [{"facts_ref": "tests/wall_missing_u_01.json", "expected": "CLARIFY"}]
+  }
+}
+Warum das für alles passt:
+
+scope deckt Förderfähigkeitsrahmen ab
+
+required_fields + severity_if_missing ist dein Fail-Safe
+
+technical_requirements.thresholds kann U-Werte, Uw, Wirkungsgrade, Nachweise, Verfahrensanforderungen usw. abbilden
+
+cost_rules trennt förderfähige/nicht förderfähige Kosten (sehr wichtig)
+
+documentation.must_have erzwingt Nachweise
+
+examples werden zu Regression-Tests
+
+3) Tabellen-/Grenzwert-Referenzen (ohne harte Werte im Code)
+Statt überall 0.20 einzubauen, nutzt du Tabellen-Lookups:
+
+"tables": {
+  "tma": {
+    "u_max": {
+      "by_component_and_zone": [
+        {"component":"Außenwand","zone":"WG_T>=19","u_max":0.20,"evidence":{...}},
+        {"component":"Dach","zone":"WG_T>=19","u_max":0.14,"evidence":{...}}
+      ]
+    }
+  }
+}
+Vorteil: Wenn BAFA etwas ändert, update nur die Tabelle + Evidence.
+
+4) Universal offer_facts.json (damit alle Maßnahmen abgedeckt sind)
+{
+  "building": {
+    "is_existing": true,
+    "type": "WG",
+    "location_plz": "60311",
+    "monument": false
+  },
+  "applicant": {
+    "income_bonus_requested": false
+  },
+  "offer": {
+    "input_mode": "direct_u_or_layers",
+    "measures": [
+      {
+        "component_type": "Fenster",
+        "values": {"uw": {"value": 0.9, "unit": "W/(m²K)", "evidence": {...}}},
+        "costs": {"total": 12000, "currency": "EUR"},
+        "line_items": [...]
+      },
+      {
+        "component_type": "Dach",
+        "values": {},
+        "layers": [
+          {"d_m": 0.16, "lambda": 0.035, "evidence": {...}},
+          {"d_m": 0.10, "lambda": 0.044, "evidence": {...}}
+        ],
+        "geometry": {"wood_fraction": null},
+        "costs": {"total": 18000, "currency": "EUR"}
+      }
+    ]
+  },
+  "docs": {
+    "fachunternehmererklaerung_present": false,
+    "tauwassernachweis_present": null
+  }
+}
+5) Universal evaluation.json (für Sekretärin + Kundenmail)
+{
+  "case_id": "2026-02-15_001",
+  "results": [
+    {
+      "measure_id": "beg_em.envelope.window.replace",
+      "status": "PASS",
+      "reason": "Uw <= Grenzwert",
+      "used_evidence": [{"doc_id":"offer_pdf","page":2,"quote":"Uw = 0,90 W/m²K"}],
+      "customer_message": "Die Fenster (Uw 0,90) sind nach aktueller Datenlage förderfähig."
+    },
+    {
+      "measure_id": "beg_em.envelope.roof.insulation",
+      "status": "CLARIFY",
+      "reason": "Holzanteil/Sparrenangaben fehlen",
+      "questions": [
+        "Bitte Sparrenbreite und Sparrenabstand (Achsmaß) angeben.",
+        "Alternativ: U-Wert-Nachweis nach Sanierung beilegen."
+      ]
+    }
+  ]
+}
+6) Minimal-Regeln, die du immer brauchst (für alle Maßnahmen)
+No-Guess Policy: fehlende Muss-Felder → niemals PASS/FAIL, sondern CLARIFY/ABORT
+
+Evidence Pflicht: jede Zahl/Schwelle braucht Quelle (Seite/Quote/bbox)
+
+Prioritätenmodell: Richtlinie/TMA schlägt Merkblatt/Infoblatt bei Konflikten
+
+Coverage Check: Ruleset darf nur live gehen, wenn alle Module deiner Firma abgedeckt sind
+
+Wenn du willst, mache ich dir als nächsten Schritt eine komplette “Measure Library” als leere Templates (Gebäudehülle, Heizung, Optimierung, Lüftung etc.) mit:
+
+empfohlenen required_fields pro Modul
+
+typischen documentation.must_have
+
+Standard-Klärungsfragen-Keys (deutsch, für Sekretärin/Kundenmail)
+
+
+You said:
+welches llm würdest du mir empfehlen?
+
+ChatGPT said:
+
+Thought for 1m 17s
+Für deinen BAFA/BEG-Prüf-Agent (Angebot rein → förderfähig/unklar/nicht raus + Kundenmail) würde ich eine Modell-Kaskade empfehlen – nicht „ein einziges LLM für alles“.
+
+Empfehlung (praxisnah)
+1) Standard-Arbeit (80–90% der Fälle)
+OpenAI GPT-5 mini als Default-Modell für
+
+Fakten-Extraktion aus Angebot (Positionen, Bauteil, Dicken, λ, Uw, Kosten)
+
+Mail-/Memo-Texte für Sekretärin/Kunde
+
+“Triage” (ist alles vollständig oder Klärungsfall?)
+
+GPT-5 mini ist explizit als schnelle, kosteneffiziente Variante für klar definierte Tasks gelistet. 
+
+2) Eskalation bei kniffligen Fällen (10–20%)
+OpenAI GPT-5.2 (oder GPT-5.2 pro) nur dann, wenn
+
+Tabellen/Positionen widersprüchlich sind
+
+Bauteil-Zuordnung unklar (z. B. OGD vs Dach, Innen- vs Außendämmung)
+
+du eine “Second opinion” brauchst
+
+GPT-5.2 (und „pro“) ist in der Modellliste als stärkstes Modell für agentische/komplexe Aufgaben beschrieben. 
+
+Warum diese Kombi für dich besonders gut passt
+A) Du willst garantiertes JSON, nicht “best effort”
+Nutze Structured Outputs mit JSON-Schema (Responses API), dann hält das Modell dein Schema zuverlässig ein (keine fehlenden Keys, keine falschen Enums). 
+
+Wichtig für dich: Das verhindert Format-Fehler – nicht automatisch Inhalts-Fehler. Deshalb die Kaskade + Rule-Engine.
+
+B) Vision/Scan-PDFs: nicht alles in einen Call quetschen
+OpenAI weist explizit darauf hin, dass Structured Outputs in der Assistants API bei Vision nicht unterstützt sind. 
+
+Praktisch heißt das:
+
+Scan-PDF → OCR / Text-Extraktion → dann Structured Output (JSON)
+oder
+
+Vision-Call → Text/Key-Values → dann zweiter Call “strict JSON”
+
+Damit bleibt dein Output stabil.
+
+“Wenn du alles in-house willst”
+Als Alternative gibt’s open-weight Modelle (z. B. gpt-oss-20b/120b) – gut für Datenschutz/On-Prem, aber du brauchst GPU-Infra + mehr Engineering. 
+
+Für einen schnellen Start und 10 Prüfungen/Tag ist OpenAI-Kaskade meist deutlich effizienter.
+
+Kurz: Was ich dir konkret empfehlen würde
+Default: GPT-5 mini
+
+Eskalation: GPT-5.2 (oder 5.2 pro)
+
+Format-Sicherheit: Responses API + Structured Outputs (JSON-Schema) 
+
+Fehler-Sicherheit: Entscheidung immer durch deine deterministische Rule-Engine, LLM nur für Extraktion/Begründung.
+
+Wenn du willst, schreibe ich dir als nächstes eine konkrete „Model Routing“-Policy (wann mini, wann 5.2) + ein JSON-Schema für offer_facts (Fenster/Uw, Dach/Schichten, Wand/Worst-Case-Garantie).
+
+
+You said:
+wie werden dann die rules extrahiert?
+
+ChatGPT said:
+
+Thought for 8s
+Gute Frage – und wichtig: Die Rules werden nicht “einfach vom LLM aus dem PDF rausgelesen” (zu fehleranfällig), sondern über eine Pipeline, in der das LLM nur klassifiziert/zuordnet, während Zahlen/Grenzwerte tabellenbasiert + evidence-gebunden übernommen werden.
+
+Hier ist die robuste Logik, wie du aus deinen BAFA/BEG-PDFs ein ruleset.json erzeugst.
+
+Ziel: Aus PDFs → RequirementRecords → kompiliertes ruleset.json
+Ergebnisformate
+evidence_store: extrahierte Textzeilen + Tabellen + OCR + Screenshots (mit Seite/BBox)
+
+requirements.jsonl: atomare Anforderungen (ein Grenzwert / ein Ausschluss / ein Nachweis)
+
+ruleset.json: pro Maßnahme ein „MeasureSpec“ mit required_fields, conditions, cost_rules, docs
+
+Schritt 1 – Dokument-Manifest & Versionierung (damit Updates sauber sind)
+Für jedes PDF:
+
+doc_id, download_url, download_date
+
+sha256 (Hash der Datei)
+
+title, version_hint (sofern im PDF sichtbar)
+
+➡️ Nur wenn Hash neu → neu extrahieren.
+
+Schritt 2 – PDF „Layout-Extraktion“ (Text + Koordinaten)
+Du extrahierst Zeilen mit Position:
+
+page, x0,y0,x1,y1, text
+
+Warum Koordinaten?
+Damit du später Evidence sauber referenzierst („steht wirklich da“).
+
+Qualitätscheck:
+
+Wenn kaum Text extrahierbar (Scan) → OCR-Fallback pro Seite.
+
+Schritt 3 – Tabellen-Extraktion (kritisch: TMA / Grenzwerttabellen)
+Für Seiten, die Tabellen enthalten (typisch: U-Werte, Uw-Grenzen, ggf. Wirkungsgrade etc.):
+
+Tabellenregion erkennen (BBox)
+
+Zellen extrahieren → cells[r][c]
+
+Normalisieren:
+
+0,20 → 0.20 (Wert)
+
+Originalstring bleibt im Evidence („0,20“)
+
+Einheiten vereinheitlichen
+
+➡️ Diese Tabellen liefern die “harten Zahlen”.
+Wenn Tabellenextraktion scheitert: OCR gezielt nur auf den Tabellenseiten.
+
+Schritt 4 – Kandidaten finden: “Requirement Snippets”
+Jetzt markierst du Textstellen als potenzielle Anforderungen.
+
+Heuristiken (deterministisch):
+
+Schlüsselwörter: muss / darf nicht / Voraussetzung / förderfähig / nicht förderfähig
+
+Operatoren: <=, ≥, %, W/m²K
+
+Listenblöcke (Aufzählungen) für Kosten/Nachweise
+
+Tabellenzeilen mit Bauteil + Zahl
+
+Output: snippet-Objekte mit Evidence:
+
+doc_id, page, quote, bbox, type (table_row / bullet / paragraph)
+
+Schritt 5 – LLM nur für Struktur & Mapping (nicht für Zahlen erfinden)
+Jetzt kommt das LLM – aber in einer sehr engen Rolle:
+
+Aufgabe A: Klassifizieren
+Für jeden Snippet:
+
+req_type: TECH_THRESHOLD | DOC_REQUIREMENT | COST_ELIGIBILITY | EXCLUSION | PROCESS_RULE
+
+module: Gebäudehülle / Heizung / Optimierung / Bonus / …
+
+measure_id (Zielmaßnahme)
+
+Aufgabe B: Entitäten mappen
+Begriffe aus Text werden auf kontrollierte Keys gemappt:
+
+„Fassade“, „WDVS“ → component_type=Außenwand
+
+„oberste Geschossdecke“ ≠ „Dachfläche“ (separat!)
+
+„Uw“ vs „Ug“
+
+Wichtig: Zahlen/Grenzwerte kommen bei Tabellen aus der Tabelle, nicht aus LLM-Paraphrasen.
+
+Schritt 6 – Atomare “RequirementRecords” bauen (dein Zwischenformat)
+Aus jedem Snippet entsteht ein standardisiertes Objekt:
+
+Beispiel: technischer Grenzwert
+
+{
+  "req_id": "tma.u_max.wall.zone_wg_tge19",
+  "req_type": "TECH_THRESHOLD",
+  "scope": {"module":"Gebäudehülle","measure":"Außenwanddämmung","component":"Außenwand","case":"WG_T>=19"},
+  "rule": {"field":"derived.u_value_target","op":"<=","value":0.20,"unit":"W/(m²K)"},
+  "evidence": [{"doc_id":"beg_em_richtlinie","page":18,"quote":"Außenwand … 0,20","bbox":[...]}],
+  "priority": 100
+}
+Beispiel: Nachweis
+
+{
+  "req_type":"DOC_REQUIREMENT",
+  "scope":{"module":"Gebäudehülle","measure":"Innendämmung"},
+  "rule":{"field":"docs.tauwassernachweis_present","op":"==","value":true},
+  "severity_if_missing":"CLARIFY",
+  "evidence":[...],
+  "priority": 100
+}
+Beispiel: Kostenregel
+
+{
+  "req_type":"COST_ELIGIBILITY",
+  "scope":{"module":"Gebäudehülle","measure":"Außenwanddämmung"},
+  "cost_category":"Gerüst",
+  "decision":"ELIGIBLE_IF_NECESSARY",
+  "evidence":[...],
+  "priority": 80
+}
+Schritt 7 – Kompilieren zu “MeasureSpec” (Ruleset)
+Jetzt “kompiliert” ein deterministischer Builder aus vielen RequirementRecords eine Maßnahme:
+
+required_fields (was muss im Angebot stehen?)
+
+eligibility (Scope-Regeln)
+
+technical_requirements.thresholds (Grenzwerte)
+
+documentation.must_have
+
+cost_rules
+
+➡️ Das ist genau das Spec-Format, das du vorhin wolltest.
+
+Schritt 8 – Guards (damit du dem System vertrauen kannst)
+Das ist der Teil, der dich vor LLM-Fehlern schützt:
+
+Guard 1: Evidence-Binding
+Jeder Grenzwert muss:
+
+im Evidence-Quote vorkommen und
+
+aus Tabelle/OCR/Text extrahiert sein (nicht “nur LLM”)
+
+Wenn nicht: Rule wird verworfen → “Ruleset incomplete”.
+
+Guard 2: Konfliktauflösung nach Priorität
+Wenn Infoblatt und Richtlinie widersprechen:
+
+Richtlinie gewinnt, Infoblatt wird nur als Guidance gespeichert.
+
+Guard 3: Coverage-Check
+Für jedes aktivierte Modul müssen Mindest-Sets existieren:
+
+Gebäudehülle: Außenwand / Dach / Decken / Fenster-Türen (+ Sonderfälle)
+
+Heizung: Erzeuger / Optimierung / Nachweise / Ausschlüsse
+Wenn nicht erfüllt → Ruleset nicht freigeben.
+
+Guard 4: Diff-Alarm bei Updates
+Wenn neue PDF-Version → Builder zeigt:
+
+welche Grenzwerte sich ändern
+
+welche Regeln neu/wegfallen
+Dann kannst du (oder jemand intern) einmal kurz reviewen.
+
+Was bedeutet das praktisch für dich (Dennis)?
+Einmal baust du die Mapping-/Template-Schicht (Measure IDs, Bauteil-Taxonomie).
+
+Danach laufen Updates sehr stabil, weil das System nur evidence-gebundene Regeln akzeptiert.
+
+Wenn du mir sagst, ob du das in Zoho/Deluge, Node/Python, oder Make/Zapier + Server umsetzen willst, gebe ich dir als nächstes:
+
+das komplette requirements.jsonl Schema +
+
+ein konkretes MeasureSpec-Template für alle Module (Gebäudehülle/Heizung/Optimierung/Lüftung/Bonus) inkl. required_fields und Standard-Guards.
+
+
+You said:
+in welchem Format liegen dann die rules vor? in einer json file oder mehrere? 
+
+ChatGPT said:
+Ich würde sie nicht in eine einzige JSON packen, sondern mehrteilig und versioniert – so bleibt’s wartbar, update-sicher und du kannst einzelne Module austauschen (z. B. Gebäudehülle vs. Heizung).
+
+✅ Empfohlenes Format-Set (in der Praxis bewährt)
+1) manifest.json (1 Datei)
+Enthält Version/Hash/Quelle der PDFs + Build-Metadaten.
+
+Vorteil: Du kannst immer nachweisen, gegen welche Dokumentversion geprüft wurde.
+
+2) tables/*.json (mehrere Dateien)
+Alle tabellarischen Grenzwerte (z. B. Umax, Uw-Grenzen, Wirkungsgrade) als saubere Tabellenobjekte.
+
+z. B. tables/tma_u_values.json
+
+z. B. tables/window_uw_thresholds.json
+
+Vorteil: Änderungen betreffen nur eine Tabelle, nicht das ganze Ruleset.
+
+3) measures/*.json (mehrere Dateien, pro Maßnahme oder pro Modul)
+Je Maßnahme ein MeasureSpec (dein “Regelpaket” inkl. required_fields, conditions, docs, cost rules).
+
+z. B. measures/envelope_wall_insulation.json
+
+z. b. measures/envelope_roof_insulation.json
+
+z. b. measures/heating_heatpump.json
+
+4) taxonomy/*.json (1–3 Dateien)
+Kontrolliertes Vokabular + Synonyme (damit “WDVS/Fassade/Außenwand” sauber gemappt wird).
+
+z. B. taxonomy/components.json
+
+z. b. taxonomy/cost_categories.json
+
+5) evidence_store/ (viele kleine Dateien)
+Evidence als Textchunks + (optional) Screenshots/Bounding Boxes pro Regel/Tabellenzeile.
+
+z. B. evidence_store/beg_em_richtlinie/page18_table1_row3.json
+
+Vorteil: Du kannst jede Regel auditieren (“wo steht das?”).
+
+Wie wird das im Betrieb genutzt?
+Option A (empfohlen): Viele Dateien als Source-of-Truth
+Dein Build-Prozess lädt + extrahiert + kompiliert und legt alles in Ordnern ab.
+
+Option B: Ein „Bundle“ für Deployment
+Für Laufzeit (Agent) kann man zusätzlich ein kompaktes Bundle erzeugen:
+
+ruleset.bundle.json (1 Datei)
+
+enthält: measures + tables + taxonomy (ohne große Evidence-Dateien)
+
+Evidence bleibt separat, wird nur bei Bedarf nachgeladen
+
+➡️ Best of both worlds: wartbar + schnell.
+
+Konkrete Empfehlung für dich (BAFA/BEG Agent)
+Im Repo/Storage (Wartung):
+
+mehrere JSON-Dateien (Modular)
+
+Im Agent zur Laufzeit (Performance):
+
+1 Bundle JSON (schnell laden)
+
+Evidence separat (nur bei Debug/Begründung)
+
+Beispiel: Ordnerstruktur (ready-to-implement)
+rules/
+  manifest.json
+  taxonomy/
+    components.json
+    measures.json
+    cost_categories.json
+  tables/
+    tma_u_values.json
+    window_thresholds.json
+  measures/
+    envelope_wall_insulation.json
+    envelope_roof_insulation.json
+    envelope_windows.json
+    heating_heatpump.json
+  evidence_store/
+    beg_em_richtlinie/
+      page_18_table_uvalues_row_03.json
+      ...
+  bundles/
+    ruleset.bundle.json
+Wenn du willst, kann ich dir als nächstes ein konkretes, sauberes JSON-Schema für:
+
+MeasureSpec
+
+TableSpec
+
+EvidenceRef
+
+RulesetBundle
+
+geben, sodass dein Entwickler das 1:1 implementieren kann.
+
+
+You said:
+Wie läuft dann der Prozess ab
+
+=> Angebot => prüfen ob förderfähig
+
+ChatGPT said:
+
+Thought for 9s
+So läuft der Prozess in der Praxis ab (vom Angebot bis förderfähig / nicht förderfähig / Klärung). Ich beschreibe das so, dass du es 1:1 als Workflow für eure 10/Tag nutzen kannst.
+
+0) Vorarbeit (läuft automatisch täglich)
+Rules-Update Job
+
+BAFA/BEG-PDFs laden (Version/Hash speichern)
+
+Tabellen & Anforderungen extrahieren → tables/*.json, measures/*.json
+
+Guard-Checks:
+
+Evidence vorhanden?
+
+Coverage vollständig?
+
+Konflikte? (Richtlinie > Merkblatt/Infoblatt)
+
+Ergebnis: ruleset.bundle.json (für schnelle Laufzeit) + evidence_store/
+
+Wenn Guard scheitert → Ruleset nicht aktivieren (Fail-Safe).
+
+1) Eingang: Angebot rein
+Input
+
+Angebot (PDF/DOCX/Emailtext) + ggf. Anhänge (Produktdaten, U-Wert-Nachweise)
+
+Preflight
+
+Case-ID vergeben
+
+Dokumenttyp erkennen:
+
+Text-PDF → Text/Layout-Extraktion
+
+Scan-PDF → OCR
+
+Qualitätsflag setzen (z. B. “Tabellen schwer lesbar”)
+
+2) Angebots-Parsing → “Maßnahmenobjekte”
+Ziel: aus dem Angebot eine Liste von Maßnahmen bauen:
+
+Beispiele:
+
+Fenster (Uw)
+
+Dach (Schichten λ+d, ggf. Sparren)
+
+Außenwand (Dämmstärke/λ oder Ziel-U)
+
+Kellerdecke / Bodenplatte etc.
+
+Dabei wird gemappt auf euer kontrolliertes Vokabular:
+
+“WDVS/Fassade” → Außenwand
+
+“Dach/OGD” sauber trennen
+
+Kostenpositionen clustern (Material/Montage/Gerüst/Entsorgung …)
+
+3) Fakten-Extraktion → offer_facts.json (strict)
+Hier arbeitet das LLM nur als Extraktor, nicht als Entscheider.
+
+Wichtig: Jede Zahl braucht Evidence (Seite + Textsnippet/Zeile).
+
+Fenster: uw (fast immer direkt)
+
+Dach: layers[] (d + λ) oder u_value_target
+
+Wand: u_value_target oder new_insulation (d+λ) + ggf. “Bestand unbekannt”
+
+Dann:
+
+JSON-Schema Validierung (hart)
+
+Wenn Schema/Evidence fehlt → CLARIFY/ABORT (nicht “raten”).
+
+4) Ableitungen (deterministisch, kein LLM)
+Aus offer_facts werden derived values berechnet:
+
+Fenster: derived.uw = offer.uw
+
+Dach:
+
+wenn nur Schichten: U-Wert rechnen
+
+bei Zwischensparren: Bandbreite f=0.07/0.10/0.15
+
+wenn selbst bei 0.15 ok → PASS möglich
+
+wenn selbst bei 0.07 fail → FAIL möglich
+
+sonst → CLARIFY (Sparrenangaben)
+
+Wand:
+
+wenn Bestand unklar: Worst-Case ohne Bestandswiderstand
+
+wenn Worst-Case schon <= Grenzwert → PASS möglich
+
+sonst → CLARIFY (Bestandsaufbau oder mehr Dämmung)
+
+Alles landet in derived.* (mit Vermerk “berechnet” + Inputs).
+
+5) Regelprüfung (Rule Engine) → evaluation.json
+Jetzt kommt das Ruleset ins Spiel.
+
+Für jede Maßnahme:
+
+passendes MeasureSpec finden (z. B. envelope_wall_insulation)
+
+required_fields prüfen
+
+fehlt etwas Relevantes → CLARIFY (mit konkreten Fragen)
+
+eligibility/scope prüfen (Bestand? Maßnahmetyp korrekt?)
+
+technical thresholds prüfen (Umax/Uw etc.)
+
+exclusions prüfen (z. B. Innendämmung ohne Nachweis → CLARIFY/FAIL je Regel)
+
+Ergebnis je Maßnahme:
+
+PASS (förderfähig)
+
+FAIL (nicht förderfähig)
+
+CLARIFY (nicht eindeutig / Unterlagen fehlen)
+
+6) Kostenlogik (separat!)
+Unabhängig von “technisch förderfähig” wird die Kostenliste geprüft:
+
+förderfähige Kosten
+
+nicht förderfähige Kosten
+
+bedingt/anteilig (z. B. Gerüst nur wenn notwendig)
+
+Output:
+
+förderfähige Kostensumme + Hinweise, welche Positionen problematisch sind
+
+7) Output für Sekretärin + Kundenmail-Entwurf
+Sekretärinnen-Memo (intern)
+
+Ampel je Maßnahme (PASS/FAIL/CLARIFY)
+
+fehlende Unterlagen als Checkliste
+
+ggf. “Minimalinfos anfordern”-Textbausteine
+
+Kundenmail (extern)
+
+nur sichere Aussagen
+
+bei CLARIFY: konkrete Nachforderungsliste
+
+optional: Hinweis “Vorprüfung auf Basis der vorliegenden Angaben”
+
+8) Logging / Audit / Eskalation
+Alles wird gespeichert: Angebot → offer_facts → derived → evaluation (mit Evidence)
+
+Eskalation an Dennis/Experten nur wenn:
+
+CLARIFY mit hoher Relevanz
+
+widersprüchliche Angaben
+
+Textqualität schlecht (OCR unsicher)
+
+Mini-Beispiel (typisch)
+Dach mit Schichten, aber Sparren unbekannt
+
+Facts ok, Schichten ok
+
+derived: U-Bandbreite
+
+Ergebnis:
+
+wenn Bandbreite eindeutig ok → PASS
+
+sonst → CLARIFY: “Sparrenbreite + Achsabstand oder U-Wert-Nachweis nachreichen”
+
+Wenn du mir sagst, wo das Angebot bei euch ankommt (Zoho CRM, Gmail, Drive, Upload-Formular), dann gebe ich dir den Prozess als konkrete Automations-Kette (Trigger → Steps → Outputs) passend zu eurem Stack.
+
+
+
+

@@ -80,3 +80,56 @@ def activation_guard(guard_results: Iterable[GuardResult]) -> GuardResult:
         all_errors.extend(result.errors)
         all_warnings.extend(result.warnings)
     return GuardResult(ok=not all_errors, errors=all_errors, warnings=all_warnings)
+
+
+def coverage_manifest_report(
+    requirements: Iterable[Dict[str, Any]],
+    manifest: Dict[str, Any],
+    source_doc_id: str = "infoblatt_sanieren",
+) -> Dict[str, Any]:
+    sections = manifest.get("sections", [])
+    required_sections = sorted(
+        {
+            str(item.get("section_id"))
+            for item in sections
+            if item.get("required", True) and item.get("section_id")
+        }
+    )
+    represented_sections: Set[str] = set()
+    for req in requirements:
+        scope = req.get("scope", {})
+        if scope.get("source_doc_id") != source_doc_id:
+            continue
+        section_id = scope.get("section_id")
+        if section_id:
+            represented_sections.add(str(section_id))
+
+    missing = sorted(set(required_sections) - represented_sections)
+    return {
+        "source_doc_id": source_doc_id,
+        "required_count": len(required_sections),
+        "represented_count": len(represented_sections),
+        "missing_count": len(missing),
+        "required_sections": required_sections,
+        "represented_sections": sorted(represented_sections),
+        "missing_sections": missing,
+    }
+
+
+def coverage_manifest_guard(
+    requirements: Iterable[Dict[str, Any]],
+    manifest: Dict[str, Any],
+    source_doc_id: str = "infoblatt_sanieren",
+) -> GuardResult:
+    report = coverage_manifest_report(requirements, manifest, source_doc_id=source_doc_id)
+    if report["missing_count"] > 0:
+        return GuardResult(
+            ok=False,
+            errors=[
+                (
+                    f"coverage_manifest_missing_sections:{source_doc_id}:"
+                    + ",".join(report["missing_sections"])
+                )
+            ],
+        )
+    return GuardResult(ok=True)

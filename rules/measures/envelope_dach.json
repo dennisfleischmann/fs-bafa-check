@@ -1,13 +1,13 @@
 {
   "measure_id": "envelope_dach",
   "module": "envelope",
-  "title": "Envelope Dach",
-  "version": "2026-02-15T13:33:44+00:00",
+  "title": "envelope dach",
+  "version": "bootstrap",
   "legal_basis": [
     {
-      "doc_id": "compiled",
-      "section": "auto",
-      "priority": 100
+      "doc_id": "bootstrap",
+      "section": "seed",
+      "priority": 1
     }
   ],
   "scope": {
@@ -25,7 +25,7 @@
       "severity_if_missing": "ABORT"
     },
     {
-      "path": "offer.input_mode",
+      "path": "building.is_existing",
       "severity_if_missing": "CLARIFY"
     }
   ],
@@ -41,7 +41,19 @@
     "exclusions": []
   },
   "technical_requirements": {
-    "thresholds": [],
+    "thresholds": [
+      {
+        "name": "u_or_uw_max",
+        "condition": {
+          "field": "derived.u_value_target",
+          "op": "<=",
+          "value": 0.14,
+          "unit": "W/(m2K)",
+          "severity_if_missing": "CLARIFY",
+          "evidence_required": true
+        }
+      }
+    ],
     "calculation_methods": []
   },
   "cost_rules": {
@@ -61,20 +73,24 @@
           "op": "==",
           "value": "geruest"
         },
-        "result": "ELIGIBLE_IF_NECESSARY",
-        "note_key": "scaffolding_if_necessary"
+        "result": "ELIGIBLE_IF_NECESSARY"
       }
     ]
   },
   "documentation": {
-    "must_have": [],
+    "must_have": [
+      {
+        "doc": "Uwert_Nachweis_or_Layers",
+        "severity_if_missing": "CLARIFY"
+      }
+    ],
     "nice_to_have": []
   },
   "outputs": {
     "messages": {
-      "pass_summary_key": "pass_default",
+      "pass_summary_key": "pass_generic",
       "clarify_questions_keys": [
-        "ask_missing_documents"
+        "ask_u_value_or_layers"
       ]
     }
   },

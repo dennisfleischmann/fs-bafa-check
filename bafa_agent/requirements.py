@@ -114,11 +114,13 @@ def snippets_to_requirements(
             default_measure=measure_id,
             default_component=component,
         )
-        req_type = _infer_req_type(snippet.quote)
+        req_type = "SECTION_MARKER" if snippet.snippet_type == "section_header" else _infer_req_type(snippet.quote)
         if req_type == "TECH_THRESHOLD":
             rule = _extract_threshold(snippet.quote)
         elif req_type == "COST_ELIGIBILITY":
             rule = _extract_cost_rule(snippet.quote)
+        elif req_type == "SECTION_MARKER":
+            rule = {"text": snippet.quote, "section_title": snippet.section_title}
         else:
             rule = {"text": snippet.quote}
         if req_type == "TECH_THRESHOLD" and not rule:
@@ -133,6 +135,9 @@ def snippets_to_requirements(
                     "measure": scoped_measure,
                     "component": scoped_component,
                     "case": "default",
+                    "section_id": snippet.section_id,
+                    "section_title": snippet.section_title,
+                    "source_doc_id": snippet.doc_id,
                 },
                 "rule": rule,
                 "severity_if_missing": "CLARIFY",

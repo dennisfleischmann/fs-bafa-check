@@ -9,7 +9,14 @@ from .communications import render_secretary_memo
 from .engine import evaluate_case
 from .escalation import build_escalation_ticket, should_escalate
 from .extraction import extract_document
-from .guards import activation_guard, conflict_guard, coverage_guard, evidence_binding_guard
+from .guards import (
+    activation_guard,
+    conflict_guard,
+    coverage_guard,
+    coverage_manifest_guard,
+    coverage_manifest_report,
+    evidence_binding_guard,
+)
 from .intake import preflight
 from .model_routing import select_model
 from .offer_parser import parse_offer_text
@@ -53,6 +60,7 @@ def init_workspace(base_dir: str | Path) -> None:
     write_json(base / "rules" / "taxonomy" / "cost_categories.json", default_cost_taxonomy())
 
     _write_default_measure_specs(base)
+    _write_default_coverage_manifest(base)
     _write_schema_files(base)
 
 
@@ -124,6 +132,31 @@ def _write_default_measure_specs(base: Path) -> None:
             "examples": {"eligible": [], "not_eligible": [], "clarify": []},
         }
         write_json(base / "rules" / "measures" / f"{measure_id}.json", spec)
+
+
+def _write_default_coverage_manifest(base: Path) -> None:
+    coverage_manifest_path = base / "rules" / "coverage_manifest.json"
+    if coverage_manifest_path.exists():
+        return
+
+    # Coverage targets derived from the Infoblatt TOC supplied in requirements.
+    sections = [
+        "1", "1.1", "1.2", "1.3", "1.3.1", "1.3.2", "1.3.3", "1.4", "1.5", "1.5.1", "1.5.2", "1.6", "1.7",
+        "2", "2.1", "2.2", "2.3", "2.4", "2.5",
+        "3", "3.1", "3.2", "3.3", "3.4", "3.5", "3.5.1", "3.5.2", "3.5.3", "3.5.4", "3.5.5", "3.6", "3.7", "3.8",
+        "4", "4.1", "4.1.1", "4.1.2", "4.1.3", "4.1.4", "4.1.5", "4.1.6", "4.1.7", "4.1.8",
+        "4.2", "4.2.1", "4.2.2", "4.2.3", "4.2.4", "4.2.5", "4.2.6", "4.2.7", "4.2.8", "4.2.9", "4.3",
+        "5", "5.1", "5.2",
+        "6", "6.1", "6.1.1", "6.1.2", "6.1.3", "6.1.4", "6.1.5", "6.1.6", "6.2", "6.3", "6.3.1", "6.3.2", "6.3.3", "6.3.4", "6.3.5",
+        "7",
+        "8",
+        "9", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.7",
+    ]
+    payload = {
+        "source_doc_id": "infoblatt_sanieren",
+        "sections": [{"section_id": section_id, "required": True} for section_id in sections],
+    }
+    write_json(coverage_manifest_path, payload)
 
 
 def _write_schema_files(base: Path) -> None:
@@ -213,6 +246,12 @@ def compile_rules(
 
     write_requirements_jsonl(str(requirements_path), all_requirements)
     loaded_requirements = load_requirements_jsonl(str(requirements_path))
+    coverage_manifest = read_json(base / "rules" / "coverage_manifest.json", default={"sections": []})
+    coverage_report = coverage_manifest_report(
+        loaded_requirements,
+        coverage_manifest,
+        source_doc_id=coverage_manifest.get("source_doc_id", "infoblatt_sanieren"),
+    )
 
     measures = compile_measure_specs(loaded_requirements, version=utc_now_iso())
     existing_measures: Dict[str, Dict[str, Any]] = {}
@@ -241,6 +280,11 @@ def compile_rules(
     guard_results = [
         evidence_binding_guard(loaded_requirements),
         conflict_guard(loaded_requirements),
+        coverage_manifest_guard(
+            loaded_requirements,
+            coverage_manifest,
+            source_doc_id=coverage_manifest.get("source_doc_id", "infoblatt_sanieren"),
+        ),
         coverage_guard(
             measures,
             required_components={"aussenwand", "dach", "fenster", "kellerdecke"},
@@ -256,6 +300,7 @@ def compile_rules(
         "source_mode": source,
         "source_url": source_url if source == "bafa" else None,
         "fetched": fetch,
+        "coverage_manifest": coverage_report,
     }
     write_json(base / "rules" / "build_report.json", build_report)
 

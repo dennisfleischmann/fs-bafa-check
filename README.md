@@ -47,6 +47,50 @@ python3 -m bafa_agent --base-dir . memo --evaluation data/cases/<case_id>/evalua
 python3 -m bafa_agent --base-dir . email --evaluation data/cases/<case_id>/evaluation.json --index 0
 ```
 
+## Web app (simple migration wrapper)
+
+This repository now includes a minimal Flask app that keeps the CLI logic and wraps it in a browser flow:
+
+1. Upload offer PDF
+2. Extract text with `pdfplumber` to `./offer.txt`
+3. Run `python3 -m bafa_agent compile --source bafa`
+4. Run `python3 -m bafa_agent evaluate --offer ./offer.txt`
+5. Show JSON result and a human-readable memo
+
+If the PDF has no embedded text, the app falls back to `extract_text_from_offer.py` OCR automatically.
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run:
+
+```bash
+python3 webapp/app.py
+```
+
+Open `http://127.0.0.1:8000`.
+
+## Deploy on Render
+
+This repository includes a `render.yaml` blueprint for a Render Web Service.
+
+1. Push this repo to GitHub.
+2. In Render: **New** -> **Blueprint** -> select the repository.
+3. Render will read `render.yaml` and create service `ai-bafa-check`.
+4. Set `OPENAI_API_KEY` in Render environment variables.
+5. Deploy.
+
+Start command used in production:
+
+```bash
+gunicorn webapp.app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 300
+```
+
+Note: Render free services use an ephemeral filesystem. Uploaded PDFs and generated outputs are not persistent across restarts.
+
 To override locally without editing tracked defaults:
 
 ```bash

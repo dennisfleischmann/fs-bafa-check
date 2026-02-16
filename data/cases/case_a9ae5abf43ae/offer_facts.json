@@ -24,7 +24,7 @@
         "layers": [],
         "geometry": {},
         "costs": {
-          "total": 15150.78,
+          "total": 11900.78,
           "currency": "EUR"
         },
         "line_items": [
@@ -122,18 +122,6 @@
             "semantic_method": "lexical"
           },
           {
-            "description": "Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber",
-            "amount": 3250.0,
-            "currency": "EUR",
-            "category": "montage",
-            "position": 16,
-            "quantity": 1.0,
-            "unit": "St\u00fcck",
-            "item_code": "fugen_abdichtung",
-            "semantic_confidence": 0.88,
-            "semantic_method": "lexical"
-          },
-          {
             "description": "Fensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.",
             "amount": 425.68,
             "currency": "EUR",
@@ -206,7 +194,7 @@
           {
             "doc_id": "offer",
             "page": 2,
-            "quote": "Montage\t918,00\t2754,00",
+            "quote": "Montage\t\t918,00\t2754,00",
             "bbox": null,
             "source_path": null
           },
@@ -220,7 +208,7 @@
           {
             "doc_id": "offer",
             "page": 2,
-            "quote": "Montage\t1097,00\t1097,00",
+            "quote": "Montage\t\t1097,00\t1097,00",
             "bbox": null,
             "source_path": null
           },
@@ -262,21 +250,21 @@
           {
             "doc_id": "offer",
             "page": 4,
-            "quote": "7\t8,70 lfm.\tca. Bestehenden Rolladenkasten mit Styrodur d\u00e4mmen\t45,00\t\t391,50",
+            "quote": "7\t8,70 lfm.\tca. Bestehenden Rolladenkasten mit Styrodur d\u00e4mmen\t45,00\t391,50",
             "bbox": null,
             "source_path": null
           },
           {
             "doc_id": "offer",
             "page": 4,
-            "quote": "8\t6 St\u00fcck\tAusbau und Entsorgung der alten Elemente\t70,00\t\t420,00",
+            "quote": "8\t6 St\u00fcck\tAusbau und Entsorgung der alten Elemente\t70,00\t420,00",
             "bbox": null,
             "source_path": null
           },
           {
             "doc_id": "offer",
             "page": 4,
-            "quote": "mit Rolladenkasten \u00f6ffnen und schlie\u00dfen\t81,00\t\t486,00",
+            "quote": "mit Rolladenkasten \u00f6ffnen und schlie\u00dfen\t81,00\t486,00",
             "bbox": null,
             "source_path": null
           },
@@ -297,21 +285,21 @@
           {
             "doc_id": "offer",
             "page": 4,
-            "quote": "eine andere Ausf\u00fchrung an)\t6,00\t\t180,00",
+            "quote": "eine andere Ausf\u00fchrung an)\t6,00\t180,00",
             "bbox": null,
             "source_path": null
           },
           {
             "doc_id": "offer",
             "page": 4,
-            "quote": "12\t30,00 lfm.\tca. Versiegelung liefern und montieren\t8,00\t\t240,00",
+            "quote": "12\t30,00 lfm.\tca. Versiegelung liefern und montieren\t8,00\t240,00",
             "bbox": null,
             "source_path": null
           },
           {
             "doc_id": "offer",
             "page": 4,
-            "quote": "Fl\u00fcgel und obere Festverglasung Frontseite\t925,00\t\t925,00",
+            "quote": "Fl\u00fcgel und obere Festverglasung Frontseite\t925,00\t925,00",
             "bbox": null,
             "source_path": null
           },
@@ -325,14 +313,42 @@
           {
             "doc_id": "offer",
             "page": 5,
-            "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
+            "quote": "17\t1 St\u00fcck\tFensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.\t425,68\t425,68",
             "bbox": null,
             "source_path": null
-          },
+          }
+        ]
+      },
+      {
+        "measure_id": "envelope_aussenwand",
+        "component_type": "aussenwand",
+        "input_mode": "direct_u",
+        "values": {},
+        "layers": [],
+        "geometry": {},
+        "costs": {
+          "total": 3250.0,
+          "currency": "EUR"
+        },
+        "line_items": [
+          {
+            "description": "Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber",
+            "amount": 3250.0,
+            "currency": "EUR",
+            "category": "material",
+            "position": 16,
+            "quantity": 1.0,
+            "unit": "St\u00fcck",
+            "item_code": "aussenwand_daemmung",
+            "semantic_confidence": 0.88,
+            "semantic_method": "lexical"
+          }
+        ],
+        "evidence": [
           {
             "doc_id": "offer",
             "page": 5,
-            "quote": "17\t1 St\u00fcck\tFensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.\t425,68\t425,68",
+            "quote": "_\t16\t1 St\u00fcck\tFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
             "bbox": null,
             "source_path": null
           }

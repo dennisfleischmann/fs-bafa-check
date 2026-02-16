@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-02-15T19:40:47+00:00",
+  "generated_at": "2026-02-16T05:52:52+00:00",
   "docs": [
     {
       "doc_id": "beg_em_richtlinie",
       "source_url": "https://www.bafa.de/SharedDocs/Downloads/DE/Energie/beg_richtline_beg_em_20231221_PDF.pdf?__blob=publicationFile&v=2",
-      "download_date": "2026-02-15T19:40:45+00:00",
+      "download_date": "2026-02-16T05:52:51+00:00",
       "version_hint": "BAnz AT 29.12.2023 B1",
       "valid_from": "2023-12-21",
       "sha256": "4117b340da1c45992aaebdc6e4d9b049677ab066aa85b7f271227d00b4c3a986",
@@ -19,7 +19,7 @@
     {
       "doc_id": "infoblatt_sanieren",
       "source_url": "https://www.bafa.de/SharedDocs/Downloads/DE/Energie/beg_infoblatt_foerderfaehige_kosten.pdf?__blob=publicationFile&v=12",
-      "download_date": "2026-02-15T19:40:45+00:00",
+      "download_date": "2026-02-16T05:52:52+00:00",
       "version_hint": "Infoblatt Sanieren",
       "valid_from": null,
       "sha256": "4037818226ff46149435d1ade8ad269b789c70f8eff6e34d8ac82df542c3e503",
@@ -34,7 +34,7 @@
     {
       "doc_id": "merkblatt_antragstellung",
       "source_url": "https://www.bafa.de/SharedDocs/Downloads/DE/Energie/beg_merkblatt_allgemein_antragstellung.pdf?__blob=publicationFile&v=10",
-      "download_date": "2026-02-15T19:40:46+00:00",
+      "download_date": "2026-02-16T05:52:52+00:00",
       "version_hint": "Merkblatt Antragstellung",
       "valid_from": null,
       "sha256": "dc4db8d23f6de7cedaa1c13e97da2b440e6ccf33a5000a4711843c663d153fbd",
@@ -50,7 +50,7 @@
     {
       "doc_id": "merkblatt_zusatzantrag_bonus",
       "source_url": "https://www.bafa.de/SharedDocs/Downloads/DE/Energie/beg_merkblatt_allgemein_zusatzantrag.pdf?__blob=publicationFile&v=3",
-      "download_date": "2026-02-15T19:40:46+00:00",
+      "download_date": "2026-02-16T05:52:52+00:00",
       "version_hint": "Merkblatt Zusatzantrag",
       "valid_from": null,
       "sha256": "bd373bc27b20ba309c0f7e89b90e8d60adda3a6b2fd48d3aade153f9ac8aee8f",
@@ -64,7 +64,7 @@
     {
       "doc_id": "merkblatt_gebaeudenetze",
       "source_url": "https://www.bafa.de/SharedDocs/Downloads/DE/Energie/beg_merkblatt_antragstellung_wnet_gnet.pdf?__blob=publicationFile&v=20",
-      "download_date": "2026-02-15T19:40:46+00:00",
+      "download_date": "2026-02-16T05:52:52+00:00",
       "version_hint": "Merkblatt Gebaeudenetze",
       "valid_from": null,
       "sha256": "bdb15d3207125a34b0e320c427f150fc56d9b6d8f6320a240898f946293b203a",
@@ -78,7 +78,7 @@
     {
       "doc_id": "checkliste_hydraulischer_abgleich",
       "source_url": "https://www.bafa.de/SharedDocs/Downloads/DE/Energie/beg_checkliste_gleichwertigkeit.pdf?__blob=publicationFile&v=2",
-      "download_date": "2026-02-15T19:40:47+00:00",
+      "download_date": "2026-02-16T05:52:52+00:00",
       "version_hint": "Checkliste Gleichwertigkeit",
       "valid_from": null,
       "sha256": "a4f7f0732d2517082205fbef791101586139b2a237343878bfdfb4e82af49a6c",

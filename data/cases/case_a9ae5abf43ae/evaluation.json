@@ -1,6 +1,6 @@
 {
   "case_id": "case_a9ae5abf43ae",
-  "generated_at": "2026-02-16T05:18:49+00:00",
+  "generated_at": "2026-02-16T05:52:55+00:00",
   "ruleset_version": "active",
   "results": [
     {
@@ -67,7 +67,7 @@
         {
           "doc_id": "offer",
           "page": 2,
-          "quote": "Montage\t918,00\t2754,00",
+          "quote": "Montage\t\t918,00\t2754,00",
           "bbox": null,
           "source_path": null
         },
@@ -81,7 +81,7 @@
         {
           "doc_id": "offer",
           "page": 2,
-          "quote": "Montage\t1097,00\t1097,00",
+          "quote": "Montage\t\t1097,00\t1097,00",
           "bbox": null,
           "source_path": null
         },
@@ -123,21 +123,21 @@
         {
           "doc_id": "offer",
           "page": 4,
-          "quote": "7\t8,70 lfm.\tca. Bestehenden Rolladenkasten mit Styrodur d\u00e4mmen\t45,00\t\t391,50",
+          "quote": "7\t8,70 lfm.\tca. Bestehenden Rolladenkasten mit Styrodur d\u00e4mmen\t45,00\t391,50",
           "bbox": null,
           "source_path": null
         },
         {
           "doc_id": "offer",
           "page": 4,
-          "quote": "8\t6 St\u00fcck\tAusbau und Entsorgung der alten Elemente\t70,00\t\t420,00",
+          "quote": "8\t6 St\u00fcck\tAusbau und Entsorgung der alten Elemente\t70,00\t420,00",
           "bbox": null,
           "source_path": null
         },
         {
           "doc_id": "offer",
           "page": 4,
-          "quote": "mit Rolladenkasten \u00f6ffnen und schlie\u00dfen\t81,00\t\t486,00",
+          "quote": "mit Rolladenkasten \u00f6ffnen und schlie\u00dfen\t81,00\t486,00",
           "bbox": null,
           "source_path": null
         },
@@ -158,21 +158,21 @@
         {
           "doc_id": "offer",
           "page": 4,
-          "quote": "eine andere Ausf\u00fchrung an)\t6,00\t\t180,00",
+          "quote": "eine andere Ausf\u00fchrung an)\t6,00\t180,00",
           "bbox": null,
           "source_path": null
         },
         {
           "doc_id": "offer",
           "page": 4,
-          "quote": "12\t30,00 lfm.\tca. Versiegelung liefern und montieren\t8,00\t\t240,00",
+          "quote": "12\t30,00 lfm.\tca. Versiegelung liefern und montieren\t8,00\t240,00",
           "bbox": null,
           "source_path": null
         },
         {
           "doc_id": "offer",
           "page": 4,
-          "quote": "Fl\u00fcgel und obere Festverglasung Frontseite\t925,00\t\t925,00",
+          "quote": "Fl\u00fcgel und obere Festverglasung Frontseite\t925,00\t925,00",
           "bbox": null,
           "source_path": null
         },
@@ -180,13 +180,6 @@
           "doc_id": "offer",
           "page": 5,
           "quote": "15\t8 St\u00fcck\tAbsturzsicherung in bestehende Fensterfassade inkl liefern und Montieren.\t155,00\t1240,00",
-          "bbox": null,
-          "source_path": null
-        },
-        {
-          "doc_id": "offer",
-          "page": 5,
-          "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
           "bbox": null,
           "source_path": null
         },
@@ -202,7 +195,7 @@
       "cost_summary": {
         "eligible_total": 11240.78,
         "ineligible_total": 0.0,
-        "conditional_total": 3910.0,
+        "conditional_total": 660.0,
         "items": [
           {
             "description": "Montage",
@@ -277,12 +270,6 @@
             "decision": "ELIGIBLE"
           },
           {
-            "description": "Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber",
-            "category": "montage",
-            "amount": 3250.0,
-            "decision": "ELIGIBLE_IF_NECESSARY"
-          },
-          {
             "description": "Fensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.",
             "category": "material",
             "amount": 425.68,
@@ -290,6 +277,24 @@
           }
         ]
       }
+    },
+    {
+      "measure_id": "envelope_aussenwand",
+      "status": "CLARIFY",
+      "reason": "missing_wall_layers",
+      "used_evidence": [
+        {
+          "doc_id": "offer",
+          "page": 5,
+          "quote": "_\t16\t1 St\u00fcck\tFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
+          "bbox": null,
+          "source_path": null
+        }
+      ],
+      "questions": [
+        "Bitte U-Wert nach Sanierung ODER Daemmstaerke + Material (lambda) + Wandaufbau nachreichen."
+      ],
+      "cost_summary": {}
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "bundle_meta": {
-    "manifest_generated_at": "2026-02-15T19:40:47+00:00",
+    "manifest_generated_at": "2026-02-16T05:52:52+00:00",
     "doc_count": 6
   },
   "measures": {
@@ -8,7 +8,7 @@
       "measure_id": "envelope_aussenwand",
       "module": "envelope",
       "title": "Envelope Aussenwand",
-      "version": "2026-02-15T19:40:49+00:00",
+      "version": "2026-02-16T05:52:55+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",
@@ -115,7 +115,7 @@
       "measure_id": "envelope_dach",
       "module": "envelope",
       "title": "Envelope Dach",
-      "version": "2026-02-15T19:40:49+00:00",
+      "version": "2026-02-16T05:52:55+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",
@@ -213,7 +213,7 @@
       "measure_id": "envelope_fenster",
       "module": "envelope",
       "title": "Envelope Fenster",
-      "version": "2026-02-15T19:40:49+00:00",
+      "version": "2026-02-16T05:52:55+00:00",
       "legal_basis": [
         {
           "doc_id": "compiled",

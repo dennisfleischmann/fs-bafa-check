@@ -49,6 +49,10 @@
         <h1>All Evaluations</h1>
         <p><a href="/">Back to Evaluate Offer</a></p>
 
+        {% if error %}
+        <p>Database error: {{ error }}</p>
+        {% endif %}
+
         {% if evaluations %}
         <table>
           <thead>

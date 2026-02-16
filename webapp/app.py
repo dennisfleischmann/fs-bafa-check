@@ -34,7 +34,7 @@ COMPILE_CMD = ["python3", "-m", "bafa_agent", "compile", "--source", "bafa"]
 EVALUATE_CMD = ["python3", "-m", "bafa_agent", "evaluate", "--offer", "./offer.txt"]
 
 app = Flask(__name__, template_folder=str(WEBAPP_DIR / "templates"))
-init_db()
+DB_READY = False
 
 
 def _relative(path: Path) -> str:
@@ -114,9 +114,18 @@ def find_evaluation_path(stdout: str) -> Path:
 
 def persist_record(context: Dict[str, Any], record: Dict[str, Any]) -> None:
     try:
+        ensure_db_ready()
         context["saved_evaluation_id"] = create_evaluation(record)
     except Exception as exc:
         context["persistence_error"] = f"{type(exc).__name__}: {exc}"
+
+
+def ensure_db_ready() -> None:
+    global DB_READY
+    if DB_READY:
+        return
+    init_db()
+    DB_READY = True
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -251,11 +260,19 @@ def index() -> str:
 
 @app.route("/evaluations", methods=["GET"])
 def evaluations_list() -> str:
-    return render_template("evaluations.html", evaluations=list_evaluations())
+    error = ""
+    evaluations = []
+    try:
+        ensure_db_ready()
+        evaluations = list_evaluations()
+    except Exception as exc:
+        error = f"{type(exc).__name__}: {exc}"
+    return render_template("evaluations.html", evaluations=evaluations, error=error)
 
 
 @app.route("/evaluations/<int:evaluation_id>", methods=["GET", "POST"])
 def evaluation_edit(evaluation_id: int) -> str:
+    ensure_db_ready()
     payload = get_evaluation(evaluation_id)
     if payload is None:
         abort(404)
@@ -286,6 +303,7 @@ def evaluation_edit(evaluation_id: int) -> str:
 
 @app.route("/evaluations/<int:evaluation_id>/offer.pdf", methods=["GET"])
 def evaluation_offer_pdf(evaluation_id: int):
+    ensure_db_ready()
     payload = get_evaluation(evaluation_id)
     if payload is None:
         abort(404)

@@ -10,6 +10,15 @@ from unittest.mock import patch
 
 
 class TestWebappPersistence(unittest.TestCase):
+    @staticmethod
+    def _submit_immediate(fn, *args, **kwargs):
+        class _DoneFuture:
+            def result(self, timeout=None):
+                return None
+
+        fn(*args, **kwargs)
+        return _DoneFuture()
+
     def setUp(self) -> None:
         self.temp_dir = tempfile.TemporaryDirectory()
         self.tmp_path = Path(self.temp_dir.name)
@@ -59,15 +68,17 @@ class TestWebappPersistence(unittest.TestCase):
                 side_effect=[compile_result, evaluate_result],
             ),
             patch.object(self.app_module, "read_json", return_value=evaluation_payload),
+            patch.object(self.app_module.EXECUTOR, "submit", side_effect=self._submit_immediate),
         ):
             response = self.client.post(
                 "/",
                 data={"offer_pdf": (io.BytesIO(b"%PDF-1.4 test document"), "offer.pdf")},
                 content_type="multipart/form-data",
+                follow_redirects=True,
             )
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b"Saved Evaluation", response.data)
+        self.assertIn(b"Evaluation", response.data)
 
         from webapp.db import get_evaluation, list_evaluations
 
@@ -127,11 +138,13 @@ class TestWebappPersistence(unittest.TestCase):
                 return_value=("===== PAGE 1 =====\ntext\n", 100),
             ),
             patch.object(self.app_module, "run_command", return_value=compile_result),
+            patch.object(self.app_module.EXECUTOR, "submit", side_effect=self._submit_immediate),
         ):
             response = self.client.post(
                 "/",
                 data={"offer_pdf": (io.BytesIO(b"%PDF-1.4 test document"), "offer-fail.pdf")},
                 content_type="multipart/form-data",
+                follow_redirects=True,
             )
 
         self.assertEqual(response.status_code, 200)

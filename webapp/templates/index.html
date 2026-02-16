@@ -88,108 +88,22 @@
       <section class="card">
         <h1>BAFA Agent Web App</h1>
         <p><a href="/evaluations">List All Evaluations</a></p>
+        <p>OPENAI_API_KEY: <code>{{ "set" if env_status.openai_api_key_set else "missing" }}</code></p>
+        <p>Evaluations DB: <code>{{ env_status.db_path }}</code></p>
         <p>Upload offer PDF, extract text with <code>pdfplumber</code>, then run:</p>
         <p><code>python3 -m bafa_agent compile --source bafa</code></p>
         <p><code>python3 -m bafa_agent evaluate --offer ./offer.txt</code></p>
+        <p>Evaluation runs in background. You will be redirected to the evaluation status page.</p>
         <form method="post" enctype="multipart/form-data">
           <label for="offer_pdf">Offer PDF</label>
           <input id="offer_pdf" name="offer_pdf" type="file" accept=".pdf" required>
           <button type="submit">Evaluate Offer</button>
         </form>
       </section>
-
       {% if error %}
       <section class="card error">
         <h2>Error</h2>
         <p>{{ error }}</p>
-      </section>
-      {% endif %}
-
-      {% if persistence_error %}
-      <section class="card error">
-        <h2>Persistence Error</h2>
-        <p>{{ persistence_error }}</p>
-      </section>
-      {% endif %}
-
-      {% if saved_evaluation_id %}
-      <section class="card">
-        <h2>Saved Evaluation</h2>
-        <p>Evaluation ID: <code>{{ saved_evaluation_id }}</code></p>
-        <p><a href="/evaluations/{{ saved_evaluation_id }}">Open Evaluation</a></p>
-      </section>
-      {% endif %}
-
-      {% if uploaded_pdf_path %}
-      <section class="card">
-        <h2>Files</h2>
-        <p>Uploaded PDF: <code>{{ uploaded_pdf_path }}</code></p>
-        <p>Extracted text: <code>{{ offer_txt_path }}</code></p>
-        {% if extraction_method %}
-        <p>Extraction method: <code>{{ extraction_method }}</code></p>
-        {% endif %}
-      </section>
-      {% endif %}
-
-      {% if offer_text_preview %}
-      <section class="card">
-        <h2>Extracted Text Preview</h2>
-        <pre>{{ offer_text_preview }}</pre>
-      </section>
-      {% endif %}
-
-      {% if compile_result or evaluate_result %}
-      <section class="card">
-        <h2>CLI Command Output</h2>
-        <div class="grid">
-          {% if compile_result %}
-          <div>
-            <p><strong>Compile</strong>: <code>{{ compile_result.command }}</code></p>
-            <p>Return code: <code>{{ compile_result.returncode }}</code></p>
-            <p>stdout</p>
-            <pre>{{ compile_result.stdout }}</pre>
-            <p>stderr</p>
-            <pre>{{ compile_result.stderr }}</pre>
-          </div>
-          {% endif %}
-          {% if evaluate_result %}
-          <div>
-            <p><strong>Evaluate</strong>: <code>{{ evaluate_result.command }}</code></p>
-            <p>Return code: <code>{{ evaluate_result.returncode }}</code></p>
-            <p>stdout</p>
-            <pre>{{ evaluate_result.stdout }}</pre>
-            <p>stderr</p>
-            <pre>{{ evaluate_result.stderr }}</pre>
-          </div>
-          {% endif %}
-        </div>
-      </section>
-      {% endif %}
-
-      {% if extraction_result %}
-      <section class="card">
-        <h2>Extraction Fallback Output</h2>
-        <p><strong>Command</strong>: <code>{{ extraction_result.command }}</code></p>
-        <p>Return code: <code>{{ extraction_result.returncode }}</code></p>
-        <p>stdout</p>
-        <pre>{{ extraction_result.stdout }}</pre>
-        <p>stderr</p>
-        <pre>{{ extraction_result.stderr }}</pre>
-      </section>
-      {% endif %}
-
-      {% if evaluation_json %}
-      <section class="card">
-        <h2>JSON Result</h2>
-        <p>Loaded from: <code>{{ evaluation_path }}</code></p>
-        <pre>{{ evaluation_json }}</pre>
-      </section>
-      {% endif %}
-
-      {% if human_result %}
-      <section class="card">
-        <h2>Human Readable Result</h2>
-        <pre>{{ human_result }}</pre>
       </section>
       {% endif %}
     </main>

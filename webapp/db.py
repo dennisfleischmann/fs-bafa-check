@@ -28,6 +28,11 @@ def connect() -> sqlite3.Connection:
     return conn
 
 
+def _table_columns(conn: sqlite3.Connection, table: str) -> set[str]:
+    rows = conn.execute(f"PRAGMA table_info({table});").fetchall()
+    return {str(row[1]) for row in rows}
+
+
 def init_db() -> None:
     schema = """
     CREATE TABLE IF NOT EXISTS evaluations (
@@ -57,6 +62,14 @@ def init_db() -> None:
     """
     with closing(connect()) as conn:
         conn.executescript(schema)
+        columns = _table_columns(conn, "evaluations")
+        migrations = {
+            "error_message": "ALTER TABLE evaluations ADD COLUMN error_message TEXT NOT NULL DEFAULT '';",
+            "is_modified": "ALTER TABLE evaluations ADD COLUMN is_modified INTEGER NOT NULL DEFAULT 0;",
+        }
+        for key, statement in migrations.items():
+            if key not in columns:
+                conn.execute(statement)
         conn.commit()
 
 
@@ -181,5 +194,47 @@ def update_evaluation(evaluation_id: int, evaluation_json: str, human_result: st
     """
     with closing(connect()) as conn:
         cursor = conn.execute(query, (now, evaluation_json, human_result, case_id, evaluation_id))
+        conn.commit()
+    return cursor.rowcount > 0
+
+
+def update_evaluation_fields(evaluation_id: int, fields: Dict[str, Any]) -> bool:
+    if not fields:
+        return False
+
+    allowed = {
+        "updated_at",
+        "original_filename",
+        "stored_pdf_path",
+        "offer_pdf_bytes",
+        "offer_pdf_sha256",
+        "offer_text",
+        "extraction_method",
+        "compile_returncode",
+        "compile_stdout",
+        "compile_stderr",
+        "evaluate_returncode",
+        "evaluate_stdout",
+        "evaluate_stderr",
+        "evaluation_path",
+        "evaluation_json",
+        "human_result",
+        "case_id",
+        "status",
+        "error_message",
+        "is_modified",
+    }
+
+    payload: Dict[str, Any] = {"updated_at": utc_now_iso()}
+    for key, value in fields.items():
+        if key in allowed:
+            payload[key] = value
+
+    assignments = ", ".join(f"{key} = ?" for key in payload.keys())
+    values = list(payload.values()) + [evaluation_id]
+    query = f"UPDATE evaluations SET {assignments} WHERE id = ?;"
+
+    with closing(connect()) as conn:
+        cursor = conn.execute(query, values)
         conn.commit()
     return cursor.rowcount > 0

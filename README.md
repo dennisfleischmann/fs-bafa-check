@@ -57,6 +57,7 @@ This repository now includes a minimal Flask app that keeps the CLI logic and wr
 4. Run `python3 -m bafa_agent evaluate --offer ./offer.txt`
 5. Show JSON result and a human-readable memo
 6. Persist offer + evaluation in SQLite and support listing/editing saved evaluations
+7. Run evaluation in background (no long blocking HTTP request)
 
 If the PDF has no embedded text, the app falls back to `extract_text_from_offer.py` OCR automatically.
 
@@ -80,6 +81,12 @@ Persistence details:
 - Override DB path with environment variable: `EVALUATIONS_DB_PATH`
 - List evaluations: `GET /evaluations`
 - Edit evaluation: `GET/POST /evaluations/<id>`
+- Health endpoint: `GET /healthz`
+
+Runtime hardening:
+
+- OCR, compile, and evaluate commands run with timeouts (`WEBAPP_OCR_TIMEOUT_SEC`, `WEBAPP_COMPILE_TIMEOUT_SEC`, `WEBAPP_EVALUATE_TIMEOUT_SEC`).
+- Home page shows environment diagnostics (`OPENAI_API_KEY` present/missing, active DB path).
 
 ## Deploy on Render
 
@@ -91,7 +98,13 @@ This repository includes a `render.yaml` blueprint for a Render Web Service.
 4. Set `OPENAI_API_KEY` in Render environment variables.
 5. Deploy.
 
-To persist evaluations on Render across restarts, use a persistent disk and point:
+Current Render blueprint uses:
+
+```bash
+EVALUATIONS_DB_PATH=/tmp/webapp_evaluations.db
+```
+
+For persistence across restarts, mount a persistent disk and set:
 
 ```bash
 EVALUATIONS_DB_PATH=/var/data/webapp_evaluations.db

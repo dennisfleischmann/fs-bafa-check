@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if evaluation.status in ["queued", "running"] %}
+    <meta http-equiv="refresh" content="5">
+    {% endif %}
     <title>Evaluation {{ evaluation.id }}</title>
     <style>
       :root {
@@ -75,6 +78,9 @@
         <p><a href="/evaluations">Back to All Evaluations</a></p>
         <p><a href="/evaluations/{{ evaluation.id }}/offer.pdf">Download Persisted Offer PDF</a></p>
         <p>Status: <code>{{ evaluation.status }}</code></p>
+        {% if evaluation.status in ["queued", "running"] %}
+        <p>Processing in background. This page refreshes every 5 seconds.</p>
+        {% endif %}
         <p>Case ID: <code>{{ evaluation.case_id }}</code></p>
         <p>Created: <code>{{ evaluation.created_at }}</code></p>
         <p>Updated: <code>{{ evaluation.updated_at }}</code></p>
@@ -97,6 +103,9 @@
 
       <section class="card">
         <h2>Edit Evaluation</h2>
+        {% if evaluation.status in ["queued", "running"] %}
+        <p>Edit disabled while evaluation is running.</p>
+        {% else %}
         <form method="post">
           <label for="evaluation_json">evaluation_json</label>
           <textarea id="evaluation_json" name="evaluation_json" required>{{ evaluation.evaluation_json }}</textarea>
@@ -106,6 +115,7 @@
 
           <button type="submit">Save Changes</button>
         </form>
+        {% endif %}
       </section>
 
       <section class="card">

@@ -4,91 +4,92 @@
   "uploaded_files": [
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/rules/source_docs/beg_checkliste_gleichwertigkeit.pdf",
-      "file_id": "file-C1NEAFM2QUo5XrCFaiqiwJ",
+      "file_id": "file-Q8cBkS7RvbMhX9SmFL3yDQ",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/rules/source_docs/beg_em_richtlinie.pdf",
-      "file_id": "file-RWTtQGfJhLnf7o1xFYtxLn",
+      "file_id": "file-1GnKNJnyhcD9BrZfcREWzT",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/rules/source_docs/beg_infoblatt_sanieren.pdf",
-      "file_id": "file-PLUYCh8bXdPwZYQMk5ekbM",
+      "file_id": "file-N9zDJmd8SqReKhvhMhggAp",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/rules/source_docs/beg_merkblatt_antragstellung.pdf",
-      "file_id": "file-2K7xNAXDJh91SzmBdPQcbU",
+      "file_id": "file-WU4hCvKebw7Husx7E52x6h",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/rules/source_docs/beg_merkblatt_gebaeudenetze.pdf",
-      "file_id": "file-8iyrdDqHBpxfTrGeLMLuu2",
+      "file_id": "file-Y9skebT9BVYfdtero1F9B3",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/rules/source_docs/beg_merkblatt_zusatzantrag_bonus.pdf",
-      "file_id": "file-8ZWyc9esMgjtUbtC15NaE8",
+      "file_id": "file-1TaUcNzyJN4NacSX1kPL16",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/offer.txt",
-      "file_id": "file-DaQMtzE2UPzXJDcsm5e8ii",
+      "file_id": "file-5H5gzJyfx1aGe61tMawhxU",
       "purpose": "user_data"
     },
     {
       "path": "/Users/dennisfleischmann/Projects/ai-bafa-check/data/cases/case_fa7b89f73fb4/evaluation_for_plausibility.json",
-      "file_id": "file-WVVyR2hGkW5RLVh2djhBwW",
+      "file_id": "file-7gRNFPF79sDobwAjK2WeLc",
       "purpose": "user_data"
     }
   ],
   "referenced_file_ids": [
-    "file-C1NEAFM2QUo5XrCFaiqiwJ",
-    "file-RWTtQGfJhLnf7o1xFYtxLn",
-    "file-PLUYCh8bXdPwZYQMk5ekbM",
-    "file-2K7xNAXDJh91SzmBdPQcbU",
-    "file-8iyrdDqHBpxfTrGeLMLuu2",
-    "file-8ZWyc9esMgjtUbtC15NaE8"
+    "file-Q8cBkS7RvbMhX9SmFL3yDQ",
+    "file-1GnKNJnyhcD9BrZfcREWzT",
+    "file-N9zDJmd8SqReKhvhMhggAp",
+    "file-WU4hCvKebw7Husx7E52x6h",
+    "file-Y9skebT9BVYfdtero1F9B3",
+    "file-1TaUcNzyJN4NacSX1kPL16"
   ],
   "evaluation_path": "/Users/dennisfleischmann/Projects/ai-bafa-check/data/cases/case_fa7b89f73fb4/evaluation.json",
   "plausibility": {
     "case_id": "case_fa7b89f73fb4",
-    "overall_correct": true,
-    "summary": "Die Status-Entscheidungen der lokalen Evaluation sind im Kern plausibel: Fensterma\u00dfnahme ist grunds\u00e4tzlich f\u00f6rderf\u00e4hig und technisch (Uw) nachgewiesen; die Au\u00dfenwand-/Fassadend\u00e4mmungsposition ist ohne U-Wert/Schichtaufbau nicht pr\u00fcfbar und daher zu Recht auf Kl\u00e4rung gesetzt. Es bestehen jedoch Dokumentations-/Abgrenzungshinweise (v. a. Rolll\u00e4den/Elektrik, Au\u00dfenanschluss), die im Pr\u00fcfprozess sauber zu trennen sind, ohne dass dies den Status zwingend \u00e4ndert.",
+    "overall_correct": false,
+    "summary": "Fenster-Ma\u00dfnahme ist grunds\u00e4tzlich plausibel als f\u00f6rderf\u00e4higer Fenstertausch (Uw-Werte genannt). Der lokale PASS ist jedoch wegen erkennbar fehlender Fenster-/Elementkosten (nur Montage und Nebenpositionen summiert) sowie unplausibler Kostenklassifizierung (Entsorgung als UNCLASSIFIED) als Statusentscheidung nicht tragf\u00e4hig. Au\u00dfenwand/Anschlussdetails sind zu Recht kl\u00e4rungsbed\u00fcrftig.",
     "measure_checks": [
       {
         "measure_id": "envelope_fenster",
         "local_status": "PASS",
-        "llm_verdict": "correct",
-        "reason": "Das Angebot weist f\u00fcr die Fensterelemente einen Uw-Wert (0,79\u20130,80 W/m\u00b2K) aus und beschreibt Dreifachverglasung; zudem sind typische f\u00f6rderf\u00e4hige Nebenarbeiten (Demontage/Entsorgung, Anschlussfugen, Kompriband, Fensterb\u00e4nke, Absturzsicherung) enthalten. Damit ist ein PASS fachlich plausibel. Allerdings: Rolll\u00e4den/Motoren und ggf. deren Elektroanschluss sind zwar im Angebot enthalten, m\u00fcssen im Verwendungsnachweis eindeutig der Fensterma\u00dfnahme zugeordnet und als f\u00f6rderf\u00e4hig/nicht f\u00f6rderf\u00e4hig abgegrenzt werden; zudem sind Anschlussdetails (luftdicht innen/schlagregendicht au\u00dfen) i. d. R. nachzu-",
-        "suggested_status": "UNCHANGED",
+        "llm_verdict": "incorrect",
+        "reason": "Der PASS-Status ist nicht plausibel, weil das Angebot zwar Uw-Werte nennt, aber die Kostenaufstellung der lokalen Evaluation ersichtlich nicht die wesentlichen f\u00f6rderf\u00e4higen Hauptkosten der Fenster/Elemente enth\u00e4lt (stattdessen \u00fcberwiegend Montage/Nebenleistungen). Ohne die Fensterlieferkosten kann die Ma\u00dfnahme nicht als vollst\u00e4ndig gepr\u00fcfte/f\u00f6rderf\u00e4hige Einzelma\u00dfnahme (Kostenbasis/Zuordenbarkeit) als PASS durchgehen; mindestens CLARIFY (Positionen/Zuordnung/Fensterkosten) ist erforderlich.",
+        "suggested_status": "CLARIFY",
         "critical_quotes": [
-          "Uw-Wert 0.80 W/m\u00b2K",
-          "Uw-Wert 0.79 W/m\u00b2K"
+          "INOUTIC/Thyssen Kunststoff-Fenster Profil System EFORTE ... komplett mit W\u00e4rmeschutzglas 0,6 Ug ... liefern und montieren",
+          "Uw-Wert 0.80 W/m\u00b2K"
         ]
       },
       {
         "measure_id": "envelope_aussenwand",
         "local_status": "CLARIFY",
         "llm_verdict": "correct",
-        "reason": "Die Position beschreibt Arbeiten am Au\u00dfenanschluss im Kontext \u201eFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten\u201c, liefert aber keinen U-Wert, keine D\u00e4mmstoffdicke/\u03bb und keinen Wandaufbau. F\u00fcr eine Ma\u00dfnahme an der Au\u00dfenwand nach TMA sind diese Angaben zwingend, daher ist CLARIFY plausibel.",
+        "reason": "Es liegt nur eine Position zu einem schlagregendichten Anschluss im Kontext Fassadend\u00e4mmung/Putz/Malerarbeiten vor, aber keinerlei Angaben zu D\u00e4mmstoffdicke/Material (\u03bb) oder resultierendem U-Wert der Au\u00dfenwand. Damit ist CLARIFY fachlich zwingend.",
         "suggested_status": "UNCHANGED",
         "critical_quotes": [
-          "Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00"
+          "Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten",
+          "D\u00e4mm und Putzarbeiten durch Firma Gruber."
         ]
       }
     ],
     "critical_issues": [
-      "Fensterangebot enth\u00e4lt Rolll\u00e4den/Motoren und Hinweis \u201eElektroanschlu\u00df \u2026 nach Aufwand\u201c: F\u00f6rderf\u00e4higkeit/Zuordnung einzelner Positionen ist im Verwendungsnachweis klar zu trennen; sonst Risiko von K\u00fcrzungen trotz grunds\u00e4tzlich f\u00f6rderf\u00e4higer Fensterma\u00dfnahme.",
-      "Au\u00dfenanschluss-/Fassadend\u00e4mmungsposition ist ohne Nachweis (U-Wert oder D\u00e4mmstoffdicke+\u03bb+Wandaufbau) nicht bewertbar; zudem ist unklar, ob es sich nur um Anschluss-/Wiederherstellungsarbeiten im Zuge Fenstertausch oder um eine eigenst\u00e4ndige Au\u00dfenwandd\u00e4mmma\u00dfnahme handelt.",
-      "Kostenposition \u201eAusbau und Entsorgung der alten Elemente\u201c ist in der Kostenliste als UNCLASSIFIED gef\u00fchrt; das ist typischerweise als notwendige Demontage/Entsorgung im Zusammenhang mit Fenstertausch f\u00f6rderf\u00e4hig, sollte aber sauber klassifiziert/dokumentiert werden."
+      "Fenster: In der lokalen Kostenliste fehlen offenbar die zentralen Liefer-/Materialkosten der Fenster/Elemente; damit ist ein PASS als gepr\u00fcfte f\u00f6rderf\u00e4hige Einzelma\u00dfnahme auf Kostenbasis nicht belastbar.",
+      "Fenster: Position \u201eAusbau und Entsorgung der alten Elemente\u201c ist als UNCLASSIFIED gef\u00fchrt; Entsorgung/Demontage ist i.d.R. als f\u00f6rderf\u00e4hige Nebenleistung/Umfeldma\u00dfnahme zuzuordnen, die falsche Einordnung kann die F\u00f6rderlogik beeinflussen.",
+      "Fenster: Mehrere Anschluss-/Abdichtpositionen (\u201eVersiegelung\u201c, \u201eschlagregendichter Anschluss au\u00dfen ...\u201c) sind als (bedingt) f\u00f6rderf\u00e4hig markiert, ohne dass aus dem Angebot eindeutig hervorgeht, ob sie notwendige Nebenarbeiten zum Fenstertausch (und in welchem Umfang) sind."
     ],
     "recommendations": [
-      "F\u00fcr Fenster im Verwendungsnachweis/Rechnung: Positionen zu Rolll\u00e4den, Funkmotoren, Handsendern und Elektroarbeiten separat und nachvollziehbar ausweisen; nur eindeutig BEG-f\u00f6rderf\u00e4hige Anteile ansetzen.",
-      "F\u00fcr Au\u00dfenwand: technischen Nachweis nachreichen (U-Wert nach Sanierung oder D\u00e4mmstoffdicke+W\u00e4rmeleitf\u00e4higkeit+Wandaufbau; ggf. Abgrenzung als reine Anschluss-/Wiederherstellungskosten beim Fenstertausch).",
-      "Anschlussdetails dokumentieren (innen luftdicht/au\u00dfen schlagregendicht) und ggf. Produkt-/Ausf\u00fchrungsnachweise (Kompriband/Abdichtung), damit die Rechnungspr\u00fcfung nach Infoblatt \u201eSanieren\u201c (Fenster/Fugen/Abdichtung) ohne R\u00fcckfragen m\u00f6glich ist."
+      "Fenster: Vollst\u00e4ndige Positionsliste inkl. Fensterliefer-/Elementpreise (nicht nur Montage) nachreichen bzw. Kosten eindeutig in Material/Lieferung/Montage/Nebenarbeiten aufschl\u00fcsseln; erst dann Status PASS m\u00f6glich.",
+      "Fenster: Entsorgung/Demontagepositionen als f\u00f6rderf\u00e4hige Nebenleistung/Umfeldma\u00dfnahme korrekt zuordnen und die Kostenberechnung entsprechend konsistent machen.",
+      "Au\u00dfenwand/Anschluss: F\u00fcr Au\u00dfenwandd\u00e4mmung (falls beantragt) U-Wert nach Sanierung oder D\u00e4mmstoffdicke + \u03bb + Wandaufbau dokumentieren; falls nur Anschlussdetail ohne D\u00e4mmma\u00dfnahme: klarstellen, dass es sich um notwendige Nebenarbeiten zum Fenstertausch handelt (Umfang/Zuordnung)."
     ]
   },
-  "raw_model_output": "{\"case_id\":\"case_fa7b89f73fb4\",\"overall_correct\":true,\"summary\":\"Die Status-Entscheidungen der lokalen Evaluation sind im Kern plausibel: Fensterma\u00dfnahme ist grunds\u00e4tzlich f\u00f6rderf\u00e4hig und technisch (Uw) nachgewiesen; die Au\u00dfenwand-/Fassadend\u00e4mmungsposition ist ohne U-Wert/Schichtaufbau nicht pr\u00fcfbar und daher zu Recht auf Kl\u00e4rung gesetzt. Es bestehen jedoch Dokumentations-/Abgrenzungshinweise (v. a. Rolll\u00e4den/Elektrik, Au\u00dfenanschluss), die im Pr\u00fcfprozess sauber zu trennen sind, ohne dass dies den Status zwingend \u00e4ndert.\",\"measure_checks\":[{\"measure_id\":\"envelope_fenster\",\"local_status\":\"PASS\",\"llm_verdict\":\"correct\",\"reason\":\"Das Angebot weist f\u00fcr die Fensterelemente einen Uw-Wert (0,79\u20130,80 W/m\u00b2K) aus und beschreibt Dreifachverglasung; zudem sind typische f\u00f6rderf\u00e4hige Nebenarbeiten (Demontage/Entsorgung, Anschlussfugen, Kompriband, Fensterb\u00e4nke, Absturzsicherung) enthalten. Damit ist ein PASS fachlich plausibel. Allerdings: Rolll\u00e4den/Motoren und ggf. deren Elektroanschluss sind zwar im Angebot enthalten, m\u00fcssen im Verwendungsnachweis eindeutig der Fensterma\u00dfnahme zugeordnet und als f\u00f6rderf\u00e4hig/nicht f\u00f6rderf\u00e4hig abgegrenzt werden; zudem sind Anschlussdetails (luftdicht innen/schlagregendicht au\u00dfen) i. d. R. nachzu-\",\"suggested_status\":\"UNCHANGED\",\"critical_quotes\":[\"Uw-Wert 0.80 W/m\u00b2K\",\"Uw-Wert 0.79 W/m\u00b2K\"]},{\"measure_id\":\"envelope_aussenwand\",\"local_status\":\"CLARIFY\",\"llm_verdict\":\"correct\",\"reason\":\"Die Position beschreibt Arbeiten am Au\u00dfenanschluss im Kontext \u201eFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten\u201c, liefert aber keinen U-Wert, keine D\u00e4mmstoffdicke/\u03bb und keinen Wandaufbau. F\u00fcr eine Ma\u00dfnahme an der Au\u00dfenwand nach TMA sind diese Angaben zwingend, daher ist CLARIFY plausibel.\",\"suggested_status\":\"UNCHANGED\",\"critical_quotes\":[\"Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\\t3250,00\\t3250,00\"]}],\"critical_issues\":[\"Fensterangebot enth\u00e4lt Rolll\u00e4den/Motoren und Hinweis \u201eElektroanschlu\u00df \u2026 nach Aufwand\u201c: F\u00f6rderf\u00e4higkeit/Zuordnung einzelner Positionen ist im Verwendungsnachweis klar zu trennen; sonst Risiko von K\u00fcrzungen trotz grunds\u00e4tzlich f\u00f6rderf\u00e4higer Fensterma\u00dfnahme.\",\"Au\u00dfenanschluss-/Fassadend\u00e4mmungsposition ist ohne Nachweis (U-Wert oder D\u00e4mmstoffdicke+\u03bb+Wandaufbau) nicht bewertbar; zudem ist unklar, ob es sich nur um Anschluss-/Wiederherstellungsarbeiten im Zuge Fenstertausch oder um eine eigenst\u00e4ndige Au\u00dfenwandd\u00e4mmma\u00dfnahme handelt.\",\"Kostenposition \u201eAusbau und Entsorgung der alten Elemente\u201c ist in der Kostenliste als UNCLASSIFIED gef\u00fchrt; das ist typischerweise als notwendige Demontage/Entsorgung im Zusammenhang mit Fenstertausch f\u00f6rderf\u00e4hig, sollte aber sauber klassifiziert/dokumentiert werden.\"] ,\"recommendations\":[\"F\u00fcr Fenster im Verwendungsnachweis/Rechnung: Positionen zu Rolll\u00e4den, Funkmotoren, Handsendern und Elektroarbeiten separat und nachvollziehbar ausweisen; nur eindeutig BEG-f\u00f6rderf\u00e4hige Anteile ansetzen.\",\"F\u00fcr Au\u00dfenwand: technischen Nachweis nachreichen (U-Wert nach Sanierung oder D\u00e4mmstoffdicke+W\u00e4rmeleitf\u00e4higkeit+Wandaufbau; ggf. Abgrenzung als reine Anschluss-/Wiederherstellungskosten beim Fenstertausch).\",\"Anschlussdetails dokumentieren (innen luftdicht/au\u00dfen schlagregendicht) und ggf. Produkt-/Ausf\u00fchrungsnachweise (Kompriband/Abdichtung), damit die Rechnungspr\u00fcfung nach Infoblatt \u201eSanieren\u201c (Fenster/Fugen/Abdichtung) ohne R\u00fcckfragen m\u00f6glich ist.\"]}"
+  "raw_model_output": "{\n  \"case_id\": \"case_fa7b89f73fb4\",\n  \"overall_correct\": false,\n  \"summary\": \"Fenster-Ma\u00dfnahme ist grunds\u00e4tzlich plausibel als f\u00f6rderf\u00e4higer Fenstertausch (Uw-Werte genannt). Der lokale PASS ist jedoch wegen erkennbar fehlender Fenster-/Elementkosten (nur Montage und Nebenpositionen summiert) sowie unplausibler Kostenklassifizierung (Entsorgung als UNCLASSIFIED) als Statusentscheidung nicht tragf\u00e4hig. Au\u00dfenwand/Anschlussdetails sind zu Recht kl\u00e4rungsbed\u00fcrftig.\",\n  \"measure_checks\": [\n    {\n      \"measure_id\": \"envelope_fenster\",\n      \"local_status\": \"PASS\",\n      \"llm_verdict\": \"incorrect\",\n      \"reason\": \"Der PASS-Status ist nicht plausibel, weil das Angebot zwar Uw-Werte nennt, aber die Kostenaufstellung der lokalen Evaluation ersichtlich nicht die wesentlichen f\u00f6rderf\u00e4higen Hauptkosten der Fenster/Elemente enth\u00e4lt (stattdessen \u00fcberwiegend Montage/Nebenleistungen). Ohne die Fensterlieferkosten kann die Ma\u00dfnahme nicht als vollst\u00e4ndig gepr\u00fcfte/f\u00f6rderf\u00e4hige Einzelma\u00dfnahme (Kostenbasis/Zuordenbarkeit) als PASS durchgehen; mindestens CLARIFY (Positionen/Zuordnung/Fensterkosten) ist erforderlich.\",\n      \"suggested_status\": \"CLARIFY\",\n      \"critical_quotes\": [\n        \"INOUTIC/Thyssen Kunststoff-Fenster Profil System EFORTE ... komplett mit W\u00e4rmeschutzglas 0,6 Ug ... liefern und montieren\",\n        \"Uw-Wert 0.80 W/m\u00b2K\"\n      ]\n    },\n    {\n      \"measure_id\": \"envelope_aussenwand\",\n      \"local_status\": \"CLARIFY\",\n      \"llm_verdict\": \"correct\",\n      \"reason\": \"Es liegt nur eine Position zu einem schlagregendichten Anschluss im Kontext Fassadend\u00e4mmung/Putz/Malerarbeiten vor, aber keinerlei Angaben zu D\u00e4mmstoffdicke/Material (\u03bb) oder resultierendem U-Wert der Au\u00dfenwand. Damit ist CLARIFY fachlich zwingend.\",\n      \"suggested_status\": \"UNCHANGED\",\n      \"critical_quotes\": [\n        \"Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten\",\n        \"D\u00e4mm und Putzarbeiten durch Firma Gruber.\"\n      ]\n    }\n  ],\n  \"critical_issues\": [\n    \"Fenster: In der lokalen Kostenliste fehlen offenbar die zentralen Liefer-/Materialkosten der Fenster/Elemente; damit ist ein PASS als gepr\u00fcfte f\u00f6rderf\u00e4hige Einzelma\u00dfnahme auf Kostenbasis nicht belastbar.\",\n    \"Fenster: Position \u201eAusbau und Entsorgung der alten Elemente\u201c ist als UNCLASSIFIED gef\u00fchrt; Entsorgung/Demontage ist i.d.R. als f\u00f6rderf\u00e4hige Nebenleistung/Umfeldma\u00dfnahme zuzuordnen, die falsche Einordnung kann die F\u00f6rderlogik beeinflussen.\",\n    \"Fenster: Mehrere Anschluss-/Abdichtpositionen (\u201eVersiegelung\u201c, \u201eschlagregendichter Anschluss au\u00dfen ...\u201c) sind als (bedingt) f\u00f6rderf\u00e4hig markiert, ohne dass aus dem Angebot eindeutig hervorgeht, ob sie notwendige Nebenarbeiten zum Fenstertausch (und in welchem Umfang) sind.\"\n  ],\n  \"recommendations\": [\n    \"Fenster: Vollst\u00e4ndige Positionsliste inkl. Fensterliefer-/Elementpreise (nicht nur Montage) nachreichen bzw. Kosten eindeutig in Material/Lieferung/Montage/Nebenarbeiten aufschl\u00fcsseln; erst dann Status PASS m\u00f6glich.\",\n    \"Fenster: Entsorgung/Demontagepositionen als f\u00f6rderf\u00e4hige Nebenleistung/Umfeldma\u00dfnahme korrekt zuordnen und die Kostenberechnung entsprechend konsistent machen.\",\n    \"Au\u00dfenwand/Anschluss: F\u00fcr Au\u00dfenwandd\u00e4mmung (falls beantragt) U-Wert nach Sanierung oder D\u00e4mmstoffdicke + \u03bb + Wandaufbau dokumentieren; falls nur Anschlussdetail ohne D\u00e4mmma\u00dfnahme: klarstellen, dass es sich um notwendige Nebenarbeiten zum Fenstertausch handelt (Umfang/Zuordnung).\"\n  ]\n}"
 }

@@ -1,6 +1,6 @@
 {
   "case_id": "case_a9ae5abf43ae",
-  "generated_at": "2026-02-15T19:40:54+00:00",
+  "generated_at": "2026-02-16T05:18:49+00:00",
   "ruleset_version": "active",
   "results": [
     {
@@ -33,6 +33,13 @@
           "doc_id": "offer",
           "page": 1,
           "quote": "komplett mit W\u00e4rmeschutzglas 0,6 Ug als Dreifachglas mit warmer Kante",
+          "bbox": null,
+          "source_path": null
+        },
+        {
+          "doc_id": "offer",
+          "page": 1,
+          "quote": "Farbe wei\u00df, liefern und montieren",
           "bbox": null,
           "source_path": null
         },
@@ -283,24 +290,6 @@
           }
         ]
       }
-    },
-    {
-      "measure_id": "envelope_aussenwand",
-      "status": "CLARIFY",
-      "reason": "missing_wall_layers",
-      "used_evidence": [
-        {
-          "doc_id": "offer",
-          "page": 5,
-          "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
-          "bbox": null,
-          "source_path": null
-        }
-      ],
-      "questions": [
-        "Bitte U-Wert nach Sanierung ODER Daemmstaerke + Material (lambda) + Wandaufbau nachreichen."
-      ],
-      "cost_summary": {}
     }
   ]
 }

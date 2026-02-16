@@ -178,6 +178,13 @@
           {
             "doc_id": "offer",
             "page": 1,
+            "quote": "Farbe wei\u00df, liefern und montieren",
+            "bbox": null,
+            "source_path": null
+          },
+          {
+            "doc_id": "offer",
+            "page": 1,
             "quote": "Absturzsicherung inkl Montage",
             "bbox": null,
             "source_path": null
@@ -326,28 +333,6 @@
             "doc_id": "offer",
             "page": 5,
             "quote": "17\t1 St\u00fcck\tFensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.\t425,68\t425,68",
-            "bbox": null,
-            "source_path": null
-          }
-        ]
-      },
-      {
-        "measure_id": "envelope_aussenwand",
-        "component_type": "aussenwand",
-        "input_mode": "direct_u",
-        "values": {},
-        "layers": [],
-        "geometry": {},
-        "costs": {
-          "total": 0.0,
-          "currency": "EUR"
-        },
-        "line_items": [],
-        "evidence": [
-          {
-            "doc_id": "offer",
-            "page": 5,
-            "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
             "bbox": null,
             "source_path": null
           }

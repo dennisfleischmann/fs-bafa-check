@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evaluation {{ evaluation.id }}</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f6f8;
+        --card: #ffffff;
+        --border: #d6dde5;
+        --text: #17212b;
+        --danger: #9f1c2f;
+        --ok: #12582a;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        background: var(--bg);
+        color: var(--text);
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 220px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 10px;
+        font-family: inherit;
+        font-size: 12px;
+      }
+      button {
+        border: 1px solid #0d6b5d;
+        background: #0d6b5d;
+        color: #fff;
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      pre {
+        margin: 0;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: #f7f9fb;
+        padding: 12px;
+        overflow: auto;
+        max-height: 260px;
+      }
+      .error {
+        color: var(--danger);
+      }
+      .success {
+        color: var(--ok);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>Evaluation {{ evaluation.id }}</h1>
+        <p><a href="/evaluations">Back to All Evaluations</a></p>
+        <p><a href="/evaluations/{{ evaluation.id }}/offer.pdf">Download Persisted Offer PDF</a></p>
+        <p>Status: <code>{{ evaluation.status }}</code></p>
+        <p>Case ID: <code>{{ evaluation.case_id }}</code></p>
+        <p>Created: <code>{{ evaluation.created_at }}</code></p>
+        <p>Updated: <code>{{ evaluation.updated_at }}</code></p>
+        {% if evaluation.error_message %}
+        <p class="error">Stored error: {{ evaluation.error_message }}</p>
+        {% endif %}
+      </section>
+
+      {% if error %}
+      <section class="card">
+        <p class="error">{{ error }}</p>
+      </section>
+      {% endif %}
+
+      {% if success %}
+      <section class="card">
+        <p class="success">{{ success }}</p>
+      </section>
+      {% endif %}
+
+      <section class="card">
+        <h2>Edit Evaluation</h2>
+        <form method="post">
+          <label for="evaluation_json">evaluation_json</label>
+          <textarea id="evaluation_json" name="evaluation_json" required>{{ evaluation.evaluation_json }}</textarea>
+
+          <label for="human_result">human_result</label>
+          <textarea id="human_result" name="human_result">{{ evaluation.human_result }}</textarea>
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Offer Text</h2>
+        <pre>{{ evaluation.offer_text }}</pre>
+      </section>
+
+      <section class="card">
+        <h2>Compile Command Output</h2>
+        <p>Return code: <code>{{ evaluation.compile_returncode }}</code></p>
+        <p>stdout</p>
+        <pre>{{ evaluation.compile_stdout }}</pre>
+        <p>stderr</p>
+        <pre>{{ evaluation.compile_stderr }}</pre>
+      </section>
+
+      <section class="card">
+        <h2>Evaluate Command Output</h2>
+        <p>Return code: <code>{{ evaluation.evaluate_returncode }}</code></p>
+        <p>stdout</p>
+        <pre>{{ evaluation.evaluate_stdout }}</pre>
+        <p>stderr</p>
+        <pre>{{ evaluation.evaluate_stderr }}</pre>
+      </section>
+    </main>
+  </body>
+</html>

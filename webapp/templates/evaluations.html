@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>All Evaluations</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f6f8;
+        --card: #ffffff;
+        --border: #d6dde5;
+        --text: #17212b;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        background: var(--bg);
+        color: var(--text);
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid var(--border);
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background: #eef3f8;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>All Evaluations</h1>
+        <p><a href="/">Back to Evaluate Offer</a></p>
+
+        {% if evaluations %}
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Created</th>
+              <th>Updated</th>
+              <th>Filename</th>
+              <th>Case ID</th>
+              <th>Status</th>
+              <th>Modified</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in evaluations %}
+            <tr>
+              <td><a href="/evaluations/{{ item.id }}">{{ item.id }}</a></td>
+              <td>{{ item.created_at }}</td>
+              <td>{{ item.updated_at }}</td>
+              <td>{{ item.original_filename }}</td>
+              <td>{{ item.case_id }}</td>
+              <td>{{ item.status }}</td>
+              <td>{{ "yes" if item.is_modified else "no" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>No evaluations saved yet.</p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>

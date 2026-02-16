@@ -87,13 +87,14 @@
     <main>
       <section class="card">
         <h1>BAFA Agent Web App</h1>
+        <p><a href="/evaluations">List All Evaluations</a></p>
         <p>Upload offer PDF, extract text with <code>pdfplumber</code>, then run:</p>
         <p><code>python3 -m bafa_agent compile --source bafa</code></p>
         <p><code>python3 -m bafa_agent evaluate --offer ./offer.txt</code></p>
         <form method="post" enctype="multipart/form-data">
           <label for="offer_pdf">Offer PDF</label>
           <input id="offer_pdf" name="offer_pdf" type="file" accept=".pdf" required>
-          <button type="submit">Run Evaluation</button>
+          <button type="submit">Evaluate Offer</button>
         </form>
       </section>
 
@@ -101,6 +102,21 @@
       <section class="card error">
         <h2>Error</h2>
         <p>{{ error }}</p>
+      </section>
+      {% endif %}
+
+      {% if persistence_error %}
+      <section class="card error">
+        <h2>Persistence Error</h2>
+        <p>{{ persistence_error }}</p>
+      </section>
+      {% endif %}
+
+      {% if saved_evaluation_id %}
+      <section class="card">
+        <h2>Saved Evaluation</h2>
+        <p>Evaluation ID: <code>{{ saved_evaluation_id }}</code></p>
+        <p><a href="/evaluations/{{ saved_evaluation_id }}">Open Evaluation</a></p>
       </section>
       {% endif %}
 

@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
+import io
 import json
 import os
 import re
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Tuple
 
-from flask import Flask, render_template, request
+from flask import Flask, abort, render_template, request, send_file
 from werkzeug.utils import secure_filename
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -21,6 +23,7 @@ from bafa_agent.communications import render_secretary_memo
 from bafa_agent.config import load_project_config
 from bafa_agent.intake import build_case_id
 from bafa_agent.utils import read_json
+from webapp.db import create_evaluation, get_evaluation, init_db, list_evaluations, update_evaluation
 
 WEBAPP_DIR = Path(__file__).resolve().parent
 UPLOAD_DIR = WEBAPP_DIR / "uploads"
@@ -31,6 +34,7 @@ COMPILE_CMD = ["python3", "-m", "bafa_agent", "compile", "--source", "bafa"]
 EVALUATE_CMD = ["python3", "-m", "bafa_agent", "evaluate", "--offer", "./offer.txt"]
 
 app = Flask(__name__, template_folder=str(WEBAPP_DIR / "templates"))
+init_db()
 
 
 def _relative(path: Path) -> str:
@@ -108,10 +112,19 @@ def find_evaluation_path(stdout: str) -> Path:
     return BASE_DIR / "data" / "cases" / case_id / "evaluation.json"
 
 
+def persist_record(context: Dict[str, Any], record: Dict[str, Any]) -> None:
+    try:
+        context["saved_evaluation_id"] = create_evaluation(record)
+    except Exception as exc:
+        context["persistence_error"] = f"{type(exc).__name__}: {exc}"
+
+
 @app.route("/", methods=["GET", "POST"])
 def index() -> str:
     context: Dict[str, Any] = {
         "error": "",
+        "persistence_error": "",
+        "saved_evaluation_id": None,
         "uploaded_pdf_path": "",
         "offer_txt_path": "",
         "offer_text_preview": "",
@@ -123,6 +136,7 @@ def index() -> str:
         "compile_result": None,
         "evaluate_result": None,
     }
+    record: Dict[str, Any] = {}
 
     if request.method == "POST":
         try:
@@ -139,10 +153,32 @@ def index() -> str:
                 return render_template("index.html", **context)
 
             UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-            timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
             stored_pdf = UPLOAD_DIR / f"{timestamp}_{filename}"
             uploaded.save(str(stored_pdf))
             context["uploaded_pdf_path"] = _relative(stored_pdf)
+            pdf_bytes = stored_pdf.read_bytes()
+            record = {
+                "original_filename": filename,
+                "stored_pdf_path": _relative(stored_pdf),
+                "offer_pdf_bytes": pdf_bytes,
+                "offer_pdf_sha256": hashlib.sha256(pdf_bytes).hexdigest(),
+                "offer_text": "",
+                "extraction_method": "",
+                "compile_returncode": -1,
+                "compile_stdout": "",
+                "compile_stderr": "",
+                "evaluate_returncode": -1,
+                "evaluate_stdout": "",
+                "evaluate_stderr": "",
+                "evaluation_path": "",
+                "evaluation_json": "{}",
+                "human_result": "",
+                "case_id": "",
+                "status": "failed",
+                "error_message": "",
+                "is_modified": 0,
+            }
 
             extracted_text, char_count = extract_text_with_pdfplumber_stats(stored_pdf)
             if char_count > 30:
@@ -153,37 +189,118 @@ def index() -> str:
                 context["extraction_result"] = ocr_result
                 if ocr_result["returncode"] != 0:
                     context["error"] = "Text extraction failed: pdfplumber found no text and OCR fallback failed."
+                    record["error_message"] = context["error"]
+                    record["extraction_method"] = "pdfplumber + OCR fallback (extract_text_from_offer.py)"
+                    persist_record(context, record)
                     return render_template("index.html", **context)
                 context["extraction_method"] = "pdfplumber + OCR fallback (extract_text_from_offer.py)"
                 extracted_text = OFFER_TEXT_PATH.read_text(encoding="utf-8", errors="ignore")
 
             context["offer_txt_path"] = _relative(OFFER_TEXT_PATH)
             context["offer_text_preview"] = extracted_text[:4000]
+            record["offer_text"] = extracted_text
+            record["extraction_method"] = context["extraction_method"]
 
             compile_result = run_command(COMPILE_CMD)
             context["compile_result"] = compile_result
+            record["compile_returncode"] = compile_result["returncode"]
+            record["compile_stdout"] = compile_result["stdout"]
+            record["compile_stderr"] = compile_result["stderr"]
             if compile_result["returncode"] != 0:
                 context["error"] = "Compile step failed."
+                record["error_message"] = context["error"]
+                persist_record(context, record)
                 return render_template("index.html", **context)
 
             evaluate_result = run_command(EVALUATE_CMD)
             context["evaluate_result"] = evaluate_result
+            record["evaluate_returncode"] = evaluate_result["returncode"]
+            record["evaluate_stdout"] = evaluate_result["stdout"]
+            record["evaluate_stderr"] = evaluate_result["stderr"]
             if evaluate_result["returncode"] != 0:
                 context["error"] = "Evaluate step failed."
+                record["error_message"] = context["error"]
+                persist_record(context, record)
                 return render_template("index.html", **context)
 
             evaluation_path = find_evaluation_path(evaluate_result["stdout"])
             context["evaluation_path"] = _relative(evaluation_path)
+            record["evaluation_path"] = context["evaluation_path"]
             evaluation_payload = read_json(evaluation_path, default={}) or {}
             if not evaluation_payload:
                 context["error"] = f"Evaluation JSON not found or empty: {context['evaluation_path']}"
+                record["error_message"] = context["error"]
+                persist_record(context, record)
                 return render_template("index.html", **context)
             context["evaluation_json"] = json.dumps(evaluation_payload, indent=2, ensure_ascii=False)
             context["human_result"] = render_secretary_memo(evaluation_payload)
+            record["evaluation_json"] = context["evaluation_json"]
+            record["human_result"] = context["human_result"]
+            record["case_id"] = str(evaluation_payload.get("case_id", ""))
+            record["status"] = "success"
+            record["error_message"] = ""
+            persist_record(context, record)
         except Exception as exc:
             context["error"] = f"{type(exc).__name__}: {exc}"
+            if record:
+                record["error_message"] = context["error"]
+                persist_record(context, record)
 
     return render_template("index.html", **context)
+
+
+@app.route("/evaluations", methods=["GET"])
+def evaluations_list() -> str:
+    return render_template("evaluations.html", evaluations=list_evaluations())
+
+
+@app.route("/evaluations/<int:evaluation_id>", methods=["GET", "POST"])
+def evaluation_edit(evaluation_id: int) -> str:
+    payload = get_evaluation(evaluation_id)
+    if payload is None:
+        abort(404)
+
+    error = ""
+    success = ""
+    if request.method == "POST":
+        updated_json = (request.form.get("evaluation_json") or "").strip()
+        updated_human_result = (request.form.get("human_result") or "").strip()
+        if not updated_json:
+            error = "evaluation_json cannot be empty."
+        else:
+            try:
+                parsed = json.loads(updated_json)
+            except json.JSONDecodeError as exc:
+                error = f"Invalid JSON: {exc}"
+            else:
+                normalized_json = json.dumps(parsed, indent=2, ensure_ascii=False)
+                case_id = str(parsed.get("case_id", "")) if isinstance(parsed, dict) else ""
+                if update_evaluation(evaluation_id, normalized_json, updated_human_result, case_id=case_id):
+                    success = "Evaluation updated."
+                    payload = get_evaluation(evaluation_id) or payload
+                else:
+                    error = "Update failed."
+
+    return render_template("evaluation_edit.html", evaluation=payload, error=error, success=success)
+
+
+@app.route("/evaluations/<int:evaluation_id>/offer.pdf", methods=["GET"])
+def evaluation_offer_pdf(evaluation_id: int):
+    payload = get_evaluation(evaluation_id)
+    if payload is None:
+        abort(404)
+
+    pdf_bytes = payload.get("offer_pdf_bytes")
+    if not isinstance(pdf_bytes, (bytes, bytearray)) or not pdf_bytes:
+        abort(404)
+
+    filename = payload.get("original_filename", "") or f"offer_{evaluation_id}.pdf"
+    return send_file(
+        io.BytesIO(bytes(pdf_bytes)),
+        mimetype="application/pdf",
+        as_attachment=True,
+        download_name=filename,
+    )
 
 
 if __name__ == "__main__":

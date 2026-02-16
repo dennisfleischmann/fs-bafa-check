@@ -56,6 +56,7 @@ This repository now includes a minimal Flask app that keeps the CLI logic and wr
 3. Run `python3 -m bafa_agent compile --source bafa`
 4. Run `python3 -m bafa_agent evaluate --offer ./offer.txt`
 5. Show JSON result and a human-readable memo
+6. Persist offer + evaluation in SQLite and support listing/editing saved evaluations
 
 If the PDF has no embedded text, the app falls back to `extract_text_from_offer.py` OCR automatically.
 
@@ -73,6 +74,13 @@ python3 webapp/app.py
 
 Open `http://127.0.0.1:8000`.
 
+Persistence details:
+
+- Default DB path: `data/webapp_evaluations.db`
+- Override DB path with environment variable: `EVALUATIONS_DB_PATH`
+- List evaluations: `GET /evaluations`
+- Edit evaluation: `GET/POST /evaluations/<id>`
+
 ## Deploy on Render
 
 This repository includes a `render.yaml` blueprint for a Render Web Service.
@@ -82,6 +90,12 @@ This repository includes a `render.yaml` blueprint for a Render Web Service.
 3. Render will read `render.yaml` and create service `ai-bafa-check`.
 4. Set `OPENAI_API_KEY` in Render environment variables.
 5. Deploy.
+
+To persist evaluations on Render across restarts, use a persistent disk and point:
+
+```bash
+EVALUATIONS_DB_PATH=/var/data/webapp_evaluations.db
+```
 
 Start command used in production:
 

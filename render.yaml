@@ -16,3 +16,5 @@ services:
         value: "false"
       - key: OPENAI_PLAUSIBILITY_MODEL
         value: gpt-5.2
+      - key: EVALUATIONS_DB_PATH
+        value: /opt/render/project/src/data/webapp_evaluations.db

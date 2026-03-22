@@ -13,7 +13,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Tuple
 
-from flask import Flask, abort, redirect, render_template, request, send_file, url_for
+import gender_guesser.detector as gender
+from flask import Flask, abort, jsonify, redirect, render_template, request, send_file, url_for
 from werkzeug.utils import secure_filename
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -49,6 +50,7 @@ EVALUATE_TIMEOUT_SEC = int(os.getenv("WEBAPP_EVALUATE_TIMEOUT_SEC", "300"))
 EXECUTOR = ThreadPoolExecutor(max_workers=max(1, int(os.getenv("WEBAPP_JOB_WORKERS", "2"))))
 
 app = Flask(__name__, template_folder=str(WEBAPP_DIR / "templates"))
+GENDER_DETECTOR = gender.Detector()
 DB_READY = False
 
 
@@ -402,6 +404,29 @@ def evaluation_offer_pdf(evaluation_id: int):
         as_attachment=True,
         download_name=filename,
     )
+
+
+@app.route("/api/salutation", methods=["GET"])
+def api_salutation():
+    firstname = (request.args.get("firstname") or "").strip()
+    surname = (request.args.get("surname") or "").strip()
+
+    if not firstname or not surname:
+        return jsonify({"error": "Both 'firstname' and 'surname' query parameters are required."}), 400
+
+    guessed_gender = GENDER_DETECTOR.get_gender(firstname)
+
+    if guessed_gender in ("female", "mostly_female"):
+        salutation = f"Sehr geehrte Frau {surname}"
+    else:
+        salutation = f"Sehr geehrter Herr {surname}"
+
+    return jsonify({
+        "firstname": firstname,
+        "surname": surname,
+        "guessed_gender": guessed_gender,
+        "salutation": salutation,
+    })
 
 
 if __name__ == "__main__":

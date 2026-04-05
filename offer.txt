@@ -63,6 +63,7 @@ BIC: GENODED1EVB
 BLZ: 382 600 82  
 Kto.: 500 101 4058
 ===== PAGE 2 =====
+
 SJ exclusive Neunkirchen  
 Jansen & Mohr GbR  
 Zur Wolfskaul 12  
@@ -72,52 +73,55 @@ Kontakt@neunkirchen-fensterbau.de
 
 SJ exclusive, Zur Wolfskaul 12, 53894 Mechernich  
 
-Angebot : AN23080188, vom 22.08.2023                                                                 Seite 2  
-Position	Menge	Bezeichnung	E-Preis	G-Preis  
-		- € -	- € -  
-1	3 Stück	1-teiliges Element  
-		System: Eforte flächenversetzt 84 mm  
-		Maße: 1111 x 1780 mm  
-		DIN: DK-Links Stufe A  
-		Farbe: aussen: WEISS -601 / innen: WEISS -601  
-		Dichtung grau  
-		Rahmen: LLE184MD  
-		Flügel: ZLE184  
-			- KP4 Unterstück=20mm unten  
-			Entwässerung obenliegend  
-		Feld	Glas  
-		1.1	3-fach-Glas 0.60 Ug 4/16/4/16/4  
-			Abstandhalter warme Kante schwarz  
-		Uw-Wert 0.80 W/m²K  
-		Führungsschiene NR10  
-		Länge:	1810 mm  
-		Abrollprofil:	NR7  
-		Farbe:	6010-WEISS  
-		Nutmaß:	1087 mm  
-		Montage	918,00	2754,00  
+Angebot : AN23080188, vom 22.08.2023 Seite 2  
+Position Menge Bezeichnung E-Preis G-Preis  
+- € - - € -  
 
-2	1 Stück	1-teiliges Element  
-		System: Eforte flächenversetzt 84 mm  
-		Maße: 1111 x 2210 mm  
-		DIN: DK-Links Stufe A  
-		Farbe: aussen: WEISS -601 / innen: WEISS -601  
-		Dichtung grau  
-		Rahmen: LLE184MD  
-		Flügel: ZLE184  
-			- KP4 Unterstück=20mm unten  
-			Entwässerung obenliegend  
-		Feld	Glas  
-		1.1	3-fach-Glas 0.60 Ug 4/16/4/16/4  
-			Abstandhalter warme Kante schwarz  
-		Uw-Wert 0.79 W/m²K  
-		Führungsschiene NR10  
-		Länge:	2240 mm  
-		Abrollprofil:	NR7  
-		Farbe:	6010-WEISS  
-		Nutmaß:	1087 mm  
-		Schnäpper und Muschel  
-		Montage	1097,00	1097,00  
-		Übertrag:	3851,00  
+1 3 Stück 1-teiliges Element  
+System: Eforte flächenversetzt 84 mm  
+Maße: 1111 x 1780 mm  
+DIN: DK-Links Stufe A  
+Farbe: aussen: WEISS -601 / innen: WEISS -601  
+Dichtung grau  
+Rahmen: LLE184MD  
+Flügel: ZLE184  
+
+KP4 Unterstück=20mm unten  
+Entwässerung obenliegend  
+Feld Glas  
+1.1 3-fach-Glas 0.60 Ug 4/16/4/16/4  
+Abstandhalter warme Kante schwarz  
+Uw-Wert 0.80 W/m²K  
+Führungsschiene NR10  
+Länge: 1810 mm  
+Abrollprofil: NR7  
+Farbe: 6010-WEISS  
+Nutmaß: 1087 mm  
+Montage 918,00 2754,00  
+
+2 1 Stück 1-teiliges Element  
+System: Eforte flächenversetzt 84 mm  
+Maße: 1111 x 2210 mm  
+DIN: DK-Links Stufe A  
+Farbe: aussen: WEISS -601 / innen: WEISS -601  
+Dichtung grau  
+Rahmen: LLE184MD  
+Flügel: ZLE184  
+
+KP4 Unterstück=20mm unten  
+Entwässerung obenliegend  
+Feld Glas  
+1.1 3-fach-Glas 0.60 Ug 4/16/4/16/4  
+Abstandhalter warme Kante schwarz  
+Uw-Wert 0.79 W/m²K  
+Führungsschiene NR10  
+Länge: 2240 mm  
+Abrollprofil: NR7  
+Farbe: 6010-WEISS  
+Nutmaß: 1087 mm  
+Schnäpper und Muschel  
+Montage 1097,00 1097,00  
+Übertrag: 3851,00  
 
 Geschäftsinhaber:  
 Stefan Jansen & Martin Mohr  
@@ -140,7 +144,7 @@ Kontakt@neunkirchen-fensterbau.de
 
 SJ exclusive, Zur Wolfskaul 12, 53894 Mechernich  
 
-Angebot : AN23080188, vom 22.08.2023  Seite 3  
+Angebot : AN23080188, vom 22.08.2023                                                                 Seite 3  
 Position	Menge	Bezeichnung	E-Preis	G-Preis  
 		- € -	- € -  
 		Übertrag :	3851,00  
@@ -154,8 +158,8 @@ Position	Menge	Bezeichnung	E-Preis	G-Preis
 		Rahmen:	LLE184MD  
 		Flügel:	ZLE184  
 
-		KP4 Unterstück=20mm unten  
-		Entwässerung obenliegend  
+			KP4 Unterstück=20mm unten  
+			Entwässerung obenliegend  
 		Feld	Glas  
 		1.1	3-fach-Glas 0.60 Ug 4/16/4/16/4  
 			Abstandhalter warme Kante schwarz  
@@ -237,7 +241,6 @@ BIC: GENODED1EVB
 BLZ: 382 600 82  
 Kto.: 500 101 4058
 ===== PAGE 5 =====
-
 SJ exclusive Neunkirchen  
 Jansen & Mohr GbR  
 Zur Wolfskaul 12  
@@ -253,7 +256,7 @@ Position	Menge	Bezeichnung	E-Preis	G-Preis
 		- € -	- € -  
 		Übertrag :	11355,10  
 15	8 Stück	Absturzsicherung in bestehende Fensterfassade inkl liefern und Montieren.	155,00	1240,00  
-_	16	1 Stück	Herstellung eines schlagregendichten Anschlusses außen Fassadendämmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber	3250,00	3250,00  
+_	16	1 Stück	Fassadendämmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber	3250,00	3250,00  
 17	1 Stück	Fensterbänke für neue Fenster liefern und montieren.	425,68	425,68  
 
 	Summe Netto	16270,78  
@@ -301,7 +304,7 @@ Kontakt@neunkirchen-fensterbau.de
 
 SJ exclusive, Zur Wolfskaul 12, 53894 Mechernich  
 
-Angebot : AN23080188, vom 22.08.2023   Seite 6  
+Angebot : AN23080188, vom 22.08.2023                                                                 Seite 6  
 
 Hinweise zur Datenverarbeitung im Sinne von Art. 4, Ziff. 7 der DSGVO wurden bereits beigefügt  
 

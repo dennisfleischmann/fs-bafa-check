@@ -25,7 +25,7 @@ class SemanticParserTests(unittest.TestCase):
         facts = parse_offer_text(offer_file)
         measures = {measure["measure_id"]: measure for measure in facts["offer"]["measures"]}
         self.assertIn("envelope_fenster", measures)
-        self.assertIn("envelope_aussenwand", measures)
+        self.assertNotIn("envelope_aussenwand", measures)
 
         fenster = measures["envelope_fenster"]
         pos16 = next((item for item in fenster["line_items"] if item.get("position") == 16), None)

@@ -1,5 +1,6 @@
 import unittest
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from bafa_agent.engine import evaluate_case
 from bafa_agent.models import MeasureSpec
@@ -43,7 +44,7 @@ def _spec(measure_id: str, threshold: float) -> MeasureSpec:
 
 
 class OfferBugRegressionTests(unittest.TestCase):
-    def test_offer_txt_fenster_pass_aussenwand_clarify(self):
+    def test_offer_txt_fenster_pass_without_false_aussenwand(self):
         offer_file = Path("offer.txt")
         self.assertTrue(offer_file.exists(), "offer.txt missing in project root")
 
@@ -59,10 +60,28 @@ class OfferBugRegressionTests(unittest.TestCase):
         result_map = {result.measure_id: result for result in report.results}
 
         self.assertIn("envelope_fenster", result_map)
-        self.assertIn("envelope_aussenwand", result_map)
-
+        self.assertNotIn("envelope_aussenwand", result_map)
         self.assertEqual(result_map["envelope_fenster"].status.value, "PASS")
 
+    def test_pure_fassade_line_still_triggers_aussenwand_clarify(self):
+        content = (
+            "===== PAGE 1 =====\n"
+            "16 1 Stueck Fassadendaemmung inkl Putzarbeiten 3250,00 3250,00\n"
+        )
+        with NamedTemporaryFile("w+", suffix=".txt", encoding="utf-8") as handle:
+            handle.write(content)
+            handle.flush()
+            facts = parse_offer_text(handle.name)
+
+        facts["case_id"] = "regression_pure_fassade"
+        specs = {
+            "envelope_fenster": _spec("envelope_fenster", 0.95),
+            "envelope_aussenwand": _spec("envelope_aussenwand", 0.20),
+        }
+        report = evaluate_case(facts, specs, ruleset_version="test")
+        result_map = {result.measure_id: result for result in report.results}
+
+        self.assertIn("envelope_aussenwand", result_map)
         aussenwand = result_map["envelope_aussenwand"]
         self.assertEqual(aussenwand.status.value, "CLARIFY")
         self.assertTrue(

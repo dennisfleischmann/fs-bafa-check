@@ -218,12 +218,16 @@ def _resolve_evidence_component(
     semantic: Optional[SemanticMatch],
     extracted: Dict[str, Any],
 ) -> Optional[str]:
-    if lexical_component:
-        return lexical_component
+    # Prefer a strong semantic match over lexical taxonomy in ambiguous lines,
+    # e.g. "schlagregendichter Anschluss ... Fassadendaemmung".
     if semantic and semantic.confidence >= SEMANTIC_COMPONENT_OVERRIDE_CONFIDENCE:
         return semantic.component
     if "uw" in extracted:
         return "fenster"
+    if lexical_component:
+        return lexical_component
+    if semantic and semantic.confidence >= SEMANTIC_ITEM_CONFIDENCE:
+        return semantic.component
     return None
 
 

@@ -1,6 +1,6 @@
 {
   "case_id": "case_a9ae5abf43ae",
-  "generated_at": "2026-02-15T19:40:54+00:00",
+  "generated_at": "2026-02-17T22:05:10+00:00",
   "ruleset_version": "active",
   "results": [
     {
@@ -39,6 +39,13 @@
         {
           "doc_id": "offer",
           "page": 1,
+          "quote": "Farbe wei\u00df, liefern und montieren",
+          "bbox": null,
+          "source_path": null
+        },
+        {
+          "doc_id": "offer",
+          "page": 1,
           "quote": "Absturzsicherung inkl Montage",
           "bbox": null,
           "source_path": null
@@ -60,7 +67,7 @@
         {
           "doc_id": "offer",
           "page": 2,
-          "quote": "Montage\t918,00\t2754,00",
+          "quote": "Montage 918,00 2754,00",
           "bbox": null,
           "source_path": null
         },
@@ -74,7 +81,7 @@
         {
           "doc_id": "offer",
           "page": 2,
-          "quote": "Montage\t1097,00\t1097,00",
+          "quote": "Montage 1097,00 1097,00",
           "bbox": null,
           "source_path": null
         },
@@ -179,13 +186,6 @@
         {
           "doc_id": "offer",
           "page": 5,
-          "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
-          "bbox": null,
-          "source_path": null
-        },
-        {
-          "doc_id": "offer",
-          "page": 5,
           "quote": "17\t1 St\u00fcck\tFensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.\t425,68\t425,68",
           "bbox": null,
           "source_path": null
@@ -195,7 +195,7 @@
       "cost_summary": {
         "eligible_total": 11240.78,
         "ineligible_total": 0.0,
-        "conditional_total": 3910.0,
+        "conditional_total": 660.0,
         "items": [
           {
             "description": "Montage",
@@ -270,12 +270,6 @@
             "decision": "ELIGIBLE"
           },
           {
-            "description": "Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber",
-            "category": "montage",
-            "amount": 3250.0,
-            "decision": "ELIGIBLE_IF_NECESSARY"
-          },
-          {
             "description": "Fensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.",
             "category": "material",
             "amount": 425.68,
@@ -292,7 +286,7 @@
         {
           "doc_id": "offer",
           "page": 5,
-          "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
+          "quote": "_\t16\t1 St\u00fcck\tFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
           "bbox": null,
           "source_path": null
         }

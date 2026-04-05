@@ -24,7 +24,7 @@
         "layers": [],
         "geometry": {},
         "costs": {
-          "total": 15150.78,
+          "total": 11900.78,
           "currency": "EUR"
         },
         "line_items": [
@@ -122,18 +122,6 @@
             "semantic_method": "lexical"
           },
           {
-            "description": "Herstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber",
-            "amount": 3250.0,
-            "currency": "EUR",
-            "category": "montage",
-            "position": 16,
-            "quantity": 1.0,
-            "unit": "St\u00fcck",
-            "item_code": "fugen_abdichtung",
-            "semantic_confidence": 0.88,
-            "semantic_method": "lexical"
-          },
-          {
             "description": "Fensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.",
             "amount": 425.68,
             "currency": "EUR",
@@ -178,6 +166,13 @@
           {
             "doc_id": "offer",
             "page": 1,
+            "quote": "Farbe wei\u00df, liefern und montieren",
+            "bbox": null,
+            "source_path": null
+          },
+          {
+            "doc_id": "offer",
+            "page": 1,
             "quote": "Absturzsicherung inkl Montage",
             "bbox": null,
             "source_path": null
@@ -199,7 +194,7 @@
           {
             "doc_id": "offer",
             "page": 2,
-            "quote": "Montage\t918,00\t2754,00",
+            "quote": "Montage 918,00 2754,00",
             "bbox": null,
             "source_path": null
           },
@@ -213,7 +208,7 @@
           {
             "doc_id": "offer",
             "page": 2,
-            "quote": "Montage\t1097,00\t1097,00",
+            "quote": "Montage 1097,00 1097,00",
             "bbox": null,
             "source_path": null
           },
@@ -318,13 +313,6 @@
           {
             "doc_id": "offer",
             "page": 5,
-            "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
-            "bbox": null,
-            "source_path": null
-          },
-          {
-            "doc_id": "offer",
-            "page": 5,
             "quote": "17\t1 St\u00fcck\tFensterb\u00e4nke f\u00fcr neue Fenster liefern und montieren.\t425,68\t425,68",
             "bbox": null,
             "source_path": null
@@ -339,15 +327,28 @@
         "layers": [],
         "geometry": {},
         "costs": {
-          "total": 0.0,
+          "total": 3250.0,
           "currency": "EUR"
         },
-        "line_items": [],
+        "line_items": [
+          {
+            "description": "Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber",
+            "amount": 3250.0,
+            "currency": "EUR",
+            "category": "material",
+            "position": 16,
+            "quantity": 1.0,
+            "unit": "St\u00fcck",
+            "item_code": "aussenwand_daemmung",
+            "semantic_confidence": 0.88,
+            "semantic_method": "lexical"
+          }
+        ],
         "evidence": [
           {
             "doc_id": "offer",
             "page": 5,
-            "quote": "_\t16\t1 St\u00fcck\tHerstellung eines schlagregendichten Anschlusses au\u00dfen Fassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
+            "quote": "_\t16\t1 St\u00fcck\tFassadend\u00e4mmung inkl Putzarbeiten und Malerarbeiten durch Firma Gruber\t3250,00\t3250,00",
             "bbox": null,
             "source_path": null
           }

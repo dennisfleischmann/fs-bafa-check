@@ -2,6 +2,33 @@
 
 Deterministic BAFA/BEG evaluation scaffold implemented from `developer_spec.md`.
 
+
+## Quickstart
+
+1. Create a virtualenv (optional): `python3 -m venv .venv`
+2. Activate it: `source .venv/bin/activate`
+3. Install deps: `pip install -r requirements.txt`
+4. Create `.env` with your key (local override):
+
+```bash
+cat > .env <<'EOF'
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4o
+BAFA_SOURCE_MODE=bafa
+BAFA_SEMANTIC_USE_EMBEDDINGS=false
+OPENAI_PLAUSIBILITY_MODEL=gpt-5.2
+EOF
+```
+
+5. Start the web app: `python3 webapp/app.py`
+6. Open `http://127.0.0.1:8000`
+
+If you prefer the CLI:
+
+1. `python3 -m bafa_agent --base-dir . compile --source bafa`
+2. `python3 -m bafa_agent --base-dir . evaluate --offer ./offer.txt`
+
+
 ## Shared config
 
 The project loads configuration from:
@@ -47,56 +74,76 @@ python3 -m bafa_agent --base-dir . memo --evaluation data/cases/<case_id>/evalua
 python3 -m bafa_agent --base-dir . email --evaluation data/cases/<case_id>/evaluation.json --index 0
 ```
 
-## Web App Backend (Render-ready)
+## Web app (simple migration wrapper)
 
-This repository now includes a queue-based backend for your employee web app:
+This repository now includes a minimal Flask app that keeps the CLI logic and wraps it in a browser flow:
 
-- `webapp/api.py` (FastAPI web service)
-- `webapp/worker.py` (RQ worker)
-- `webapp/worker_tasks.py` (compile/extract/evaluate jobs)
-- `render.yaml` (Render Blueprint: web + worker + cron + postgres + redis)
+1. Upload offer PDF
+2. Extract text with `pdfplumber` to `./offer.txt`
+3. Run `python3 -m bafa_agent compile --source bafa`
+4. Run `python3 -m bafa_agent evaluate --offer ./offer.txt`
+5. Show JSON result and a human-readable memo
+6. Persist offer + evaluation in SQLite and support listing/editing saved evaluations
+7. Run evaluation in background (no long blocking HTTP request)
 
-### Local run
+If the PDF has no embedded text, the app falls back to `extract_text_from_offer.py` OCR automatically.
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-uvicorn webapp.api:app --reload --port 8000
-python -m webapp.worker
 ```
 
-### API flow
+Run:
 
-1) Create BAFA application:
 ```bash
-curl -X POST http://localhost:8000/applications -H "Content-Type: application/json" -d '{"title":"Antrag #1"}'
+python3 webapp/app.py
 ```
 
-2) Upload offer (`.pdf` or `.txt`) and enqueue extraction:
+Open `http://127.0.0.1:8000`.
+
+Persistence details:
+
+- Default DB path: `data/webapp_evaluations.db`
+- Override DB path with environment variable: `EVALUATIONS_DB_PATH`
+- List evaluations: `GET /evaluations`
+- Edit evaluation: `GET/POST /evaluations/<id>`
+- Health endpoint: `GET /healthz`
+
+Runtime hardening:
+
+- OCR, compile, and evaluate commands run with timeouts (`WEBAPP_OCR_TIMEOUT_SEC`, `WEBAPP_COMPILE_TIMEOUT_SEC`, `WEBAPP_EVALUATE_TIMEOUT_SEC`).
+- Home page shows environment diagnostics (`OPENAI_API_KEY` present/missing, active DB path).
+
+## Deploy on Render
+
+This repository includes a `render.yaml` blueprint for a Render Web Service.
+
+1. Push this repo to GitHub.
+2. In Render: **New** -> **Blueprint** -> select the repository.
+3. Render will read `render.yaml` and create service `ai-bafa-check`.
+4. Set `OPENAI_API_KEY` in Render environment variables.
+5. Deploy.
+
+Current Render blueprint uses:
+
 ```bash
-curl -X POST http://localhost:8000/applications/<application_id>/offers -F "file=@angebot.pdf"
+EVALUATIONS_DB_PATH=/tmp/webapp_evaluations.db
 ```
 
-3) Start evaluation + plausibility check:
+For persistence across restarts, mount a persistent disk and set:
+
 ```bash
-curl -X POST http://localhost:8000/applications/<application_id>/offers/<offer_id>/evaluate
+EVALUATIONS_DB_PATH=/var/data/webapp_evaluations.db
 ```
 
-4) Poll job status:
+Start command used in production:
+
 ```bash
-curl http://localhost:8000/jobs/<job_id>
+gunicorn webapp.app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 300
 ```
 
-5) Trigger compile latest BAFA docs:
-```bash
-curl -X POST http://localhost:8000/actions/compile-latest
-```
-
-### Render deploy
-
-- Commit and push repo.
-- Create Blueprint from `render.yaml`.
-- Set `OPENAI_API_KEY` in web/worker/cron services.
-- Ensure worker is running (jobs are asynchronous).
+Note: Render free services use an ephemeral filesystem. Uploaded PDFs and generated outputs are not persistent across restarts.
 
 To override locally without editing tracked defaults:
 

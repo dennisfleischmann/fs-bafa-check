@@ -1,3 +1,5 @@
 .env
 __pycache__/
 *.pyc
+webapp/uploads/
+data/webapp_evaluations.db

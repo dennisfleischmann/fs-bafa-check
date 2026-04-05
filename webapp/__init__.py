@@ -1,2 +1,1 @@
-"""Web application package for BAFA workflow orchestration."""
-
+# Package marker for production module loading (e.g. gunicorn webapp.app:app).

@@ -1,7 +1,3 @@
 flask
 gender-guesser
 gunicorn
-openai
-pdfplumber
-pymupdf
-python-dotenv

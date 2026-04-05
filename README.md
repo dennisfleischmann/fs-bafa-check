@@ -2,6 +2,33 @@
 
 Deterministic BAFA/BEG evaluation scaffold implemented from `developer_spec.md`.
 
+
+## Quickstart
+
+1. Create a virtualenv (optional): `python3 -m venv .venv`
+2. Activate it: `source .venv/bin/activate`
+3. Install deps: `pip install -r requirements.txt`
+4. Create `.env` with your key (local override):
+
+```bash
+cat > .env <<'EOF'
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4o
+BAFA_SOURCE_MODE=bafa
+BAFA_SEMANTIC_USE_EMBEDDINGS=false
+OPENAI_PLAUSIBILITY_MODEL=gpt-5.2
+EOF
+```
+
+5. Start the web app: `python3 webapp/app.py`
+6. Open `http://127.0.0.1:8000`
+
+If you prefer the CLI:
+
+1. `python3 -m bafa_agent --base-dir . compile --source bafa`
+2. `python3 -m bafa_agent --base-dir . evaluate --offer ./offer.txt`
+
+
 ## Shared config
 
 The project loads configuration from:
